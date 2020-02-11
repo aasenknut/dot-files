@@ -5,9 +5,10 @@ Plug 'tpope/vim-sensible'
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wsdjeg/FlyGrep.vim'
-Plug 'sillybun/vim-repl'
+Plug 'jpalardy/vim-slime'
 
 call plug#end()
+
 
 " Line numbering +++
 set rnu
@@ -32,6 +33,13 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 nnoremap <c-h> <c-w>h
+
+"
+" REPL by slime 
+"
+
+let g:slime_target = "tmux"
+
 
 "
 " coc.nvim config stuff follows.
