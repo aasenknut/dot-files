@@ -4,6 +4,8 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'wsdjeg/FlyGrep.vim'
+Plug 'sillybun/vim-repl'
 
 call plug#end()
 
@@ -14,6 +16,9 @@ set colorcolumn=80
 " Colours
 set background=dark 
 colorscheme gruvbox
+
+" Force nvim to be in english
+language en_US
 
 "
 " Key-bindings follow.
