@@ -2,10 +2,10 @@
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'tpope/vim-sensible'
-Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wsdjeg/FlyGrep.vim'
 Plug 'jpalardy/vim-slime'
+Plug 'vim-scripts/Zenburn'
 
 call plug#end()
 
@@ -16,7 +16,7 @@ set colorcolumn=80
 
 " Colours
 set background=dark 
-colorscheme gruvbox
+colorscheme zenburn
 
 " Force nvim to be in english
 language en_US
