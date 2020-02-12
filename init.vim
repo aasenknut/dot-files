@@ -6,6 +6,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wsdjeg/FlyGrep.vim'
 Plug 'jpalardy/vim-slime'
 Plug 'vim-scripts/Zenburn'
+Plug 'chriskempson/base16-vim'
+Plug 'srcery-colors/srcery-vim'
 
 call plug#end()
 
@@ -14,12 +16,14 @@ call plug#end()
 set rnu
 set colorcolumn=80
 
-" Colours
-set background=dark 
-colorscheme zenburn
-
+"  Colours
+let base16colorspace=256
+colorscheme srcery
 " Force nvim to be in english
 language en_US
+
+" Syntax
+syntax on
 
 "
 " Key-bindings follow.
