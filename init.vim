@@ -8,6 +8,8 @@ Plug 'jpalardy/vim-slime'
 Plug 'vim-scripts/Zenburn'
 Plug 'chriskempson/base16-vim'
 Plug 'srcery-colors/srcery-vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }       
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -37,6 +39,18 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 nnoremap <c-h> <c-w>h
+
+" move between tabs by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr> 
 
 "
 " REPL by slime 
