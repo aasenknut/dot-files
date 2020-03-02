@@ -16,6 +16,7 @@ call plug#end()
 
 " Line numbering +++
 set rnu
+set nu
 set colorcolumn=80
 
 "  Colours
