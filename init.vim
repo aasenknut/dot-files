@@ -52,6 +52,12 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr> 
 
+" write file
+nnoremap <leader>w :w<cr>
+
+" Go commands
+nnoremap <leader>r :GoRun<cr>
+
 "
 " REPL by slime 
 "
