@@ -42,16 +42,17 @@ nnoremap <c-l> <c-w>l
 nnoremap <c-h> <c-w>h
 
 " move between tabs by number
-noremap <leader>1 1gt
-noremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
-noremap <leader>6 6gt
-noremap <leader>7 7gt
-noremap <leader>8 8gt
-noremap <leader>9 9gt
-noremap <leader>0 :tablast<cr> 
+" SHOULD BE USED FOR SOMETHING ELSE
+"noremap <leader>1 1gt
+"noremap <leader>2 2gt
+"noremap <leader>3 3gt
+"noremap <leader>4 4gt
+"noremap <leader>5 5gt
+"noremap <leader>6 6gt
+"noremap <leader>7 7gt
+"noremap <leader>8 8gt
+"noremap <leader>9 9gt
+"noremap <leader>0 :tablast<cr> 
 
 " write file
 nnoremap <leader>w :w<cr>
@@ -59,11 +60,33 @@ nnoremap <leader>w :w<cr>
 " Go commands
 nnoremap <leader>r :GoRun<cr>
 
+" Use <Esc> in terminal-mode, like in insert-mode.
+" Also, use <C-v> to use <Esc> in a program run in terminal-mode.
+" (<C-v> -- mnemonic: Verbatim escape)
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <C-v><Esc> <Esc>
+endif
+
 "
 " REPL by slime 
 "
-let g:slime_target = "tmux"
+"let g:slime_target = "tmux"
+let g:slime_target = "neovim"
 let g:slime_python_ipython = 1
+
+"
+" netrw settings
+"
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+augroup ProjectDrawer
+  autocmd!
+  autocmd VimEnter * :Vexplore
+augroup END
 
 "
 " coc.nvim config stuff follows.
