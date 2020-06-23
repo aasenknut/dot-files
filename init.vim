@@ -72,10 +72,10 @@ nnoremap <leader>s :%s//gc<Left><Left><Left>
 " Use <Esc> in terminal-mode, like in insert-mode.
 " Also, use <C-v> to use <Esc> in a program run in terminal-mode.
 " (<C-v> -- mnemonic: Verbatim escape)
-if has('nvim')
-  tnoremap <Esc> <C-\><C-n>
-  tnoremap <C-v><Esc> <Esc>
-endif
+"if has('nvim')
+"  tnoremap <Esc> <C-\><C-n>
+"  tnoremap <C-v><Esc> <Esc>
+"endif
 
 "
 " REPL by slime 
@@ -94,13 +94,15 @@ nmap <leader>gf :diffget //2<CR>
 nmap <leader>gs :G<CR>
 
 " FZF
+nnoremap <C-p> :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>a :Ag<CR>
 " Set <Esc> to work as expected in the fzf buffer
 if has("nvim")
-  au TermOpen * tnoremap <Esc> <c-\><c-n>
-  au FileType fzf tunmap <Esc>
+  au TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
+  au FileType fzf tunmap <buffer> <Esc>
 endif
+
 
 "------------------------------------------------------------------------------
 " coc.nvim config stuff follows.
