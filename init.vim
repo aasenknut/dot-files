@@ -62,24 +62,19 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr> 
 
+" 
+nnoremap <leader>t :terminal<cr>
+
 " write file
 nnoremap <leader>w :w<cr>
 
-" Replace all with confirmation, aliased to S
+" Replace all with confirmation
 nnoremap <leader>s :%s//gc<Left><Left><Left>
 
-" TERMINAL MODE
-" Use <Esc> in terminal-mode, like in insert-mode.
-" Also, use <C-v> to use <Esc> in a program run in terminal-mode.
-" (<C-v> -- mnemonic: Verbatim escape)
-"if has('nvim')
-"  tnoremap <Esc> <C-\><C-n>
-"  tnoremap <C-v><Esc> <Esc>
-"endif
+"Remove all trailing whitespace by pressing F5
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
-"
 " REPL by slime 
-"
 let g:slime_target = "neovim"
 let g:slime_python_ipython = 1
 
@@ -92,15 +87,19 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 nmap <leader>gj :diffget //3<CR>
 nmap <leader>gf :diffget //2<CR>
 nmap <leader>gs :G<CR>
+nmap <leader>gd :Gvdiff<CR>
+nmap <leader>gl :Glog<CR>
 
 " FZF
 nnoremap <C-p> :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>a :Ag<CR>
 " Set <Esc> to work as expected in the fzf buffer
+" Also, use <C-v> to use <Esc> in a program run in terminal-mode.
 if has("nvim")
   au TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
   au FileType fzf tunmap <buffer> <Esc>
+  tnoremap <C-v><Esc> <Esc>
 endif
 
 
@@ -196,10 +195,6 @@ xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
-
-" Use <TAB> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
