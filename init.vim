@@ -8,11 +8,17 @@ Plug 'jpalardy/vim-slime'
 Plug 'vim-scripts/Zenburn'
 Plug 'chriskempson/base16-vim'
 Plug 'srcery-colors/srcery-vim'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }       
+Plug 'vim-airline/vim-airline'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-fugitive'
-
+Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+"
 call plug#end()
 
+" Enable mouse use in all modes
+set mouse=a
 
 " Line numbering +++
 set rnu
@@ -28,9 +34,9 @@ language en_US
 " Syntax
 syntax on
 
-"
+"------------------------------------------------------------------------------
 " Key-bindings follow.
-"
+"------------------------------------------------------------------------------
 
 " set leader 
 let mapleader = "\<Space>" 
@@ -41,25 +47,28 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 nnoremap <c-h> <c-w>h
 
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 " move between tabs by number
-" SHOULD BE USED FOR SOMETHING ELSE
-"noremap <leader>1 1gt
-"noremap <leader>2 2gt
-"noremap <leader>3 3gt
-"noremap <leader>4 4gt
-"noremap <leader>5 5gt
-"noremap <leader>6 6gt
-"noremap <leader>7 7gt
-"noremap <leader>8 8gt
-"noremap <leader>9 9gt
-"noremap <leader>0 :tablast<cr> 
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr> 
 
 " write file
 nnoremap <leader>w :w<cr>
 
-" Go commands
-nnoremap <leader>r :GoRun<cr>
+" Replace all with confirmation, aliased to S
+nnoremap <leader>s :%s//gc<Left><Left><Left>
 
+" TERMINAL MODE
 " Use <Esc> in terminal-mode, like in insert-mode.
 " Also, use <C-v> to use <Esc> in a program run in terminal-mode.
 " (<C-v> -- mnemonic: Verbatim escape)
@@ -71,26 +80,31 @@ endif
 "
 " REPL by slime 
 "
-"let g:slime_target = "tmux"
 let g:slime_target = "neovim"
 let g:slime_python_ipython = 1
 
 "
-" netrw settings
-"
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
-augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore
-augroup END
+" NERDTree
+" 
+nnoremap <leader>n :NERDTreeToggle<CR>
 
-"
+" FUGITIVE
+nmap <leader>gj :diffget //3<CR>
+nmap <leader>gf :diffget //2<CR>
+nmap <leader>gs :G<CR>
+
+" FZF
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>a :Ag<CR>
+" Set <Esc> to work as expected in the fzf buffer
+if has("nvim")
+  au TermOpen * tnoremap <Esc> <c-\><c-n>
+  au FileType fzf tunmap <Esc>
+endif
+
+"------------------------------------------------------------------------------
 " coc.nvim config stuff follows.
-"
+"------------------------------------------------------------------------------
 
 " if hidden is not set, TextEdit might fail.
 set hidden
@@ -172,12 +186,6 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
@@ -203,20 +211,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" -----------
+" Restart CoC
+nnoremap <leader>cr :CocRestart<CR>
