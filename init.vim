@@ -5,6 +5,7 @@ Plug 'tpope/vim-sensible'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wsdjeg/FlyGrep.vim'
 Plug 'jpalardy/vim-slime'
+Plug 'mbbill/undotree'
 Plug 'vim-scripts/Zenburn'
 Plug 'chriskempson/base16-vim'
 Plug 'srcery-colors/srcery-vim'
@@ -17,22 +18,25 @@ Plug 'junegunn/fzf.vim'
 "
 call plug#end()
 
-" Enable mouse use in all modes
+" DEFAULT STUFF
 set mouse=a
-
-" Line numbering +++
 set rnu
 set nu
+set incsearch
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set nowrap
+set noswapfile
+set nobackup
 set colorcolumn=80
+language en_US
+syntax on
 
 "  Colours
 let base16colorspace=256
 colorscheme srcery
-" Force nvim to be in english
-language en_US
-
-" Syntax
-syntax on
 
 "------------------------------------------------------------------------------
 " Key-bindings follow.
@@ -78,10 +82,11 @@ nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 let g:slime_target = "neovim"
 let g:slime_python_ipython = 1
 
-"
 " NERDTree
-" 
 nnoremap <leader>n :NERDTreeToggle<CR>
+
+" UNDOTREE
+nnoremap <leader>u :UndotreeToggle<cr>
 
 " FUGITIVE
 nmap <leader>gj :diffget //3<CR>
