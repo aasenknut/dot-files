@@ -15,11 +15,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-"
+
 call plug#end()
 
-" DEFAULT STUFF
+" General stuff
+set shell=/usr/local/bin/zsh
 set mouse=a
+set hlsearch
 set rnu
 set nu
 set incsearch
@@ -27,13 +29,17 @@ set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
+set autoindent
 set nowrap
 set noswapfile
-set nobackup
+set nobackup " This is recommended by coc
+set nowritebackup " This is recommended by coc
+set formatoptions-=cro " Stop newline continution of comments
 set colorcolumn=80
+set list
+set listchars=tab:»\ ,trail:·,eol:¬
 language en_US
 syntax on
-
 "  Colours
 let base16colorspace=256
 colorscheme srcery
@@ -51,6 +57,7 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 nnoremap <c-h> <c-w>h
 
+" Move lines up and down
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
@@ -66,17 +73,99 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr> 
 
-" 
+" Terminal
 nnoremap <leader>t :terminal<cr>
 
 " write file
 nnoremap <leader>w :w<cr>
 
-" Replace all with confirmation
-nnoremap <leader>s :%s//gc<Left><Left><Left>
+" Use CTRL-c instead of <Esc>
+nmap <c-c> <esc>
+imap <c-c> <esc>
+vmap <c-c> <esc>
+omap <c-c> <esc>
+
+"noremap <leader>s  :%s//gc<left><left><left>
+" Replace all in document with confirmation
+
+" Clear search highlighting
+map <silent> <leader><cr> :noh<cr>
+
+" Toggle ignorecase
+map <leader>c :set ic!<cr>
+
+" Flash highlight when yanking
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
+augroup END
+
+"Trying to fix fzf error [START]
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+augroup fzf
+  autocmd!
+  autocmd! FileType fzf
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+augroup END
+"Trying to fix fzf error [END]
+
+
+"------------------------------------------------------------------------------
+" Special search functionality (START)
+"------------------------------------------------------------------------------
+
+" Escape special characters in a string for exact matching.
+" This is useful to copying strings from the file to the search tool
+" Based on this - http://peterodding.com/code/vim/profile/autoload/xolox/escape.vim
+function! EscapeString (string)
+  let string=a:string
+  " Escape regex characters
+  let string = escape(string, '^$.*\/~[]')
+  " Escape the line endings
+  let string = substitute(string, '\n', '\\n', 'g')
+  return string
+endfunction
+
+" Get the current visual block for search and replaces
+" This function passed the visual block through a string escape function
+" Based on this - http://stackoverflow.com/questions/676600/vim-replace-selected-text/677918#677918
+function! GetVisual() range
+  " Save the current register and clipboard
+  let reg_save = getreg('"')
+  let regtype_save = getregtype('"')
+  let cb_save = &clipboard
+  set clipboard&
+
+  " Put the current visual selection in the " register
+  normal! ""gvy
+  let selection = getreg('"')
+
+  " Put the saved registers and clipboards back
+  call setreg('"', reg_save, regtype_save)
+  let &clipboard = cb_save
+
+  "Escape any special characters in the selection
+  let escaped_selection = EscapeString(selection)
+
+  return escaped_selection
+endfunction
+
+" Start the find and replace command across the entire file
+" With visual selected:
+nnoremap <leader>pr :cfdo %s///gc \| update<left><left><left><left><left><left><left><left><left><left><left><left><left>
+xmap <leader>pr <Esc>:cfdo %s/<c-r>=GetVisual()<cr>//gc \| update<left><left><left><left><left><left><left><left><left><left><left><left>
+xmap <leader>pa <Esc>:vimgrep /<c-r>=GetVisual()<cr>/gj **/*
+"<!CR>
+
+"------------------------------------------------------------------------------
+" Special search function (END)
+"------------------------------------------------------------------------------
 
 "Remove all trailing whitespace by pressing F5
-nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+nnoremap <leader>rt :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " REPL by slime 
 let g:slime_target = "neovim"
@@ -94,11 +183,12 @@ nmap <leader>gf :diffget //2<CR>
 nmap <leader>gs :G<CR>
 nmap <leader>gd :Gvdiff<CR>
 nmap <leader>gl :Glog<CR>
+nmap <leader>gc :Gcommit<CR>
 
 " FZF
 nnoremap <C-p> :Files<CR>
 nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>a :Ag<CR>
+nnoremap <leader>rg :Rg<CR>
 " Set <Esc> to work as expected in the fzf buffer
 " Also, use <C-v> to use <Esc> in a program run in terminal-mode.
 if has("nvim")
@@ -109,7 +199,7 @@ endif
 
 
 "------------------------------------------------------------------------------
-" coc.nvim config stuff follows.
+" coc.nvim config stuff (START)
 "------------------------------------------------------------------------------
 
 " if hidden is not set, TextEdit might fail.
@@ -213,7 +303,10 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-
 " -----------
 " Restart CoC
 nnoremap <leader>cr :CocRestart<CR>
+
+"------------------------------------------------------------------------------
+" coc.nvim config stuff (END)
+"------------------------------------------------------------------------------
