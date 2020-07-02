@@ -155,9 +155,8 @@ endfunction
 
 " Start the find and replace command across the entire file
 " With visual selected:
-nnoremap <leader>pr :cfdo %s///gc \| update<left><left><left><left><left><left><left><left><left><left><left><left><left>
-xmap <leader>pr <Esc>:cfdo %s/<c-r>=GetVisual()<cr>//gc \| update<left><left><left><left><left><left><left><left><left><left><left><left>
-xmap <leader>pa <Esc>:vimgrep /<c-r>=GetVisual()<cr>/gj **/*
+nnoremap <leader>pr :argdo %s///gc \| update<left><left><left><left><left><left><left><left><left><left><left><left><left>
+xmap <leader>pr <Esc>:argdo %s/<c-r>=GetVisual()<cr>//gc \| update<left><left><left><left><left><left><left><left><left><left><left><left>
 "<!CR>
 
 "------------------------------------------------------------------------------
