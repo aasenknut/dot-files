@@ -101,6 +101,7 @@ augroup highlight_yank
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
 augroup END
 
+
 "Trying to fix fzf error [START]
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
@@ -197,6 +198,13 @@ if has("nvim")
   tnoremap <C-v><Esc> <Esc>
 endif
 
+
+"------------------------------------------------------------------------------
+" Vim Go
+"------------------------------------------------------------------------------
+" disable vim-go :GoDef short cut (gd)
+" this is handled by LanguageClient [LC]
+let g:go_def_mapping_enabled = 0
 
 "------------------------------------------------------------------------------
 " coc.nvim config stuff (START)
