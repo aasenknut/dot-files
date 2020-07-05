@@ -10,6 +10,7 @@ Plug 'vim-scripts/Zenburn'
 Plug 'chriskempson/base16-vim'
 Plug 'srcery-colors/srcery-vim'
 Plug 'vim-airline/vim-airline'
+Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
@@ -200,7 +201,7 @@ endif
 "------------------------------------------------------------------------------
 " coc.nvim config stuff (START)
 "------------------------------------------------------------------------------
-
+set pyxversion=3
 " if hidden is not set, TextEdit might fail.
 set hidden
 
