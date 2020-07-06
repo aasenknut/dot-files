@@ -10,7 +10,7 @@ Plug 'vim-scripts/Zenburn'
 Plug 'chriskempson/base16-vim'
 Plug 'srcery-colors/srcery-vim'
 Plug 'vim-airline/vim-airline'
-Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
@@ -39,6 +39,7 @@ set formatoptions-=cro " Stop newline continution of comments
 set colorcolumn=80
 set list
 set listchars=tab:»\ ,trail:·,eol:¬
+set nrformats+=alpha " To increment letters in addition to numbers
 language en_US
 syntax on
 "  Colours
@@ -155,11 +156,16 @@ function! GetVisual() range
   return escaped_selection
 endfunction
 
-" Start the find and replace command across the entire file
-" With visual selected:
+" Search and replace across project:
+" Give strings:
 nnoremap <leader>pr :argdo %s///gc \| update<left><left><left><left><left><left><left><left><left><left><left><left><left>
+" With visual selected:
 xmap <leader>pr <Esc>:argdo %s/<c-r>=GetVisual()<cr>//gc \| update<left><left><left><left><left><left><left><left><left><left><left><left>
-"<!CR>
+
+" Search and replace in file:
+nnoremap <leader>sr :argdo %s///gc<left><left><left><left>
+" With visual selected:
+xmap <leader>sr <Esc>:argdo %s/<c-r>=GetVisual()<cr>//gc<left><left><left>
 
 "------------------------------------------------------------------------------
 " Special search function (END)
@@ -289,6 +295,16 @@ augroup mygroup
   " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)

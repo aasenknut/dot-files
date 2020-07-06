@@ -15,7 +15,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|[._-]=* r:|=*'
 # Left prompt:
 setopt PROMPT_PERCENT
 setopt PROMPT_SUBST
-PROMPT='%B[%n:%F{yellow}%25<..<%~%f%<<]%b %% '
+PROMPT='%n:%F{yellow}%25<..<%~%f%<< %% '
 
 # Right prompt:
 autoload -Uz vcs_info
@@ -26,10 +26,10 @@ zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr '%F{green}●%f'
 zstyle ':vcs_info:*' unstagedstr '%F{red}●%f'
-zstyle ':vcs_info:git:*' formats '[%F{cyan}%b%f%c%u]'
-zstyle ':vcs_info:git:*' actionformats '[%F{cyan}%b (%a)%f%c%u]'
+zstyle ':vcs_info:git:*' formats '(%F{cyan}%b%f%c%u)'
+zstyle ':vcs_info:git:*' actionformats '(%F{cyan}%b (%a)%f%c%u)'
 
-RPROMPT='%B$vcs_info_msg_0_%b'
+RPROMPT='$vcs_info_msg_0_'
 
 # vi mode
 bindkey -v
