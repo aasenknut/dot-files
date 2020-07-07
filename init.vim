@@ -163,9 +163,9 @@ nnoremap <leader>pr :argdo %s///gc \| update<left><left><left><left><left><left>
 xmap <leader>pr <Esc>:argdo %s/<c-r>=GetVisual()<cr>//gc \| update<left><left><left><left><left><left><left><left><left><left><left><left>
 
 " Search and replace in file:
-nnoremap <leader>sr :argdo %s///gc<left><left><left><left>
+nnoremap <leader>sr :%s///gc<left><left><left><left>
 " With visual selected:
-xmap <leader>sr <Esc>:argdo %s/<c-r>=GetVisual()<cr>//gc<left><left><left>
+xmap <leader>sr <Esc>:%s/<c-r>=GetVisual()<cr>//gc<left><left><left>
 
 "------------------------------------------------------------------------------
 " Special search function (END)

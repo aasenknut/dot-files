@@ -15,7 +15,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|[._-]=* r:|=*'
 # Left prompt:
 setopt PROMPT_PERCENT
 setopt PROMPT_SUBST
-PROMPT='%n:%F{yellow}%25<..<%~%f%<< %% '
+PROMPT='%n@%m:%F{yellow}%25<..<%~%<< »%f '
 
 # Right prompt:
 autoload -Uz vcs_info
@@ -43,4 +43,5 @@ bindkey '^e' edit-command-line
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
+# For syntax highlighting. Should be put last in this file.
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
