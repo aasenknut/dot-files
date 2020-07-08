@@ -1,110 +1,127 @@
-set nocompatible              " required
-filetype off                  " required
-set encoding=utf-8
-let python_highlight_all=1
-syntax on
 
-" execute pathogen#infect()
-
-
-autocmd! bufwritepost .vimrc source %
-
-set timeoutlen=1000 ttimeoutlen=0
-set clipboard=unnamed
+" General stuff
+set shell=/usr/local/bin/zsh
 set mouse=a
-set bs=2
+set hlsearch
 set rnu
-set tw=79
+set nu
+set incsearch
+set shortmess+=c
+set hidden
+set cmdheight=2
+set updatetime=300
+set signcolumn
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set autoindent
 set nowrap
-set fo-=t
+set noswapfile
+set nobackup " This is recommended by coc
+set nowritebackup " This is recommended by coc
+set formatoptions-=cro " Stop newline continution of comments
 set colorcolumn=80
-highlight ColorColumn ctermbg=233
+set list
+set listchars=tab:»\ ,trail:·,eol:¬
+set nrformats+=alpha " To increment letters in addition to numbers
+language en_US
+syntax on
+"------------------------------------------------------------------------------
+" Key-bindings follow.
+"------------------------------------------------------------------------------
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" set leader 
+let mapleader = "\<Space>" 
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'whatyouhide/vim-gotham'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'python-mode/python-mode'
-Plugin 'Zenburn'
-Plugin 'junegunn/seoul256.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'kien/ctrlp.vim'
-Plugin 'christoomey/vim-tmux-runner'
-Plugin 'edkolev/tmuxline.vim'
-Plugin 'maralla/completor.vim'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-
-"
-" Bindings
-"
-
-:let mapleader = "\<Space>"
-
-" bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
+" bind Ctrl+<movement> keys to move around the windows
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 nnoremap <c-h> <c-w>h
 
-" Key map for VTR (Vim Tmux Runner)	
-nnoremap <leader>vo :VtrOpenRunner<cr>
-nnoremap <leader>va :VtrAttachToPane<cr>
-nnoremap <leader>fr :VtrFocusRunner<cr> 
-nnoremap <leader>q :VtrSendCommandToRunner<cr>
-nnoremap <leader>s :VtrSendLinesToRunner<cr>
-vnoremap <leader>s :VtrSendLinesToRunner<cr>
+" Move lines up and down
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
-let g:VtrStripLeadingWhitespace = 0
-let g:VtrClearEmptyLines = 0
-let g:VtrAppendNewLine = 1
-"let g:VtrResizeRunner = 40
-"let g:VtrReorientRunner = 
+" move between tabs by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr> 
 
-"Experimenter
-let g:VtrClearSequence = "clear\r"
+" Terminal
+nnoremap <leader>t :terminal<cr>
 
-"
-" Set
-"
+" write file
+nnoremap <leader>w :w<cr>
 
-set rnu
-set nu
+" Use CTRL-c instead of <Esc>
+nmap <c-c> <esc>
+imap <c-c> <esc>
+vmap <c-c> <esc>
+omap <c-c> <esc>
 
-set visualbell "Remove sound
-"set numberwidth=4
+"noremap <leader>s  :%s//gc<left><left><left>
+" Replace all in document with confirmation
 
-" Disable Swap Files
-set nobackup
-set nowritebackup
-set noswapfile
+" Clear search highlighting
+map <silent> <leader><cr> :noh<cr>
 
-" Airlinoe
-"let g:airline_solarized_bg='dark'
+" Toggle ignorecase
+map <leader>c :set ic!<cr>
 
-"
-" Solarized color scheme
-"
+"------------------------------------------------------------------------------
+" Special search functionality (START)
+"------------------------------------------------------------------------------
 
-set background=dark
-" colorscheme solarized
-colo seoul256
+" Escape special characters in a string for exact matching.
+" This is useful to copying strings from the file to the search tool
+" Based on this - http://peterodding.com/code/vim/profile/autoload/xolox/escape.vim
+function! EscapeString (string)
+  let string=a:string
+  " Escape regex characters
+  let string = escape(string, '^$.*\/~[]')
+  " Escape the line endings
+  let string = substitute(string, '\n', '\\n', 'g')
+  return string
+endfunction
 
+" Get the current visual block for search and replaces
+" This function passed the visual block through a string escape function
+" Based on this - http://stackoverflow.com/questions/676600/vim-replace-selected-text/677918#677918
+function! GetVisual() range
+  " Save the current register and clipboard
+  let reg_save = getreg('"')
+  let regtype_save = getregtype('"')
+  let cb_save = &clipboard
+  set clipboard&
 
+  " Put the current visual selection in the " register
+  normal! ""gvy
+  let selection = getreg('"')
 
+  " Put the saved registers and clipboards back
+  call setreg('"', reg_save, regtype_save)
+  let &clipboard = cb_save
 
+  "Escape any special characters in the selection
+  let escaped_selection = EscapeString(selection)
 
+  return escaped_selection
+endfunction
+
+" Start the find and replace command across the entire file
+" With visual selected:
+nnoremap <leader>pr :argdo %s///gc \| update<left><left><left><left><left><left><left><left><left><left><left><left><left>
+xmap <leader>pr <Esc>:argdo %s/<c-r>=GetVisual()<cr>//gc \| update<left><left><left><left><left><left><left><left><left><left><left><left>
+
+"------------------------------------------------------------------------------
+" Special search function (END)
+"------------------------------------------------------------------------------
