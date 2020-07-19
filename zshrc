@@ -26,8 +26,8 @@ zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr '%F{green}●%f'
 zstyle ':vcs_info:*' unstagedstr '%F{red}●%f'
-zstyle ':vcs_info:git:*' formats '(%F{cyan}%b%f%c%u)'
-zstyle ':vcs_info:git:*' actionformats '(%F{cyan}%b (%a)%f%c%u)'
+zstyle ':vcs_info:git:*' formats '%F{cyan}%b%f%c%u'
+zstyle ':vcs_info:git:*' actionformats '%F{cyan}%b (%a)%f%c%u'
 
 RPROMPT='$vcs_info_msg_0_'
 

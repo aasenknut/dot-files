@@ -2,6 +2,7 @@
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wsdjeg/FlyGrep.vim'
 Plug 'jpalardy/vim-slime'
@@ -16,6 +17,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'majutsushi/tagbar'
 
 call plug#end()
 
@@ -23,6 +25,7 @@ call plug#end()
 set shell=/usr/local/bin/zsh
 set mouse=a
 set hlsearch
+set hidden
 set rnu
 set nu
 set incsearch
@@ -35,6 +38,10 @@ set nowrap
 set noswapfile
 set nobackup " This is recommended by coc
 set nowritebackup " This is recommended by coc
+set cmdheight=2 " Better display messages -- for coc
+set updatetime=300 " better experience for diagnostic messages -- for coc
+set shortmess+=c " don't give |ins-completion-menu| messages.
+set signcolumn=yes
 set formatoptions-=cro " Stop newline continution of comments
 set colorcolumn=80
 set list
@@ -76,7 +83,7 @@ noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr> 
 
 " Terminal
-nnoremap <leader>t :terminal<cr>
+" nnoremap <leader>t :terminal<cr>
 
 " write file
 nnoremap <leader>w :w<cr>
@@ -87,20 +94,14 @@ imap <c-c> <esc>
 vmap <c-c> <esc>
 omap <c-c> <esc>
 
-"noremap <leader>s  :%s//gc<left><left><left>
-" Replace all in document with confirmation
-
 " Clear search highlighting
 map <silent> <leader><cr> :noh<cr>
 
 " Toggle ignorecase
 map <leader>c :set ic!<cr>
 
-" Flash highlight when yanking
-augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 1000)
-augroup END
+" Ctags go to definition
+nnoremap gt <C-]>
 
 
 "Trying to fix fzf error [START]
@@ -167,12 +168,42 @@ nnoremap <leader>sr :%s///gc<left><left><left><left>
 " With visual selected:
 xmap <leader>sr <Esc>:%s/<c-r>=GetVisual()<cr>//gc<left><left><left>
 
+xmap <leader>rg :Rg<CR><c-r>=GetVisual()<cr>
 "------------------------------------------------------------------------------
 " Special search function (END)
 "------------------------------------------------------------------------------
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Update tags file automatically when file is written (END)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! DelTagOfFile(file)
+  let fullpath = a:file
+  let cwd = getcwd()
+  let tagfilename = cwd . "/tags"
+  let f = substitute(fullpath, cwd . "/", "", "")
+  let f = escape(f, './')
+  let cmd = 'sed -i "/' . f . '/d" "' . tagfilename . '"'
+  let resp = system(cmd)
+endfunction
+
+function! UpdateTags()
+  let f = expand("%:p")
+  let cwd = getcwd()
+  let tagfilename = cwd . "/tags"
+  let cmd = 'ctags -a -f ' . tagfilename . ' --c++-kinds=+p --fields=+iaS --extra=+q ' . '"' . f . '"'
+  call DelTagOfFile(f)
+  let resp = system(cmd)
+endfunction
+autocmd BufWritePost *.py,*.cpp,*.go,*.c call UpdateTags()
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Update tags file automatically when file is written (END)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
 "Remove all trailing whitespace by pressing F5
-nnoremap <leader>rt :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
+map <silent> <leader><cr> :noh<cr>:let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><cr>
 
 " REPL by slime 
 let g:slime_target = "neovim"
@@ -191,6 +222,7 @@ nmap <leader>gs :G<CR>
 nmap <leader>gd :Gvdiff<CR>
 nmap <leader>gl :Glog<CR>
 nmap <leader>gc :Gcommit<CR>
+nmap <leader>gb :Gblame<CR>
 
 " FZF
 nnoremap <C-p> :Files<CR>
@@ -204,6 +236,8 @@ if has("nvim")
   tnoremap <C-v><Esc> <Esc>
 endif
 
+" Tagbar
+nmap <leader>t :TagbarToggle<CR>
 
 "------------------------------------------------------------------------------
 " Vim Go
@@ -212,28 +246,11 @@ endif
 " this is handled by LanguageClient [LC]
 let g:go_def_mapping_enabled = 0
 
+
 "------------------------------------------------------------------------------
 " coc.nvim config stuff (START)
 "------------------------------------------------------------------------------
 set pyxversion=3
-" if hidden is not set, TextEdit might fail.
-set hidden
-
-" Some servers have issues with backup files, see #649
-set nobackup
-set nowritebackup
-
-" Better display for messages
-set cmdheight=2
-
-" You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -327,9 +344,6 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-" -----------
-" Restart CoC
-nnoremap <leader>cr :CocRestart<CR>
 
 "------------------------------------------------------------------------------
 " coc.nvim config stuff (END)
