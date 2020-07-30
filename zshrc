@@ -15,7 +15,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|[._-]=* r:|=*'
 # Left prompt:
 setopt PROMPT_PERCENT
 setopt PROMPT_SUBST
-PROMPT='%n@%m:%F{yellow}%25<..<%~%<< »%f '
+PROMPT='%n%F{red}@%f%m:%F{yellow}%25<..<%~%<< »%f '
 
 # Right prompt:
 autoload -Uz vcs_info
