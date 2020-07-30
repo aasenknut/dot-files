@@ -14,6 +14,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -57,8 +58,8 @@ colorscheme srcery
 " Key-bindings follow.
 "------------------------------------------------------------------------------
 
-" set leader 
-let mapleader = "\<Space>" 
+" set leader
+let mapleader = "\<Space>"
 
 " bind Ctrl+<movement> keys to move around the windows
 nnoremap <c-j> <c-w>j
@@ -80,7 +81,7 @@ noremap <leader>6 6gt
 noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
-noremap <leader>0 :tablast<cr> 
+noremap <leader>0 :tablast<cr>
 
 " Terminal
 " nnoremap <leader>t :terminal<cr>
@@ -94,15 +95,20 @@ imap <c-c> <esc>
 vmap <c-c> <esc>
 omap <c-c> <esc>
 
-" Clear search highlighting
-map <silent> <leader><cr> :noh<cr>
-
 " Toggle ignorecase
 map <leader>c :set ic!<cr>
 
 " Ctags go to definition
 nnoremap gt <C-]>
 
+" non-US keyboard makes it hard to type [ and ].
+
+nmap < [
+nmap > ]
+omap < [
+omap > ]
+xmap < [
+xmap > ]
 
 "Trying to fix fzf error [START]
 filetype on           " Enable filetype detection
@@ -205,7 +211,7 @@ autocmd BufWritePost *.py,*.cpp,*.go,*.c call UpdateTags()
 
 map <silent> <leader><cr> :noh<cr>:let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><cr>
 
-" REPL by slime 
+" REPL by slime
 let g:slime_target = "neovim"
 let g:slime_python_ipython = 1
 
