@@ -5,7 +5,6 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wsdjeg/FlyGrep.vim'
-Plug 'jpalardy/vim-slime'
 Plug 'mbbill/undotree'
 Plug 'vim-scripts/Zenburn'
 Plug 'chriskempson/base16-vim'
@@ -19,13 +18,15 @@ Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
+Plug 'kassio/neoterm'
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 
 " General stuff
 set shell=/usr/local/bin/zsh
 set mouse=a
-set hlsearch
+set nohlsearch
 set hidden
 set rnu
 set nu
@@ -82,9 +83,6 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
-
-" Terminal
-" nnoremap <leader>t :terminal<cr>
 
 " write file
 nnoremap <leader>w :w<cr>
@@ -212,8 +210,8 @@ autocmd BufWritePost *.py,*.cpp,*.go,*.c call UpdateTags()
 map <silent> <leader><cr> :noh<cr>:let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><cr>
 
 " REPL by slime
-let g:slime_target = "neovim"
-let g:slime_python_ipython = 1
+" let g:slime_target = "neovim"
+" let g:slime_python_ipython = 1
 
 " NERDTree
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -244,6 +242,11 @@ endif
 
 " Tagbar
 nmap <leader>t :TagbarToggle<CR>
+
+" NeoTerm
+vnoremap <C-c><C-c> :TREPLSendSelection<CR>
+nnoremap <C-c><C-c> :TREPLSendLine<CR>
+let g:neoterm_autoscroll = '1' "Automatically scrolls when REPL is performed
 
 "------------------------------------------------------------------------------
 " Vim Go
