@@ -17,9 +17,12 @@ Plug 'tpope/vim-unimpaired'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/gv.vim'
 Plug 'majutsushi/tagbar'
 Plug 'kassio/neoterm'
 Plug 'tpope/vim-commentary'
+Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
 
@@ -99,8 +102,14 @@ map <leader>c :set ic!<cr>
 " Ctags go to definition
 nnoremap gt <C-]>
 
-" non-US keyboard makes it hard to type [ and ].
+" Fix indentaion mapping
+nnoremap <Tab> >>_
+vnoremap <Tab> >
+nnoremap <S-Tab> <<
+vnoremap <S-Tab> <<
+inoremap <S-Tab> <C-d>
 
+" non-US keyboard makes it hard to type [ and ].
 nmap < [
 nmap > ]
 omap < [
@@ -177,41 +186,48 @@ xmap <leader>rg :Rg<CR><c-r>=GetVisual()<cr>
 " Special search function (END)
 "------------------------------------------------------------------------------
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Update tags file automatically when file is written (END)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! DelTagOfFile(file)
-  let fullpath = a:file
-  let cwd = getcwd()
-  let tagfilename = cwd . "/tags"
-  let f = substitute(fullpath, cwd . "/", "", "")
-  let f = escape(f, './')
-  let cmd = 'sed -i "/' . f . '/d" "' . tagfilename . '"'
-  let resp = system(cmd)
-endfunction
-
-function! UpdateTags()
-  let f = expand("%:p")
-  let cwd = getcwd()
-  let tagfilename = cwd . "/tags"
-  let cmd = 'ctags -a -f ' . tagfilename . ' --c++-kinds=+p --fields=+iaS --extra=+q ' . '"' . f . '"'
-  call DelTagOfFile(f)
-  let resp = system(cmd)
-endfunction
-autocmd BufWritePost *.py,*.cpp,*.go,*.c call UpdateTags()
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Update tags file automatically when file is written (END)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-
-"Remove all trailing whitespace by pressing F5
+"Remove all trailing whitespace and removeing highlight
 
 map <silent> <leader><cr> :noh<cr>:let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><cr>
 
-" REPL by slime
-" let g:slime_target = "neovim"
-" let g:slime_python_ipython = 1
+
+" Enable syntax highlighting when buffers are displayed in a window through
+" :argdo and :bufdo, which disable the Syntax autocmd event to speed up
+" processing.
+augroup EnableSyntaxHighlighting
+    " Filetype processing does happen, so we can detect a buffer initially
+    " loaded during :argdo / :bufdo through a set filetype, but missing
+    " b:current_syntax. Also don't do this when the user explicitly turned off
+    " syntax highlighting via :syntax off.
+    " The following autocmd is triggered twice:
+    " 1. During the :...do iteration, where it is inactive, because
+    " 'eventignore' includes "Syntax". This speeds up the iteration itself.
+    " 2. After the iteration, when the user re-enters a buffer / window that was
+    " loaded during the iteration. Here is becomes active and enables syntax
+    " highlighting. Since that is done buffer after buffer, the delay doesn't
+    " matter so much.
+    " Note: When the :...do command itself edits the window (e.g. :argdo
+    " tabedit), the BufWinEnter event won't fire and enable the syntax when the
+    " window is re-visited. We need to hook into WinEnter, too. Note that for
+    " :argdo split, each window only gets syntax highlighting as it is entered.
+    " Alternatively, we could directly activate the normally effectless :syntax
+    " enable through :set eventignore-=Syntax, but that would also cause the
+    " slowdown during the iteration Vim wants to avoid.
+    " Note: Must allow nesting of autocmds so that the :syntax enable triggers
+    " the ColorScheme event. Otherwise, some highlighting groups may not be
+    " restored properly.
+    autocmd! BufWinEnter,WinEnter * nested if exists('syntax_on') && ! exists('b:current_syntax') && ! empty(&l:filetype) && index(split(&eventignore, ','), 'Syntax') == -1 | syntax enable | endif
+
+    " The above does not handle reloading via :bufdo edit!, because the
+    " b:current_syntax variable is not cleared by that. During the :bufdo,
+    " 'eventignore' contains "Syntax", so this can be used to detect this
+    " situation when the file is re-read into the buffer. Due to the
+    " 'eventignore', an immediate :syntax enable is ignored, but by clearing
+    " b:current_syntax, the above handler will do this when the reloaded buffer
+    " is displayed in a window again.
+    autocmd! BufRead * if exists('syntax_on') && exists('b:current_syntax') && ! empty(&l:filetype) && index(split(&eventignore, ','), 'Syntax') != -1 | unlet! b:current_syntax | endif
+augroup END
+
 
 " NERDTree
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -225,7 +241,6 @@ nmap <leader>gf :diffget //2<CR>
 nmap <leader>gs :G<CR>
 nmap <leader>gd :Gvdiff<CR>
 nmap <leader>gl :Glog<CR>
-nmap <leader>gc :Gcommit<CR>
 nmap <leader>gb :Gblame<CR>
 
 " FZF
@@ -357,3 +372,64 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 "------------------------------------------------------------------------------
 " coc.nvim config stuff (END)
 "------------------------------------------------------------------------------
+
+
+" VIM-GUTENTAGS
+let g:gutentags_ctags_exclude = [
+      \ '*.git', '*.svg', '*.hg',
+      \ '*/tests/*',
+      \ 'build',
+      \ 'dist',
+      \ '*sites/*/files/*',
+      \ 'bin',
+      \ 'node_modules',
+      \ 'bower_components',
+      \ 'cache',
+      \ 'compiled',
+      \ 'docs',
+      \ 'example',
+      \ 'bundle',
+      \ 'vendor',
+      \ '*.md',
+      \ '*-lock.json',
+      \ '*.lock',
+      \ '*bundle*.js',
+      \ '*build*.js',
+      \ '.*rc*',
+      \ '*.json',
+      \ '*.min.*',
+      \ '*.map',
+      \ '*.bak',
+      \ '*.zip',
+      \ '*.pyc',
+      \ '*.class',
+      \ '*.sln',
+      \ '*.Master',
+      \ '*.csproj',
+      \ '*.tmp',
+      \ '*.csproj.user',
+      \ '*.cache',
+      \ '*.pdb',
+      \ 'tags*',
+      \ 'cscope.*',
+      \ '*.css',
+      \ '*.less',
+      \ '*.scss',
+      \ '*.exe', '*.dll',
+      \ '*.mp3', '*.ogg', '*.flac',
+      \ '*.swp', '*.swo',
+      \ '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png',
+      \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
+      \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
+      \ 'venv', 'env'
+      \ ]
+" When to write tags file.
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 0
+" Write more info on tags.
+let g:gutentags_ctags_extra_args = [
+      \ '--tag-relative=yes',
+      \ '--fields=+ailmnS',
+      \ ]
