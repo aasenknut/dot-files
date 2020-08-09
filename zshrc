@@ -31,9 +31,15 @@ zstyle ':vcs_info:git:*' actionformats '%F{cyan}%b (%a)%f%c%u'
 
 RPROMPT='$vcs_info_msg_0_'
 
-# vi mode
-bindkey -v
-export KEYTIMEOUT=1
+# Load Git completion
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+fpath=(~/.zsh $fpath)
+
+autoload -Uz compinit && compinit
+
+# vi mode (clashes with tmux keys)
+#bindkey -v
+#export KEYTIMEOUT=1
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line

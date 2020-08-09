@@ -3,17 +3,18 @@ call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wsdjeg/FlyGrep.vim'
 Plug 'mbbill/undotree'
 Plug 'vim-scripts/Zenburn'
 Plug 'chriskempson/base16-vim'
 Plug 'srcery-colors/srcery-vim'
-Plug 'vim-airline/vim-airline'
 Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-unimpaired'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -21,7 +22,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/gv.vim'
 Plug 'majutsushi/tagbar'
 Plug 'kassio/neoterm'
-Plug 'tpope/vim-commentary'
 Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
@@ -58,6 +58,24 @@ syntax on
 let base16colorspace=256
 colorscheme srcery
 
+
+"------------------------------------------------------------------------------
+" Statusline
+"------------------------------------------------------------------------------
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let l:branchname = GitBranch()
+  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
+set laststatus=2
+set statusline=[%n]\ %<%.99f\ %y%h%w%m%r\ %{StatuslineGit()}
+set statusline+=%=%-10.(%l,%L%)\ %P
+hi Statusline ctermbg=Brown
+
 "------------------------------------------------------------------------------
 " Key-bindings follow.
 "------------------------------------------------------------------------------
@@ -72,8 +90,8 @@ nnoremap <c-l> <c-w>l
 nnoremap <c-h> <c-w>h
 
 " Move lines up and down
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+vnoremap <c-j> :m '>+1<CR>gv=gv
+vnoremap <c-k> :m '<-2<CR>gv=gv
 
 " move between tabs by number
 noremap <leader>1 1gt
@@ -90,11 +108,9 @@ noremap <leader>0 :tablast<cr>
 " write file
 nnoremap <leader>w :w<cr>
 
-" Use CTRL-c instead of <Esc>
-nmap <c-c> <esc>
-imap <c-c> <esc>
-vmap <c-c> <esc>
-omap <c-c> <esc>
+" Use CTRL-L instead of <Esc> for relevant modes
+inoremap <c-l> <esc>
+xnoremap <c-l> <esc>
 
 " Toggle ignorecase
 map <leader>c :set ic!<cr>
@@ -366,7 +382,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 
 "------------------------------------------------------------------------------
