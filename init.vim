@@ -7,6 +7,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wsdjeg/FlyGrep.vim'
 Plug 'mbbill/undotree'
@@ -22,7 +23,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/gv.vim'
 Plug 'majutsushi/tagbar'
 Plug 'kassio/neoterm'
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -44,6 +45,7 @@ set noswapfile
 set nobackup " This is recommended by coc
 set nowritebackup " This is recommended by coc
 set cmdheight=2 " Better display messages -- for coc
+set noshowcmd " Don't display, e.g., key strokes
 set updatetime=300 " better experience for diagnostic messages -- for coc
 set shortmess+=c " don't give |ins-completion-menu| messages.
 set signcolumn=yes
@@ -72,9 +74,12 @@ function! StatuslineGit()
 endfunction
 
 set laststatus=2
-set statusline=[%n]\ %<%.99f\ %y%h%w%m%r\ %{StatuslineGit()}
+set statusline=[%n]
+set statusline+=\ %<%.99f
+set statusline+=\ %y%h%w%m%r
+set statusline+=\ %{FugitiveStatusline()}
 set statusline+=%=%-10.(%l,%L%)\ %P
-hi Statusline ctermbg=Brown
+" hi Statusline ctermbg=Black
 
 "------------------------------------------------------------------------------
 " Key-bindings follow.
@@ -383,6 +388,11 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 " set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"
+
+" coc-snippets:
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 
 "------------------------------------------------------------------------------
