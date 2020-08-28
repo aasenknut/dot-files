@@ -24,13 +24,14 @@ Plug 'junegunn/gv.vim'
 Plug 'majutsushi/tagbar'
 Plug 'kassio/neoterm'
 Plug 'honza/vim-snippets'
+" Plug 'Shougo/echodoc.vim'
 
 call plug#end()
 
 " General stuff
 set shell=/usr/local/bin/zsh
 set mouse=a
-set nohlsearch
+set hlsearch
 set hidden
 set rnu
 set nu
@@ -78,8 +79,7 @@ set statusline=[%n]
 set statusline+=\ %<%.99f
 set statusline+=\ %y%h%w%m%r
 set statusline+=\ %{FugitiveStatusline()}
-set statusline+=%=%-10.(%l,%L%)\ %P
-" hi Statusline ctermbg=Black
+set statusline+=%=%-11.([%l/%L,%c]%)\ %p%%
 
 "------------------------------------------------------------------------------
 " Key-bindings follow.
