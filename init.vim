@@ -116,6 +116,7 @@ nnoremap <leader>w :w<cr>
 " Use CTRL-L instead of <Esc> for relevant modes
 inoremap <c-l> <esc>
 xnoremap <c-l> <esc>
+tnoremap <c-l> <C-\><C-n>
 
 " Toggle ignorecase
 map <leader>c :set ic!<cr>
