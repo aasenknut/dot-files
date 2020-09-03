@@ -37,6 +37,7 @@ set rnu
 set nu
 set incsearch
 set tabstop=4 softtabstop=4
+set foldmethod=manual
 set shiftwidth=4
 set expandtab
 set smartindent
