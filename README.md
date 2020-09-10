@@ -1,6 +1,5 @@
-### General tips.
+# General Tips
 
-## CoC (nvim)
-Remember:
-- With pyenv, use ```:CocCommand python.setInterpreter``` to set interpreter, and run ````pip install nvim``` with the interpreter. 
-  Can run ```pyenv which python``` to see which python is used by the active pyenv.
+### CoC (nvim)
+**pyenv**
+- With pyenv, use ```:CocCommand python.setInterpreter``` to set interpreter, and run ```pip install nvim``` with the relevant pyenv activated. To see which python is used by the environment, run ```pyenv which python```.
