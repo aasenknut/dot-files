@@ -21,7 +21,7 @@ autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 
-zstyle ':vcs_info:*' formats ' (%F{yellow}%b%f)'
+zstyle ':vcs_info:*' formats ' (%F{cyan}%b%f)'
 
 # Left prompt:
 PROMPT='%n%F{red}@%f%m:%F{yellow}%25<..<%~%<<%f$vcs_info_msg_0_ » '
