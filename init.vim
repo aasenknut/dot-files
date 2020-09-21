@@ -66,6 +66,14 @@ colorscheme srcery
 "------------------------------------------------------------------------------
 " Statusline
 "------------------------------------------------------------------------------
+"function! GitBranch()
+"  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+"endfunction
+"
+"function! StatuslineGit()
+"  let l:branchname = GitBranch()
+"  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+"endfunction
 
 " Set statusline content
 set laststatus=2
@@ -487,3 +495,6 @@ let g:gutentags_ctags_extra_args = [
       \ '--tag-relative=yes',
       \ '--fields=+ailmnS',
       \ ]
+
+" Echodoc
+let g:echodoc_enable_at_startup = 1
