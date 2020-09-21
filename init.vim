@@ -24,7 +24,7 @@ Plug 'junegunn/gv.vim'
 Plug 'majutsushi/tagbar'
 Plug 'kassio/neoterm'
 Plug 'honza/vim-snippets'
-" Plug 'Shougo/echodoc.vim'
+" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 
 call plug#end()
 
@@ -60,27 +60,32 @@ language en_US
 syntax on
 "  Colours
 let base16colorspace=256
-colorscheme srcery
+colorscheme srcery 
 
 
 "------------------------------------------------------------------------------
 " Statusline
 "------------------------------------------------------------------------------
-function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
+"function! GitBranch()
+"  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+"endfunction
+"
+"function! StatuslineGit()
+"  let l:branchname = GitBranch()
+"  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+"endfunction
 
-function! StatuslineGit()
-  let l:branchname = GitBranch()
-  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
-endfunction
-
+" Set statusline content
 set laststatus=2
 set statusline=[%n]
 set statusline+=\ %<%.99f
 set statusline+=\ %y%h%w%m%r
 set statusline+=\ %{FugitiveStatusline()}
 set statusline+=%=%-11.([%l/%L,%c]%)\ %p%%
+
+" Set statusline colour
+hi StatusLine ctermbg=24 ctermfg=254
+hi StatusLineNC ctermbg=252 ctermfg=238
 
 "------------------------------------------------------------------------------
 " Key-bindings follow.
@@ -490,3 +495,6 @@ let g:gutentags_ctags_extra_args = [
       \ '--tag-relative=yes',
       \ '--fields=+ailmnS',
       \ ]
+
+" Echodoc
+let g:echodoc_enable_at_startup = 1
