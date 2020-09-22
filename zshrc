@@ -24,7 +24,7 @@ precmd_functions+=( precmd_vcs_info )
 zstyle ':vcs_info:*' formats ' (%F{blue}%b%f)'
 
 # Left prompt:
-PROMPT='%n%F{red}@%f%m:%F{yellow}%25<..<%~%<<%f$vcs_info_msg_0_ » '
+PROMPT='%n%F{red}@%f%m:%F{green}%(5~|%-1~/…/%3~|%4~)%f$vcs_info_msg_0_ %F{red}» %f'
 
 # vi mode (clashes with tmux keys)
 bindkey -v
