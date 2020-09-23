@@ -60,24 +60,31 @@ language en_US
 syntax on
 "  Colours
 let base16colorspace=256
-colorscheme srcery 
-
 
 "------------------------------------------------------------------------------
-" Statusline
+" Statusline and colours
 "------------------------------------------------------------------------------
-
 " Set statusline content
 set laststatus=2
 set statusline=[%n]
 set statusline+=\ %<%.99f
 set statusline+=\ %y%h%w%m%r
 set statusline+=\ %{FugitiveStatusline()}
-set statusline+=%=%-11.([%l/%L,%c]%)\ %p%%
+set statusline+=%= "Split statusline left/right
+set statusline+=%-11.([%l/%L,%c]%)\ %p%%
 
 " Set statusline colour
-hi StatusLine ctermbg=24 ctermfg=254
-hi StatusLineNC ctermbg=252 ctermfg=238
+function! MyHighlights() abort
+    hi StatusLine ctermbg=24 ctermfg=254
+    hi StatusLineNC ctermbg=252 ctermfg=238
+endfunction
+
+augroup MyColors
+    autocmd!
+    autocmd ColorScheme * call MyHighlights()
+augroup END
+" Set colour scheme
+colorscheme srcery 
 
 "------------------------------------------------------------------------------
 " Key-bindings follow.
