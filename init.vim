@@ -74,7 +74,7 @@ set statusline+=%-11.([%l/%L,%c]%)\ %p%%
 
 " Set statusline colour
 function! MyHighlights() abort
-    hi StatusLine ctermbg=58 ctermfg=254
+    hi StatusLine ctermbg=24 ctermfg=254
     hi StatusLineNC ctermbg=252 ctermfg=238
 endfunction
 
