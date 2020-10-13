@@ -117,6 +117,9 @@ noremap <leader>0 :tablast<cr>
 " write file
 nnoremap <leader>w :w<cr>
 
+" remove hl
+nnoremap <leader>h :nohl<cr>
+
 " Use CTRL-L instead of <Esc> for relevant modes
 inoremap <c-l> <esc>
 xnoremap <c-l> <esc>
@@ -134,6 +137,9 @@ vnoremap <Tab> >
 nnoremap <S-Tab> <<
 vnoremap <S-Tab> <<
 inoremap <S-Tab> <C-d>
+
+" Register mapping
+vnoremap <leader>p "_dP
 
 " non-US keyboard makes it hard to type [ and ].
 nmap < [
@@ -214,7 +220,7 @@ xmap <leader>rg :Rg<CR><c-r>=GetVisual()<cr>
 
 "Remove all trailing whitespace and removeing highlight
 
-map <silent> <leader><cr> :noh<cr>:let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><cr>
+map <silent> <leader><cr> <cr>:let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><cr>
 
 
 " Enable syntax highlighting when buffers are displayed in a window through
