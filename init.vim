@@ -213,7 +213,7 @@ nnoremap <leader>sr :%s///gc<left><left><left><left>
 " With visual selected:
 xmap <leader>sr <Esc>:%s/<c-r>=GetVisual()<cr>//gc<left><left><left>
 
-xmap <leader>rg :Rg<CR><c-r>=GetVisual()<cr>
+xmap <leader>rg <Esc>:Rg <c-r>=GetVisual()<cr>
 "------------------------------------------------------------------------------
 " Special search function (END)
 "------------------------------------------------------------------------------
@@ -266,6 +266,8 @@ augroup END
 let g:fern#disable_default_mappings   = 1
 let g:fern#disable_drawer_auto_quit   = 1
 let g:fern#disable_viewer_hide_cursor = 1
+
+" <Leader>n -- beacuse it's what I used for NerdTree
 noremap <silent> <Leader>n :Fern . -drawer -width=35 -toggle<CR><C-w>=
 
 
