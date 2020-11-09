@@ -1,0 +1,5 @@
+# Source ~/.zshrc
+alias sc="source $HOME/.zshrc"
+
+# Open file in nvim after search with fzf
+alias nf='nvim $(fzf)'
