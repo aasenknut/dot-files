@@ -21,11 +21,10 @@ autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 
-zstyle ':vcs_info:*' formats ' (%F{blue}%b%f)'
+zstyle ':vcs_info:*' formats '(%F{blue}%b%f)'
 
 # Left prompt:
-PROMPT='%n%F{red}@%f%m %F{red}::%f %F{green}%(5~|%-1~/…/%3~|%4~)%f$vcs_info_msg_0_ %F{red}%% %f'
-
+PROMPT='%m %F{red}::%f %F{green}%(5~|%-1~/…/%3~|%4~)%f$vcs_info_msg_0_ %% '
 # vi mode (clashes with tmux keys)
 bindkey -v
 bindkey '^l' vi-cmd-mode
@@ -70,7 +69,7 @@ eval "$(pyenv virtualenv-init -)"
 
 # Load aliases and shortcuts if existent.
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
-[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
+[ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
 
 # For syntax highlighting. Should be put last in this file.
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

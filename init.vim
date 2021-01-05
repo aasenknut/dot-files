@@ -5,13 +5,11 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wsdjeg/FlyGrep.vim'
 Plug 'mbbill/undotree'
-Plug 'vim-scripts/Zenburn'
 Plug 'chriskempson/base16-vim'
 Plug 'srcery-colors/srcery-vim'
 Plug 'sheerun/vim-polyglot'
@@ -24,6 +22,7 @@ Plug 'junegunn/gv.vim'
 Plug 'majutsushi/tagbar'
 Plug 'kassio/neoterm'
 Plug 'honza/vim-snippets'
+Plug 'szw/vim-maximizer'
 
 call plug#end()
 
@@ -212,7 +211,9 @@ xmap <leader>pr <Esc>:argdo %s/<c-r>=GetVisual()<cr>//gc \| update<left><left><l
 nnoremap <leader>sr :%s///gc<left><left><left><left>
 " With visual selected:
 xmap <leader>sr <Esc>:%s/<c-r>=GetVisual()<cr>//gc<left><left><left>
-
+" Search inside file:
+xmap <leader>sf <Esc>/<c-r>=GetVisual()<cr>
+" Ripgrep search
 xmap <leader>rg <Esc>:Rg <c-r>=GetVisual()<cr>
 "------------------------------------------------------------------------------
 " Special search function (END)
@@ -317,6 +318,7 @@ if has("nvim")
   au FileType fzf tunmap <buffer> <Esc>
   tnoremap <C-v><Esc> <Esc>
 endif
+let g:fzf_layout = { 'down': '~40%' }
 
 " Tagbar
 nmap <leader>t :TagbarToggle<CR>
@@ -333,6 +335,15 @@ let g:neoterm_autoscroll = '1' "Automatically scrolls when REPL is performed
 " this is handled by LanguageClient [LC]
 let g:go_def_mapping_enabled = 0
 
+nmap <leader>gr :GoRun<CR>
+nmap <leader>gt :GoTest<CR>
+nmap <leader>gb :GoBuild<CR>
+
+"------------------------------------------------------------------------------
+" Maximizer
+"------------------------------------------------------------------------------
+
+nnoremap <leader>m :MaximizerToggle!<CR>
 
 "------------------------------------------------------------------------------
 " coc.nvim config stuff (START)
