@@ -10,6 +10,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'wsdjeg/FlyGrep.vim'
 Plug 'mbbill/undotree'
+Plug 'mileszs/ack.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'srcery-colors/srcery-vim'
 Plug 'sheerun/vim-polyglot'
@@ -101,18 +102,6 @@ nnoremap <c-h> <c-w>h
 vnoremap <c-j> :m '>+1<CR>gv=gv
 vnoremap <c-k> :m '<-2<CR>gv=gv
 
-" move between tabs by number
-noremap <leader>1 1gt
-noremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
-noremap <leader>6 6gt
-noremap <leader>7 7gt
-noremap <leader>8 8gt
-noremap <leader>9 9gt
-noremap <leader>0 :tablast<cr>
-
 " write file
 nnoremap <leader>w :w<cr>
 
@@ -165,6 +154,7 @@ augroup END
 " Special search functionality (START)
 "------------------------------------------------------------------------------
 
+
 " Escape special characters in a string for exact matching.
 " This is useful to copying strings from the file to the search tool
 " Based on this - http://peterodding.com/code/vim/profile/autoload/xolox/escape.vim
@@ -203,9 +193,9 @@ endfunction
 
 " Search and replace across project:
 " Give strings:
-nnoremap <leader>pr :argdo %s///gc \| update<left><left><left><left><left><left><left><left><left><left><left><left><left>
+nnoremap <leader>pr :cdo %s///gc \| update<left><left><left><left><left><left><left><left><left><left><left><left><left>
 " With visual selected:
-xmap <leader>pr <Esc>:argdo %s/<c-r>=GetVisual()<cr>//gc \| update<left><left><left><left><left><left><left><left><left><left><left><left>
+xmap <leader>pr <Esc>:cdo %s/<c-r>=GetVisual()<cr>//gc \| update<left><left><left><left><left><left><left><left><left><left><left><left>
 
 " Search and replace in file:
 nnoremap <leader>sr :%s///gc<left><left><left><left>
@@ -218,6 +208,34 @@ xmap <leader>rg <Esc>:Rg <c-r>=GetVisual()<cr>
 "------------------------------------------------------------------------------
 " Special search function (END)
 "------------------------------------------------------------------------------
+"
+
+" ack.vim --- {{{
+
+" Use ripgrep for searching ⚡️
+" Options include:
+" --vimgrep -> Needed to parse the rg response properly for ack.vim
+" --type-not sql -> Avoid huge sql file dumps as it slows down the search
+" --smart-case -> Search case insensitive if all lowercase pattern, Search case sensitively otherwise
+let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
+
+" Auto close the Quickfix list after pressing '<enter>' on a list item
+let g:ack_autoclose = 1
+
+" Any empty ack search will search for the work the cursor is on
+let g:ack_use_cword_for_empty_search = 1
+
+" Don't jump to first match
+" cnoreabbrev Ack Ack!
+
+" Search
+nnoremap <Leader>pa :Ack!<Space>
+xmap <Leader>pa <Esc>:Ack! <c-r>=GetVisual()<cr>
+" }}}
+
+" Navigate quickfix list with ease
+nnoremap <silent> [q :cprevious<CR>
+nnoremap <silent> ]q :cnext<CR>
 
 "Remove all trailing whitespace and removeing highlight
 
