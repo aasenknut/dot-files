@@ -16,7 +16,6 @@ Plug 'lambdalisue/fern.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/gv.vim'
 Plug 'majutsushi/tagbar'
 Plug 'kassio/neoterm'
 Plug 'honza/vim-snippets'
