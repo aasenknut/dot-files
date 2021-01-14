@@ -112,9 +112,6 @@ inoremap <c-l> <esc>
 xnoremap <c-l> <esc>
 tnoremap <c-l> <C-\><C-n>
 
-" Toggle ignorecase
-map <leader>c :set ic!<cr>
-
 " Ctags go to definition
 nnoremap gt <C-]>
 
@@ -435,11 +432,6 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Create mappings for function text object, requires document symbols feature of languageserver.
 xmap if <Plug>(coc-funcobj-i)
