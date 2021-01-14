@@ -101,6 +101,9 @@ vnoremap <c-k> :m '<-2<CR>gv=gv
 " write file
 nnoremap <leader>w :w<cr>
 
+" quit file
+nnoremap <leader>q :q!
+
 " remove hl
 nnoremap <leader>h :nohl<cr>
 
