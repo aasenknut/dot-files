@@ -31,6 +31,7 @@ set hidden
 set rnu
 set nu
 set incsearch
+set noerrorbells
 set tabstop=4 softtabstop=4
 set foldmethod=manual
 set shiftwidth=4
@@ -40,6 +41,8 @@ set autoindent
 set nowrap
 set noswapfile
 set nobackup " This is recommended by coc
+set undodir=~/.vim/undodir
+set undofile
 set nowritebackup " This is recommended by coc
 set cmdheight=2 " Better display messages -- for coc
 set noshowcmd " Don't display, e.g., key strokes
@@ -352,6 +355,33 @@ let g:go_def_mapping_enabled = 0
 nmap <leader>gr :GoRun<CR>
 nmap <leader>gt :GoTest<CR>
 nmap <leader>gb :GoBuild<CR>
+
+
+"------------------------------------------------------------------------------
+" Fern
+"------------------------------------------------------------------------------
+" Custom settings and mappings.
+let g:fern#disable_default_mappings = 1
+
+function! FernInit() abort
+  nmap <buffer><expr>
+        \ <Plug>(fern-my-open-expand-collapse)
+        \ fern#smart#leaf(
+        \   "\<Plug>(fern-action-open:select)",
+        \   "\<Plug>(fern-action-expand)",
+        \   "\<Plug>(fern-action-collapse)",
+        \ )
+  nmap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
+  nmap <buffer> <2-LeftMouse> <Plug>(fern-my-open-expand-collapse)
+  nmap <buffer> r <Plug>(fern-action-reload)
+  nmap <buffer><nowait> K <Plug>(fern-action-leave)
+  nmap <buffer><nowait> J <Plug>(fern-action-enter)
+endfunction
+
+augroup FernGroup
+  autocmd!
+  autocmd FileType fern call FernInit()
+augroup END
 
 "------------------------------------------------------------------------------
 " Maximizer
