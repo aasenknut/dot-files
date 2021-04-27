@@ -146,8 +146,8 @@ xmap > ]
 
 
 " Navigate quickfix list with ease
-nnoremap <silent> [q :cprevious<CR>
-nnoremap <silent> ]q :cnext<CR>
+nnoremap <silent> [p :cprevious<CR>
+nnoremap <silent> [n :cnext<CR>
 
 "Remove all trailing whitespace and removeing highlight
 
