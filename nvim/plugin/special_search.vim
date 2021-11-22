@@ -43,8 +43,8 @@ xmap <leader>pr <Esc>:cdo %s/<c-r>=GetVisual()<cr>//gc \| update<left><left><lef
 " Search and replace in file:
 nnoremap <leader>sr :%s///gc<left><left><left><left>
 " With visual selected:
-xmap <leader>sr <Esc>:%s/<c-r>=GetVisual()<cr>//gc<left><left><left>
+xmap <leader>fr <Esc>:%s/<c-r>=GetVisual()<cr>//gc<left><left><left>
 " Search inside file:
-xmap <leader>sf <Esc>/<c-r>=GetVisual()<cr>
+xmap <leader>fs <Esc>/<c-r>=GetVisual()<cr>
 " Ripgrep search
 xmap <leader>rg <Esc>:Rg <c-r>=GetVisual()<cr>
