@@ -4,7 +4,6 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'wsdjeg/FlyGrep.vim'
 Plug 'mbbill/undotree'
 Plug 'mileszs/ack.vim'
@@ -15,14 +14,13 @@ Plug 'lambdalisue/fern.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'majutsushi/tagbar'
 Plug 'kassio/neoterm'
 Plug 'honza/vim-snippets'
 Plug 'szw/vim-maximizer'
 Plug 'vim-test/vim-test'
-"" NEW LSP STUFF
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
+Plug 'neovim/nvim-lspconfig' "LSP
+Plug 'hrsh7th/nvim-compe' "LSP auto-complete
+Plug 'williamboman/nvim-lsp-installer'
 
 call plug#end()
 
@@ -88,7 +86,7 @@ augroup MyColors
     autocmd ColorScheme * call MyHighlights()
 augroup END
 " Set colour scheme
-colorscheme srcery 
+colorscheme srcery
 
 "------------------------------------------------------------------------------
 " Key-bindings follow.
@@ -120,9 +118,6 @@ nnoremap <leader>h :nohl<cr>
 inoremap <c-l> <esc>
 xnoremap <c-l> <esc>
 tnoremap <c-l> <C-\><C-n>
-
-" Ctags go to definition
-nnoremap gt <C-]>
 
 " Fix indentaion mapping
 nnoremap <Tab> >>_
@@ -199,9 +194,6 @@ augroup END
 " UNDOTREE
 nnoremap <leader>u :UndotreeToggle<cr>
 
-
-" Tagbar
-nmap <leader>t :TagbarToggle<CR>
 
 " NeoTerm
 vnoremap <C-c><C-c> :TREPLSendSelection<CR>
