@@ -1,25 +1,39 @@
 " Plugins with Vim Plug
 call plug#begin(stdpath('data') . '/plugged')
 
+" --- TPOPE ---
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-" Plug 'wsdjeg/FlyGrep.vim' Not using this one?
+" --- JUNEGUNN ---
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
+" --- LSP ---
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'onsails/lspkind-nvim'
+" --- SNIPPETS ---
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'rafamadriz/friendly-snippets'
+" --- TELECSOPE --- 
+Plug 'nvim-lua/plenary.nvim' " Telescope requires plenary
+" Plug 'nvim-telescope/telescope.nvim'
+" --- OTHER ---
+Plug 'kassio/neoterm'
+Plug 'szw/vim-maximizer'
+Plug 'vim-test/vim-test'
 Plug 'mbbill/undotree'
 Plug 'mileszs/ack.vim'
 Plug 'srcery-colors/srcery-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'lambdalisue/fern.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'kassio/neoterm'
-Plug 'honza/vim-snippets'
-Plug 'szw/vim-maximizer'
-Plug 'vim-test/vim-test'
-Plug 'neovim/nvim-lspconfig' "LSP
-Plug 'hrsh7th/nvim-compe' "LSP auto-complete
-Plug 'williamboman/nvim-lsp-installer'
 
 call plug#end()
 
@@ -76,7 +90,7 @@ set statusline+=%-11.([%l/%L,%c]%)\ %p%%
 
 " Set statusline colour
 function! MyHighlights() abort
-    hi StatusLine ctermbg=24 ctermfg=254
+    hi StatusLine ctermbg=237 ctermfg=254
     hi StatusLineNC ctermbg=252 ctermfg=238
 endfunction
 
@@ -198,10 +212,3 @@ nnoremap <leader>u :UndotreeToggle<cr>
 vnoremap <C-c><C-c> :TREPLSendSelection<CR>
 nnoremap <C-c><C-c> :TREPLSendLine<CR>
 let g:neoterm_autoscroll = '1' "Automatically scrolls when REPL is performed
-
-
-"------------------------------------------------------------------------------
-" Maximizer
-"------------------------------------------------------------------------------
-
-nnoremap <leader>m :MaximizerToggle!<CR>
