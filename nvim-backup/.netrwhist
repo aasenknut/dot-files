@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/Users/a500985/git/leetcode/go_solutions/15_3sum'
+let g:netrw_dirhist_9='/Users/a500985/git/advent-of-code/aoc2020/golang/day06'
+let g:netrw_dirhist_8='/Users/a500985/git/advent-of-code/aoc2020/golang/day02'
+let g:netrw_dirhist_7='/Users/a500985/git/mi-oppgjoer/kti-ai/infra/lib'
+let g:netrw_dirhist_6='/Users/a500985/git/mi-oppgjoer/kti-ai/kti'
+let g:netrw_dirhist_5='/Users/a500985/.config'
+let g:netrw_dirhist_4='/Users/a500985/git/mi-oppgjoer/kti-ai/.git/hooks'
+let g:netrw_dirhist_3='/Users/a500985/git/learning-eng/typescript/effective-ts-62-ways'
+let g:netrw_dirhist_2='/Users/a500985/git/learning-eng/aws/README.md'
+let g:netrw_dirhist_1='/Users/a500985/git/mi-oppgjoer/kti-ai/infra/lib'
