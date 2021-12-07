@@ -16,4 +16,3 @@ let g:ack_use_cword_for_empty_search = 1
 " Search
 nnoremap <Leader>pa :Ack!<Space>
 xmap <Leader>pa <Esc>:Ack! <c-r>=GetVisual()<cr>
-

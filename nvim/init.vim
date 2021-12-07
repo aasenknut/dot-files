@@ -23,8 +23,11 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
 " --- TELECSOPE --- 
-Plug 'nvim-lua/plenary.nvim' " Telescope requires plenary
-" Plug 'nvim-telescope/telescope.nvim'
+"Plug 'nvim-lua/plenary.nvim' " Telescope requires plenary
+"Plug 'nvim-telescope/telescope.nvim'
+"Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } " Significantly improve sorting performance
+" --- TREESITTER ---
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 " --- OTHER ---
 Plug 'kassio/neoterm'
 Plug 'szw/vim-maximizer'
@@ -150,21 +153,18 @@ omap > ]
 xmap < [
 xmap > ]
 
-
-
-"------------------------------------------------------------------------------
-" Special search function (END)
-"------------------------------------------------------------------------------
-"
-
-
 " Navigate quickfix list with ease
 nnoremap <silent> [p :cprevious<CR>
 nnoremap <silent> [n :cnext<CR>
 
 "Remove all trailing whitespace and removeing highlight
-
 map <silent> <leader><cr> <cr>:let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><cr>
+
+" Clear quickfix list
+"
+nmap <leader>cf :cexpr []<cr>
+command! Qbuffers call setqflist(map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), '{"bufnr":v:val}')) "Populates quickfix list with buffers
+nmap <leader>cb :Qbuffers<cr>
 
 
 " Enable syntax highlighting when buffers are displayed in a window through
@@ -203,12 +203,3 @@ augroup EnableSyntaxHighlighting
     " is displayed in a window again.
     autocmd! BufRead * if exists('syntax_on') && exists('b:current_syntax') && ! empty(&l:filetype) && index(split(&eventignore, ','), 'Syntax') != -1 | unlet! b:current_syntax | endif
 augroup END
-
-" UNDOTREE
-nnoremap <leader>u :UndotreeToggle<cr>
-
-
-" NeoTerm
-vnoremap <C-c><C-c> :TREPLSendSelection<CR>
-nnoremap <C-c><C-c> :TREPLSendLine<CR>
-let g:neoterm_autoscroll = '1' "Automatically scrolls when REPL is performed

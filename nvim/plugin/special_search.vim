@@ -36,9 +36,9 @@ endfunction
 
 " Search and replace across project:
 " Give strings:
-nnoremap <leader>pr :cdo %s///gc \| update<left><left><left><left><left><left><left><left><left><left><left><left><left>
+nnoremap <leader>pr :cfdo %s///gc \| update<left><left><left><left><left><left><left><left><left><left><left><left><left>
 " With visual selected:
-xmap <leader>pr <Esc>:cdo %s/<c-r>=GetVisual()<cr>//gc \| update<left><left><left><left><left><left><left><left><left><left><left><left>
+xmap <leader>pr <Esc>:cfdo %s/<c-r>=GetVisual()<cr>//gc \| update<left><left><left><left><left><left><left><left><left><left><left><left>
 
 " Search and replace in file:
 nnoremap <leader>sr :%s///gc<left><left><left><left>
