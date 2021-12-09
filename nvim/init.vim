@@ -22,14 +22,11 @@ Plug 'onsails/lspkind-nvim'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
-" --- TELECSOPE --- 
-"Plug 'nvim-lua/plenary.nvim' " Telescope requires plenary
-"Plug 'nvim-telescope/telescope.nvim'
-"Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } " Significantly improve sorting performance
 " --- TREESITTER ---
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 " --- OTHER ---
 Plug 'kassio/neoterm'
+Plug 'nvim-lua/plenary.nvim' " Required for some plugins. NOTE: Might not be need for any of the currently used plugins.
 Plug 'szw/vim-maximizer'
 Plug 'vim-test/vim-test'
 Plug 'mbbill/undotree'
