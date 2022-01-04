@@ -25,8 +25,8 @@ Plug 'rafamadriz/friendly-snippets'
 " --- TREESITTER ---
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 " --- OTHER ---
-Plug 'kassio/neoterm'
 Plug 'nvim-lua/plenary.nvim' " Required for some plugins. NOTE: Might not be need for any of the currently used plugins.
+Plug 'kassio/neoterm'
 Plug 'szw/vim-maximizer'
 Plug 'vim-test/vim-test'
 Plug 'mbbill/undotree'
@@ -71,6 +71,7 @@ set colorcolumn=80
 set list
 set listchars=tab:»\ ,trail:·,eol:¬
 set nrformats+=alpha " To increment letters in addition to numbers
+set completeopt=menuone,noinsert,noselect " For autocomplete. See :help completeopt
 language en_US
 syntax on
 "  Colours
