@@ -24,7 +24,7 @@ precmd_functions+=( precmd_vcs_info )
 zstyle ':vcs_info:*' formats '(%F{blue}%b%f)'
 
 # Left prompt:
-PROMPT='%m %F{red}::%f %F{green}%(5~|%-1~/…/%3~|%4~)%f$vcs_info_msg_0_ %% '
+PROMPT='%F{green}%(5~|%-1~/…/%3~|%4~)%f$vcs_info_msg_0_%% '
 # vi mode (clashes with tmux keys)
 bindkey -v
 bindkey '^l' vi-cmd-mode
@@ -57,6 +57,9 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
+# fzf defaults
+export FZF_DEFAULT_OPTS="--height=40% --layout=reverse --info=inline --padding=1"
+
 # Load Git completion
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
 fpath=(~/.zsh $fpath)
@@ -73,3 +76,4 @@ eval "$(pyenv virtualenv-init -)"
 
 # For syntax highlighting. Should be put last in this file.
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
