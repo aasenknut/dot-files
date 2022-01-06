@@ -48,3 +48,6 @@ xmap <leader>fr <Esc>:%s/<c-r>=GetVisual()<cr>//gc<left><left><left>
 xmap <leader>fs <Esc>/<c-r>=GetVisual()<cr>
 " Ripgrep search
 xmap <leader>rg <Esc>:Rg <c-r>=GetVisual()<cr>
+" Populate quickfix list with vim grep
+xmap <leader>cg <Esc>:grep! <c-r>=GetVisual()<cr>
+

@@ -58,8 +58,8 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 # fzf defaults
-export FZF_DEFAULT_OPTS="--height=40% --layout=reverse --info=inline --padding=1"
-
+export FZF_DEFAULT_OPTS="--height=40% --layout=reverse --info=inline --padding=1 --preview='bat --style numbers,changes --color=always {}'"
+#
 # Load Git completion
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
 fpath=(~/.zsh $fpath)

@@ -1,15 +1,18 @@
 """General settings for the plugin Fern
 let g:fern#disable_default_mappings = 1
-let g:fern#disable_drawer_auto_quit   = 1
+let g:fern#disable_drawer_auto_quit = 1
+
+"""For fern-renderer-nerdfont.vim
+let g:fern#renderer = "nerdfont"
 
 noremap <silent> <Leader>n :Fern . -drawer -width=35 -toggle<CR><C-w>=
 
-let g:fern#mark_symbol                       = '●'
-let g:fern#renderer#default#collapsed_symbol = '» '
-let g:fern#renderer#default#expanded_symbol  = '× '
-let g:fern#renderer#default#leading          = ' '
-let g:fern#renderer#default#leaf_symbol      = ' '
-let g:fern#renderer#default#root_symbol      = '~ '
+"" let g:fern#mark_symbol                       = '●'
+"" let g:fern#renderer#default#collapsed_symbol = '» '
+"" let g:fern#renderer#default#expanded_symbol  = '× '
+"" let g:fern#renderer#default#leading          = ' '
+"" let g:fern#renderer#default#leaf_symbol      = ' '
+"" let g:fern#renderer#default#root_symbol      = '~ '
 
 function! FernInit() abort
   nmap <buffer><expr>
@@ -31,3 +34,8 @@ augroup FernGroup
   autocmd FileType fern call FernInit()
 augroup END
 
+augroup my-glyph-palette
+  autocmd! *
+  autocmd FileType fern call glyph_palette#apply()
+  autocmd FileType nerdtree,startify call glyph_palette#apply()
+augroup END
