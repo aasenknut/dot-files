@@ -37,9 +37,11 @@ Plug 'srcery-colors/srcery-vim'
 Plug 'sheerun/vim-polyglot'
 " --- FERN (file viewer) ---
 Plug 'lambdalisue/fern.vim'
+Plug 'yuki-yano/fern-preview.vim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/glyph-palette.vim'
+Plug 'lambdalisue/fern-git-status.vim'
 
 call plug#end()
 
