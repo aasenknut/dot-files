@@ -26,15 +26,6 @@ Plug 'rafamadriz/friendly-snippets'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 " --- DEBUGGER ---
 " Plug 'mfussenegger/nvim-dap'
-" --- OTHER ---
-Plug 'nvim-lua/plenary.nvim' " Required for some plugins. NOTE: Might not be need for any of the currently used plugins.
-Plug 'kassio/neoterm'
-Plug 'szw/vim-maximizer'
-Plug 'vim-test/vim-test'
-Plug 'mbbill/undotree'
-Plug 'mileszs/ack.vim'
-Plug 'srcery-colors/srcery-vim'
-Plug 'sheerun/vim-polyglot'
 " --- FERN (file viewer) ---
 Plug 'lambdalisue/fern.vim'
 Plug 'yuki-yano/fern-preview.vim'
@@ -42,6 +33,17 @@ Plug 'lambdalisue/nerdfont.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/fern-git-status.vim'
+" --- COLOURS ---
+Plug 'srcery-colors/srcery-vim'
+" --- OTHER ---
+Plug 'nvim-lua/plenary.nvim' " Required for some plugins. NOTE: Might not be need for any of the currently used plugins.
+Plug 'kassio/neoterm' " Easy to use for REPL
+Plug 'szw/vim-maximizer'
+Plug 'mbbill/undotree'
+Plug 'mileszs/ack.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'petertriho/nvim-scrollbar'
+
 
 call plug#end()
 
@@ -133,13 +135,13 @@ nnoremap <leader>w :w<cr>
 " quit file
 nnoremap <leader>q :q!
 
-" remove hl
-nnoremap <leader>h :nohl<cr>
-
 " Use CTRL-L instead of <Esc> for relevant modes
 inoremap <c-l> <esc>
 xnoremap <c-l> <esc>
 tnoremap <c-l> <C-\><C-n>
+
+" Jumplist fix. Since <Tab> is going to be used for indentation, we need to remap <C-i>
+nnoremap <C-n> <C-i>
 
 " Fix indentaion mapping
 nnoremap <Tab> >>_
@@ -149,7 +151,7 @@ vnoremap <S-Tab> <<
 inoremap <S-Tab> <C-d>
 
 " Register mapping
-vnoremap <leader>p "_dP
+vnoremap <leader>pp "_dP
 
 " non-US keyboard makes it hard to type [ and ].
 nmap < [
