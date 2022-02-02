@@ -2,4 +2,7 @@
 alias sc="source $HOME/.zshrc"
 
 # Open file in nvim after search with fzf
-alias nf='nvim $(fzf)'
+alias fn='nvim $(fzf)'
+
+# Interactive Ripgrep
+alias rfn='bash $HOME/.scripts/rfn'

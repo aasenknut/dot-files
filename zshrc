@@ -58,7 +58,7 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 # fzf defaults
-export FZF_DEFAULT_OPTS="--height=40% --layout=reverse --info=inline --padding=1 --preview='bat --style numbers,changes --color=always {}'"
+export FZF_DEFAULT_OPTS="--height=60% --layout=reverse --info=inline --padding=1 --preview='bat --style numbers,changes --color=always {}'"
 #
 # Load Git completion
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
@@ -69,6 +69,10 @@ autoload -Uz compinit && compinit
 #Pyenv
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+#go env stuff (check with, e.g.: go env GOPATH)
+export PATH="$HOME/go/bin:$PATH"
+
 
 # Load aliases and shortcuts if existent.
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
