@@ -18,14 +18,14 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'onsails/lspkind-nvim'
+" --- RUST ---
+Plug 'simrat39/rust-tools.nvim'
 " --- SNIPPETS ---
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
 " --- TREESITTER ---
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-" --- DEBUGGER ---
-" Plug 'mfussenegger/nvim-dap'
 " --- FERN (file viewer) ---
 Plug 'lambdalisue/fern.vim'
 Plug 'yuki-yano/fern-preview.vim'
@@ -35,6 +35,11 @@ Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 " --- COLOURS ---
 Plug 'srcery-colors/srcery-vim'
+" --- DEBUGGER (DAP) ---
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'mfussenegger/nvim-dap-python'
+Plug 'leoluz/nvim-dap-go'
 " --- OTHER ---
 Plug 'nvim-lua/plenary.nvim' " Required for some plugins. NOTE: Might not be need for any of the currently used plugins.
 Plug 'kassio/neoterm' " Easy to use for REPL
@@ -43,7 +48,7 @@ Plug 'mbbill/undotree'
 Plug 'mileszs/ack.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'petertriho/nvim-scrollbar'
-
+Plug 'kyazdani42/nvim-web-devicons' " Icons
 
 call plug#end()
 
@@ -64,6 +69,8 @@ set foldmethod=manual
 set shiftwidth=4
 set expandtab
 set smartindent
+set smartcase
+set ignorecase
 set autoindent
 set nowrap
 set noswapfile

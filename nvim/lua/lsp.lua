@@ -98,3 +98,12 @@ require('lspconfig').gopls.setup{
         },
     },
 }
+require('lspconfig').rust_analyzer.setup{
+    capabilities = capabilities,
+    cmd = { "rust-analyzer" },
+    filetypes = { "rust" },
+    settings = {
+        ["rust-analyzer"] = {},
+    },
+}
+
