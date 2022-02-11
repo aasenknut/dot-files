@@ -7,6 +7,6 @@ nnoremap <leader>dj :lua require'dap'.down()<CR>
 nnoremap <leader>dl :lua require'dap'.run_last()<CR>
 nnoremap <leader>di :lua require'dap.ui.widgets'.hover()<CR>
 vnoremap <leader>di :lua require'dap.ui.widgets'.visual_hover()<CR>
-"nnoremap <leader>de :lua require'dap'.set_exception_breakpoints({"all"})<CR>
 nnoremap <leader>da :lua require'debugHelper'.attach()<CR>
 nnoremap <leader>dA :lua require'debugHelper'.attachToRemote()<CR>
+nnoremap <leader>dr :lua require('dap').repl.open()<CR>

@@ -41,7 +41,7 @@ nnoremap <leader>pr :cfdo %s///gc \| update<left><left><left><left><left><left><
 xmap <leader>pr <Esc>:cfdo %s/<c-r>=GetVisual()<cr>//gc \| update<left><left><left><left><left><left><left><left><left><left><left><left>
 
 " Search and replace in file:
-nnoremap <leader>sr :%s///gc<left><left><left><left>
+nnoremap <leader>fr :%s///gc<left><left><left><left>
 " With visual selected:
 xmap <leader>fr <Esc>:%s/<c-r>=GetVisual()<cr>//gc<left><left><left>
 " Search inside file:
