@@ -19,6 +19,8 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'onsails/lspkind-nvim'
 Plug 'lukas-reineke/lsp-format.nvim'
+" --- JAVA ---
+Plug 'mfussenegger/nvim-jdtls'
 " --- RUST ---
 Plug 'simrat39/rust-tools.nvim'
 " --- SNIPPETS ---
