@@ -18,6 +18,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'onsails/lspkind-nvim'
+Plug 'lukas-reineke/lsp-format.nvim'
 " --- RUST ---
 Plug 'simrat39/rust-tools.nvim'
 " --- SNIPPETS ---
@@ -40,6 +41,8 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'mfussenegger/nvim-dap-python'
 Plug 'leoluz/nvim-dap-go'
+" --- TESTING ---
+Plug 'vim-test/vim-test'
 " --- OTHER ---
 Plug 'nvim-lua/plenary.nvim' " Required for some plugins. NOTE: Might not be need for any of the currently used plugins.
 Plug 'kassio/neoterm' " Easy to use for REPL
@@ -131,11 +134,31 @@ colorscheme srcery
 " set leader
 let mapleader = "\<Space>"
 
+" -------
+" WINDOWS
+" -------
 " bind Ctrl+<movement> keys to move around the windows
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 nnoremap <c-h> <c-w>h
+
+" ----
+" TABS
+" ----
+" move around between tabs:
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 5gt
+nnoremap <leader>7 5gt
+nnoremap <leader>8 5gt
+nnoremap <leader>9 5gt
+" open and close:
+nnoremap <leader>to :tabnew<CR>
+nnoremap <leader>tc :tabclose<CR>
 
 " Move lines up and down
 vnoremap <c-j> :m '>+1<CR>gv=gv
@@ -180,8 +203,11 @@ nnoremap <silent> [n :cnext<CR>
 "Remove all trailing whitespace and removeing highlight
 map <silent> <leader><cr> <cr>:let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><cr>
 
-" Clear quickfix list
-"
+" -------------
+" QUICKFIX LIST
+" -------------
+" Clear quickfix list:
 nmap <leader>cf :cexpr []<cr>
-command! Qbuffers call setqflist(map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), '{"bufnr":v:val}')) "Populates quickfix list with buffers
+" Populate quickfix list with buffers:
+command! Qbuffers call setqflist(map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), '{"bufnr":v:val}'))
 nmap <leader>cb :Qbuffers<cr>
