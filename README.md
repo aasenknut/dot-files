@@ -1,3 +1,12 @@
+
+# Neovim
+
+## LSP
+Remember to install typescript-language-server before running `:LspInstall tsserver`,
+```
+npm install -g typescript-language-server typescript
+```
+
 # General Tips
 
 # Packages 
