@@ -18,6 +18,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'onsails/lspkind-nvim'
+Plug 'lukas-reineke/lsp-format.nvim'
 " --- JAVA ---
 Plug 'mfussenegger/nvim-jdtls'
 " --- RUST ---
@@ -89,6 +90,7 @@ set updatetime=300 " better experience for diagnostic messages
 set shortmess+=c " don't give |ins-completion-menu| messages.
 set signcolumn=yes
 set formatoptions-=cro " Stop newline continution of comments
+set clipboard^=unnamed,unnamedplus " Cross platform solution for clipboard.
 set colorcolumn=80
 set list
 set listchars=tab:»\ ,trail:·,eol:¬

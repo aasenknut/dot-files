@@ -6,6 +6,10 @@ Remember to install typescript-language-server before running `:LspInstall tsser
 ```
 npm install -g typescript-language-server typescript
 ```
+Same for pyright:
+```
+npm i -g pyright
+```
 
 # General Tips
 
