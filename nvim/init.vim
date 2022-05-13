@@ -52,9 +52,10 @@ Plug 'szw/vim-maximizer'
 Plug 'mbbill/undotree'
 Plug 'mileszs/ack.vim'
 Plug 'sheerun/vim-polyglot'
-Plug 'petertriho/nvim-scrollbar'
 Plug 'kyazdani42/nvim-web-devicons' " Icons
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'dstein64/nvim-scrollview'
+
 
 call plug#end()
 
