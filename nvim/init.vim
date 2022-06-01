@@ -28,7 +28,7 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'rafamadriz/friendly-snippets'
 " --- TREESITTER ---
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " --- FERN (file viewer) ---
 Plug 'lambdalisue/fern.vim'
 Plug 'yuki-yano/fern-preview.vim'
