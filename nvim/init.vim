@@ -18,7 +18,8 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'onsails/lspkind-nvim'
-Plug 'lukas-reineke/lsp-format.nvim'
+" --- FORMATTER ---
+Plug 'mhartington/formatter.nvim'
 " --- JAVA ---
 Plug 'mfussenegger/nvim-jdtls'
 " --- RUST ---
@@ -38,6 +39,7 @@ Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 " --- COLOURS ---
 Plug 'srcery-colors/srcery-vim'
+Plug 'NLKNguyen/papercolor-theme'
 " --- DEBUGGER (DAP) ---
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
@@ -53,8 +55,8 @@ Plug 'mbbill/undotree'
 Plug 'mileszs/ack.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'kyazdani42/nvim-web-devicons' " Icons
-Plug 'nvim-lualine/lualine.nvim'
 Plug 'dstein64/nvim-scrollview'
+
 
 
 call plug#end()
@@ -106,29 +108,20 @@ let base16colorspace=256
 " Statusline and colours
 "------------------------------------------------------------------------------
 " Set statusline content
-"set laststatus=2
-"set statusline=[%n]
-"set statusline+=\ %<%.99f
-"set statusline+=\ %y%h%w%m%r
-"set statusline+=\ %{FugitiveStatusline()}
-"set statusline+=%= "Split statusline left/right
-"set statusline+=%-11.([%l/%L,%c]%)\ %p%%
-"
-"" Set statusline colour
-"function! MyHighlights() abort
-"    hi StatusLine ctermbg=237 ctermfg=254
-"    hi StatusLineNC ctermbg=252 ctermfg=238
-"endfunction
-"
-"augroup MyColors
-"    autocmd!
-"    autocmd ColorScheme * call MyHighlights()
-"augroup END
+set laststatus=2
+set statusline=[%n]
+set statusline+=\ %<%.99f
+set statusline+=\ %y%h%w%m%r
+set statusline+=\ %{FugitiveStatusline()}
+set statusline+=%= "Split statusline left/right
+set statusline+=%-11.([%l/%L,%c]%)\ %p%%
+
 set noshowmode " This is to remove the mode from below the statusbar, e.g., -- INSERT --, and -- VISUAL --
 
 "------------------------------------------------------------------------------
 " COLOURS
 "------------------------------------------------------------------------------
+set background=dark
 colorscheme srcery
 
 "------------------------------------------------------------------------------
@@ -137,6 +130,12 @@ colorscheme srcery
 
 " set leader
 let mapleader = "\<Space>"
+
+"------------------------------------------------------------------------------
+" Auto update files on change
+"------------------------------------------------------------------------------
+set autoread
+au CursorHold * checktime
 
 " -------
 " WINDOWS
