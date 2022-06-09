@@ -12,6 +12,12 @@ Same for pyright:
 npm i -g pyright
 ```
 
+### Formatting
+Remember to install relevant formatters:
+- Go (gofmt): Just install Go. `$ brew update && brew install golang`.
+- JSON (fixjson): `$ npm install -g fixjson`
+- Python (autopep8): `$ pip install autopep8`
+
 # CLI Tools
 
 **Visidata** (https://www.visidata.org/install/) (https://github.com/saulpw/visidata)
