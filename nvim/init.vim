@@ -55,7 +55,6 @@ Plug 'mbbill/undotree'
 Plug 'mileszs/ack.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'kyazdani42/nvim-web-devicons' " Icons
-Plug 'dstein64/nvim-scrollview'
 
 
 

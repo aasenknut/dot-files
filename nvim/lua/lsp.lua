@@ -111,3 +111,16 @@ require('lspconfig').rust_analyzer.setup{
     },
 }
 
+-- Try using efm for formatting
+--require "lspconfig".efm.setup {
+--    init_options = {documentFormatting = true},
+--    settings = {
+--        rootMarkers = {".git/"},
+--        languages = {
+--            go = {gofmt},
+--        }
+--    },
+--    on_attach = {
+--        vim.api.nvim_buf_set_keymap("n", "<space>.", "<cmd>lua vim.lsp.buf.formatting()<CR>", {noremap=true, silent=true})
+--    }
+--}
