@@ -39,7 +39,7 @@ Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 " --- COLOURS ---
 Plug 'srcery-colors/srcery-vim'
-Plug 'NLKNguyen/papercolor-theme'
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 " --- DEBUGGER (DAP) ---
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
@@ -120,8 +120,9 @@ set noshowmode " This is to remove the mode from below the statusbar, e.g., -- I
 "------------------------------------------------------------------------------
 " COLOURS
 "------------------------------------------------------------------------------
-set background=dark
-colorscheme srcery
+"set background=dark
+let g:catppuccin_flavour = "macchiato"
+colorscheme catppuccin
 
 "------------------------------------------------------------------------------
 " Key-bindings follow.
