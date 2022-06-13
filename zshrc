@@ -24,7 +24,7 @@ precmd_functions+=( precmd_vcs_info )
 zstyle ':vcs_info:*' formats '(%F{blue}%b%f)'
 
 # Left prompt:
-PROMPT='%F{green}%(5~|%-1~/…/%3~|%4~)%f$vcs_info_msg_0_%% '
+PROMPT='%F{green}%(5~|%-1~/…/%3~|%4~)%f$vcs_info_msg_0_ ▸ '
 # vi mode (clashes with tmux keys)
 bindkey -v
 bindkey '^l' vi-cmd-mode
@@ -72,6 +72,10 @@ eval "$(pyenv virtualenv-init -)"
 
 #go env stuff (check with, e.g.: go env GOPATH)
 export PATH="$HOME/go/bin:$PATH"
+
+#java path
+export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home/"
 
 
 # Load aliases and shortcuts if existent.
