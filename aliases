@@ -6,3 +6,6 @@ alias fn='nvim $(fzf)'
 
 # Interactive Ripgrep
 alias rfn='bash $HOME/.scripts/rfn'
+
+# Ranger
+alias ra='ranger'
