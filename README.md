@@ -31,3 +31,6 @@ Line oriented search tool for recursively searching for regex patterns.
 
 **tree** (https://formulae.brew.sh/formula/tree)
 Display directories as trees (with optional color/HTML output).
+
+**ranger** (https://formulae.brew.sh/formula/ranger) (https://github.com/ranger/ranger)
+ranger is a console file manager with VI key bindings.
