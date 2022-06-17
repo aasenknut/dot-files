@@ -28,3 +28,6 @@ Command line fuzzy finder.
 
 **ripgrep** (https://github.com/BurntSushi/ripgrep)
 Line oriented search tool for recursively searching for regex patterns.
+
+**tree** (https://formulae.brew.sh/formula/tree)
+Display directories as trees (with optional color/HTML output).
