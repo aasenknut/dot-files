@@ -5,6 +5,8 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+" --- GIT --- (in addition to tpope/vim-fugitive)
+Plug 'airblade/vim-gitgutter'
 " --- JUNEGUNN ---
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -43,6 +45,7 @@ Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 " --- DEBUGGER (DAP) ---
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
+Plug 'theHamsta/nvim-dap-virtual-text'
 Plug 'mfussenegger/nvim-dap-python'
 Plug 'leoluz/nvim-dap-go'
 " --- TESTING ---
@@ -50,10 +53,10 @@ Plug 'vim-test/vim-test'
 " --- OTHER ---
 Plug 'nvim-lua/plenary.nvim' " Required for some plugins. NOTE: Might not be need for any of the currently used plugins.
 Plug 'kassio/neoterm' " Easy to use for REPL
-Plug 'szw/vim-maximizer'
-Plug 'mbbill/undotree'
-Plug 'mileszs/ack.vim'
-Plug 'sheerun/vim-polyglot'
+Plug 'szw/vim-maximizer' "Maximize current window
+Plug 'mbbill/undotree' " Overview of changes.
+Plug 'mileszs/ack.vim' " Search. Used for populating quickfix list.
+Plug 'sheerun/vim-polyglot' " Needed for other plugins.
 Plug 'kyazdani42/nvim-web-devicons' " Icons
 
 

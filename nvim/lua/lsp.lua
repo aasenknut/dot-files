@@ -28,6 +28,8 @@ cmp.setup({
             ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
             ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
             ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+            ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+            ['<C-f>'] = cmp.mapping.scroll_docs(4),
             --  ['<C->'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
             ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
             ['<C-e>'] = cmp.mapping({
@@ -110,17 +112,3 @@ require('lspconfig').rust_analyzer.setup{
         ["rust-analyzer"] = {},
     },
 }
-
--- Try using efm for formatting
---require "lspconfig".efm.setup {
---    init_options = {documentFormatting = true},
---    settings = {
---        rootMarkers = {".git/"},
---        languages = {
---            go = {gofmt},
---        }
---    },
---    on_attach = {
---        vim.api.nvim_buf_set_keymap("n", "<space>.", "<cmd>lua vim.lsp.buf.formatting()<CR>", {noremap=true, silent=true})
---    }
---}
