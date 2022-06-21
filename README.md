@@ -18,6 +18,10 @@ Remember to install relevant formatters:
 - JSON (fixjson): `$ npm install -g fixjson`
 - Python (autopep8): `$ pip install autopep8`
 
+# Terminal
+Terminal of choice is iTerm2 (https://iterm2.com/) (https://formulae.brew.sh/cask/iterm2).
+
+
 # CLI Tools
 
 **Visidata** (https://www.visidata.org/install/) (https://github.com/saulpw/visidata)
