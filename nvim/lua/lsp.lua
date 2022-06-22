@@ -28,8 +28,6 @@ cmp.setup({
             ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
             ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
             ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-            ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-            ['<C-f>'] = cmp.mapping.scroll_docs(4),
             --  ['<C->'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
             ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
             ['<C-e>'] = cmp.mapping({
@@ -38,9 +36,20 @@ cmp.setup({
                 }),
             ['<CR>'] = cmp.mapping.confirm({ select = false }),
             -- Super-Tab like mapping
-            ["<Tab>"] = cmp.mapping(function(fallback)
+            ['<C-f>'] = cmp.mapping(function(fallback) -- f for "forward"
                 if vim.fn["vsnip#available"](1) == 1 then
                     feedkey("<Plug>(vsnip-expand-or-jump)", "")
+                end
+            end, { "i", "s" }),
+            ['<C-b>'] = cmp.mapping(function(fallback) -- b for "backward"
+                if vim.fn["vsnip#jumpable"](-1) == 1 then
+                    feedkey("<Plug>(vsnip-jump-prev)", "")
+                end
+            end, {"i", "s"}
+                ),
+            ["<Tab>"] = cmp.mapping(function(fallback)
+                if cmp.visible() then
+                    cmp.select_next_item()
                 elseif has_words_before() then
                     cmp.complete()
                 else
@@ -48,8 +57,8 @@ cmp.setup({
                 end
             end, { "i", "s" }),
         ["<S-Tab>"] = cmp.mapping(function()
-            if vim.fn["vsnip#jumpable"](-1) == 1 then
-                feedkey("<Plug>(vsnip-jump-prev)", "")
+            if cmp.visible() then
+                cmp.select_prev_item()
             end 
         end, { "i", "s" }),
 },
