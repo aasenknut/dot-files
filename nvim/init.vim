@@ -124,7 +124,7 @@ set noshowmode " This is to remove the mode from below the statusbar, e.g., -- I
 " COLOURS
 "------------------------------------------------------------------------------
 "set background=dark
-let g:catppuccin_flavour = "macchiato"
+let g:catppuccin_flavour = "macchiato" " Flavour options: latte, frappe, macchiato, mocha
 colorscheme catppuccin
 
 "------------------------------------------------------------------------------
