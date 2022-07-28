@@ -64,7 +64,7 @@ Plug 'kyazdani42/nvim-web-devicons' " Icons
 call plug#end()
 
 " lua config with, e.g., LSP stuff
-lua require('config')
+lua require('init')
 
 " General stuff
 set shell=/usr/local/bin/zsh
