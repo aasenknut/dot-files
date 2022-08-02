@@ -38,3 +38,18 @@ Display directories as trees (with optional color/HTML output).
 
 **ranger** (https://formulae.brew.sh/formula/ranger) (https://github.com/ranger/ranger)
 ranger is a console file manager with VI key bindings.
+
+# Other stuff
+
+**Lua.** 
+With package manager and formatter.
+```
+$ brew update && brew install lua@5.1
+```
+
+**Golang.**
+With language server.
+```
+$ brew update && brew install go
+$ go install golang.org/x/tools/gopls@latest
+```

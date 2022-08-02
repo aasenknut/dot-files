@@ -14,7 +14,6 @@ end
 
 local lspkind = require('lspkind')
 
-
 local cmp = require'cmp'
 cmp.setup({
         formatting = {
@@ -23,12 +22,6 @@ cmp.setup({
                     maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
                     })
             },
-        snippet = {
-            -- REQUIRED - you must specify a snippet engine 
-            expand = function(args)
-                vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-            end,
-        },
         mapping = {
             ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
             ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -67,20 +60,24 @@ cmp.setup({
         ["<S-Tab>"] = cmp.mapping(function()
             if cmp.visible() then
                 cmp.select_prev_item()
-            end 
+            end
         end, { "i", "s" }),
-},
-sources = cmp.config.sources({
-  { name = 'nvim_lsp' },
-  }, {
-  { name = 'vsnip' }, -- For vsnip users.
-    }, {
-  { name = 'buffer' },
-    }, {
-        { name = 'path' }
-    })
-})
-
+    },
+    preselect = cmp.PreselectMode.None,
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+      { name = 'buffer' },
+      { name = 'path' }
+        }),
+        snippet = {
+            -- REQUIRED - you must specify a snippet engine
+            expand = function(args)
+                vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+            end,
+        },
+    }
+    )
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
 sources = {

@@ -21,6 +21,9 @@ local languageConfig = {
     json = {
         require('formatter.filetypes.json').fixjson,
     },
+    lua = {
+        require('formatter.filetypes.lua').stylua,
+    },
 -- Can add the lines that follow for more advanced config for formatting certain files.
 -- 
 --    typescript = {
