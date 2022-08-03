@@ -21,6 +21,8 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'onsails/lspkind-nvim'
+Plug 'simrat39/symbols-outline.nvim'
+Plug 'gfanto/fzf-lsp.nvim'
 " --- FORMATTER ---
 Plug 'mhartington/formatter.nvim'
 " --- JAVA ---
@@ -59,7 +61,6 @@ Plug 'mbbill/undotree' " Overview of changes.
 Plug 'mileszs/ack.vim' " Search. Used for populating quickfix list.
 Plug 'sheerun/vim-polyglot' " Needed for other plugins.
 Plug 'kyazdani42/nvim-web-devicons' " Icons
-
 
 
 call plug#end()

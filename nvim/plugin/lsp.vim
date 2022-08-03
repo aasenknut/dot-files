@@ -2,7 +2,6 @@ set completeopt=menuone,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 " LSP bindings
-nnoremap gD :lua vim.lsp.buf.declaration()<CR>
 nnoremap gd :lua vim.lsp.buf.definition()<CR>
 nnoremap K :lua vim.lsp.buf.hover()<CR>
 nnoremap gi :lua vim.lsp.buf.implementation()<CR>
