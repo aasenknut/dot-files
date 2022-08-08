@@ -61,6 +61,7 @@ Plug 'mbbill/undotree' " Overview of changes.
 Plug 'mileszs/ack.vim' " Search. Used for populating quickfix list.
 Plug 'sheerun/vim-polyglot' " Needed for other plugins.
 Plug 'kyazdani42/nvim-web-devicons' " Icons
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 
 call plug#end()
