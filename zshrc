@@ -77,6 +77,9 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home/"
 
+#set neovim as default editor (this is used by ranger)
+export EDITOR=nvim
+export VISUAL=nvim
 
 # Load aliases and shortcuts if existent.
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
