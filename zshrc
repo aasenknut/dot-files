@@ -86,5 +86,5 @@ export VISUAL=nvim
 [ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
 
 # For syntax highlighting. Should be put last in this file.
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
