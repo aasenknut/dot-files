@@ -31,6 +31,11 @@ Terminal of choice is iTerm2 (https://iterm2.com/) (https://formulae.brew.sh/cas
 - **bat** (https://github.com/sharkdp/bat). Supports syntax highlighting for a large number of programming and markup languages.
 
 # Other stuff
+**Node / npm**
+Install Node (npm will be installed with Node):
+```
+brew install node
+```
 
 **Lua.** 
 With package manager and formatter.

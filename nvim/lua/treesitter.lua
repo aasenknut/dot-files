@@ -1,6 +1,7 @@
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+  ignore_install = { "phpdoc", "tree-sitter-phpdoc" }, -- Trouble with phpdoc on Mac M1.
   highlight = {
     enable = true,              -- false will disable the whole extension
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.

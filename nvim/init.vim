@@ -43,7 +43,6 @@ Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 " --- COLOURS ---
-Plug 'srcery-colors/srcery-vim'
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 " --- DEBUGGER (DAP) ---
 Plug 'mfussenegger/nvim-dap'
