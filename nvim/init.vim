@@ -69,7 +69,7 @@ call plug#end()
 lua require('init')
 
 " General stuff
-set shell=/usr/local/bin/zsh
+set shell=/opt/homebrew/bin/zsh " If this is not set correctly stuff will fail, e.g., fzf and ripgrep.
 set mouse=a
 set hlsearch
 set hidden

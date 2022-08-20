@@ -1,0 +1,5 @@
+fzf
+ripgrep
+ranger
+bat
+tree
