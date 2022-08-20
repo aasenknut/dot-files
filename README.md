@@ -31,6 +31,12 @@ Terminal of choice is iTerm2 (https://iterm2.com/) (https://formulae.brew.sh/cas
 - **bat** (https://github.com/sharkdp/bat). Supports syntax highlighting for a large number of programming and markup languages.
 
 # Other stuff
+**Nerd Fonts**. To get icons and stuff.
+```
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font
+```
+
 **Node / npm**
 Install Node (npm will be installed with Node):
 ```
