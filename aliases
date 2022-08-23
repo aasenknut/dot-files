@@ -9,3 +9,6 @@ alias rfn='bash $HOME/.scripts/rfn'
 
 # Ranger
 alias ra='ranger'
+
+# Gofmt files recursively and save.
+alias gf='gofmt -l -s -w .'
