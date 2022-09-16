@@ -29,6 +29,9 @@ Terminal of choice is iTerm2 (https://iterm2.com/) (https://formulae.brew.sh/cas
 - **tree** (https://formulae.brew.sh/formula/tree). Display directories as trees (with optional color/HTML output).
 - **ranger** (https://formulae.brew.sh/formula/ranger) (https://github.com/ranger/ranger). Console file manager with VI key bindings.
 - **bat** (https://github.com/sharkdp/bat). Supports syntax highlighting for a large number of programming and markup languages.
+- **jq** (https://formulae.brew.sh/formula/jq) Lightweight and flexible command-line JSON processor
+- **git-delta** (https://dandavison.github.io/delta/installation.html) Language syntax highlighting with the same syntax-highlighting themes as bat+++.
+- **https://github.com/atanunq/viu** (https://github.com/atanunq/viu) A small command-line application to view images from the terminal written in Rust.
 
 # Other stuff
 **Nerd Fonts**. To get icons and stuff.
