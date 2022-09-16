@@ -8,7 +8,7 @@ Plug 'tpope/vim-fugitive'
 " --- GIT --- (in addition to tpope/vim-fugitive)
 Plug 'airblade/vim-gitgutter'
 " --- JUNEGUNN ---
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 " --- LSP ---
