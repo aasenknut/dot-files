@@ -10,5 +10,8 @@ alias rfn='bash $HOME/.scripts/rfn'
 # Ranger
 alias ra='ranger'
 
-# Gofmt files recursively and save.
+# Golang: Gofmt files recursively and save.
 alias gf='gofmt -l -s -w .'
+
+# Golang: build for debugging and run
+alias gd='goDebug(){ go build -gcflags="all=-N -l" -o="$1" "$2"; "$1"; }; goDebug'
