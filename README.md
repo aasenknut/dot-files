@@ -17,10 +17,14 @@ Remember to install relevant formatters:
 - Go (gofmt): Just install Go. `$ brew update && brew install golang`.
 - JSON (fixjson): `$ npm install -g fixjson`
 - Python (autopep8): `$ pip install autopep8`
+- Prettier (): 
+```
+$ npm install --save-dev --save-exact prettier
+$ echo {}> .prettierrc.json
+```
 
 # Terminal
 Terminal of choice is iTerm2 (https://iterm2.com/) (https://formulae.brew.sh/cask/iterm2).
-
 
 # CLI Tools
 - **Visidata** (https://www.visidata.org/install/) (https://github.com/saulpw/visidata). Terminal interface for exploring tabular data.
@@ -31,7 +35,6 @@ Terminal of choice is iTerm2 (https://iterm2.com/) (https://formulae.brew.sh/cas
 - **bat** (https://github.com/sharkdp/bat). Supports syntax highlighting for a large number of programming and markup languages.
 - **jq** (https://formulae.brew.sh/formula/jq) Lightweight and flexible command-line JSON processor
 - **git-delta** (https://dandavison.github.io/delta/installation.html) Language syntax highlighting with the same syntax-highlighting themes as bat+++.
-- **https://github.com/atanunq/viu** (https://github.com/atanunq/viu) A small command-line application to view images from the terminal written in Rust.
 
 # Other stuff
 **Nerd Fonts**. To get icons and stuff.
