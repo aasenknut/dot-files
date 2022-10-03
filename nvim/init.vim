@@ -52,6 +52,8 @@ Plug 'mfussenegger/nvim-dap-python'
 Plug 'leoluz/nvim-dap-go'
 " --- TESTING ---
 Plug 'vim-test/vim-test'
+" --- GO ---
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " --- OTHER ---
 Plug 'nvim-lua/plenary.nvim' " Required for some plugins. NOTE: Might not be need for any of the currently used plugins.
 Plug 'kassio/neoterm' " Easy to use for REPL

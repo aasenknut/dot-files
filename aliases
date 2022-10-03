@@ -13,5 +13,8 @@ alias ra='ranger'
 # Golang: Gofmt files recursively and save.
 alias gf='gofmt -l -s -w .'
 
+# Golang: Prune any unused dependencies from the go.mod and go.sum files, and add any missing dependencies
+alias gt='go mod tidy'
+
 # Golang: build for debugging and run
 alias gd='goDebug(){ go build -gcflags="all=-N -l" -o="$1" "$2"; "$1"; }; goDebug'
