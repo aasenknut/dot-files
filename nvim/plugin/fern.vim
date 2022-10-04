@@ -1,6 +1,7 @@
 """General settings for the plugin Fern
 let g:fern#disable_default_mappings = 1
 let g:fern#disable_drawer_auto_quit = 1
+let g:fern#default_hidden=1
 
 """For fern-renderer-nerdfont.vim
 let g:fern#renderer = "nerdfont"
