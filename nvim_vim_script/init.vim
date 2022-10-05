@@ -153,6 +153,7 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 nnoremap <c-h> <c-w>h
 " Window resize
+" Height:
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 " ----
@@ -180,7 +181,7 @@ vnoremap <c-k> :m '<-2<CR>gv=gv
 nnoremap <leader>w :w<cr>
 
 " quit file
-nnoremap <leader>q :q!
+nnoremap <leader>q :q!<cr>
 
 " Use CTRL-L instead of <Esc> for relevant modes
 inoremap <c-l> <esc>
