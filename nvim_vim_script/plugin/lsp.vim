@@ -13,3 +13,6 @@ nnoremap gr :lua vim.lsp.buf.references()<CR>
 nnoremap <leader>rn :lua vim.lsp.buf.rename()<CR>
 nnoremap <leader>e :lua vim.diagnostic.open_float()<CR>
 nnoremap <leader>cd :lua vim.diagnostic.setqflist()<CR>
+" To work with Litee call tree plugin
+nnoremap <leader>lo :lua vim.lsp.buf.outgoing_calls()<CR>
+nnoremap <leader>li :lua vim.lsp.buf.incoming_calls()<CR>
