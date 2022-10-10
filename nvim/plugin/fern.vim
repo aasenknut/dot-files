@@ -6,7 +6,7 @@ let g:fern#default_hidden=1
 """For fern-renderer-nerdfont.vim
 let g:fern#renderer = "nerdfont"
 
-noremap <silent> <Leader>n :Fern . -drawer -width=50 -toggle<CR><C-w>=
+noremap <silent> <Leader>n :Fern . -drawer -reveal=% -width=30 -toggle<CR><C-w>=
 
 "" let g:fern#mark_symbol                       = '●'
 "" let g:fern#renderer#default#collapsed_symbol = '» '

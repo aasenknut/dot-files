@@ -7,4 +7,3 @@ nmap <leader>gt :GoAddTags<CR>
 nmap <leader>k :GoDoc<CR>
 nmap <leader>gm :GoImplements<CR>
 nmap <leader>gos :GoFillStruct<CR>
-
