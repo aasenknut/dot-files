@@ -22,7 +22,7 @@ nnoremap <C-p> :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>rg :Rg<CR>
 
-let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all,ctrl-d:deselect-all'
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all,ctrl-d:deselect-all,\ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down'
 
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))

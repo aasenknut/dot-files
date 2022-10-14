@@ -73,13 +73,15 @@ call plug#end()
 " lua config with, e.g., LSP stuff
 lua require('init')
 
-" General stuff
+"------------------------------------------------------------------------------
+" General stuff -- mostly 'set' stuff.
+"------------------------------------------------------------------------------
 set shell=/opt/homebrew/bin/zsh " If this is not set correctly stuff will fail, e.g., fzf and ripgrep.
-set mouse=a
+set mouse=a " Enable mouse
 set hlsearch
 set hidden
-set rnu
-set nu
+set rnu " Relative line numbers
+set nu " Line numbers
 set incsearch
 set noerrorbells
 set tabstop=4 softtabstop=4
