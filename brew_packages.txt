@@ -1,3 +1,5 @@
+nvim
+go
 fzf
 ripgrep
 ranger

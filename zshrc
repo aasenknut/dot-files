@@ -58,7 +58,8 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 # fzf defaults
-export FZF_DEFAULT_OPTS="--height=60% --layout=reverse --info=inline --padding=1 --preview='bat --style numbers,changes --color=always {}'"
+export FZF_DEFAULT_OPTS="--height=60% --layout=reverse --info=inline --padding=1 --preview='bat --style numbers,changes --color=always {}'
+    --bind \ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down"
 #
 # Load Git completion
 zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
@@ -66,12 +67,21 @@ fpath=(~/.zsh $fpath)
 
 autoload -Uz compinit && compinit
 
+#bat set default theme:
+export BAT_THEME="TwoDark"
+
 #Pyenv
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 #go env stuff (check with, e.g.: go env GOPATH)
 export PATH="$HOME/go/bin:$PATH"
+
+#brew to PATH
+export PATH="$PATH:/opt/homebrew/bin/"
+
+#bin (scripts and such)
+export PATH="$PATH:$HOME/bin"
 
 #java path
 export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
@@ -88,3 +98,9 @@ export VISUAL=nvim
 # For syntax highlighting. Should be put last in this file.
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/knut.aasen/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/knut.aasen/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/knut.aasen/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/knut.aasen/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
