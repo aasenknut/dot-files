@@ -15,7 +15,7 @@ if has("nvim")
   au FileType fzf tunmap <buffer> <Esc>
   tnoremap <C-v><Esc> <Esc>
 endif
-let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_layout = { 'down': '~50%' }
 
 """General mappings:
 nnoremap <C-p> :Files<CR>
