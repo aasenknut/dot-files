@@ -175,7 +175,7 @@ nnoremap <leader>7 5gt
 nnoremap <leader>8 5gt
 nnoremap <leader>9 5gt
 " open and close:
-nnoremap <leader>to :tabnew<CR>
+nnoremap <leader>to :tabnew%<CR>
 nnoremap <leader>tc :tabclose<CR>
 
 " Move lines up and down
