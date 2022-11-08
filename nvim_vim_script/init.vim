@@ -5,6 +5,7 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
 " --- GIT --- (in addition to tpope/vim-fugitive)
 Plug 'airblade/vim-gitgutter'
 " --- JUNEGUNN ---
@@ -54,10 +55,8 @@ Plug 'leoluz/nvim-dap-go'
 Plug 'vim-test/vim-test'
 " --- GO ---
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" --- CALL HIERARCHY ---
-Plug 'ldelossa/litee.nvim'
-Plug 'ldelossa/litee-calltree.nvim'
 " --- OTHER ---
+Plug 'AndrewRadev/splitjoin.vim' " Switching between a single-line statement and a multi-line one.
 Plug 'nvim-lua/plenary.nvim' " Required for some plugins. NOTE: Might not be need for any of the currently used plugins.
 Plug 'kassio/neoterm' " Easy to use for REPL
 Plug 'szw/vim-maximizer' "Maximize current window
@@ -225,7 +224,7 @@ map <silent> <leader><cr> <cr>:let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><cr
 " QUICKFIX LIST
 " -------------
 " Clear quickfix list:
-nmap <leader>cf :cexpr []<cr>
+nmap <leader>cl :cexpr []<cr>
 " Populate quickfix list with buffers:
 command! Qbuffers call setqflist(map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), '{"bufnr":v:val}'))
 nmap <leader>cb :Qbuffers<cr>
