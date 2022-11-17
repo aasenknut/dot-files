@@ -61,7 +61,7 @@ bindkey '^e' edit-command-line
 export FZF_DEFAULT_OPTS="--height=60% --layout=reverse --info=inline --padding=1 --preview='bat --style numbers,changes --color=always {}'
     --bind \ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down"
 export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" '
-export FZF_DEFAULT_COMMAND='find . -not -path "./.git/*"'
+#export FZF_DEFAULT_COMMAND='find . -not -path "./.git/*"'
 # ripgrep config file
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 

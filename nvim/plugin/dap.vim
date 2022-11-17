@@ -1,5 +1,5 @@
 nnoremap <leader>db :lua require'dap'.toggle_breakpoint()<CR>
-nnoremap <leader>dc :lua require'dap'.clear_breakpoints()
+nnoremap <leader>dc :lua require'dap'.clear_breakpoints()<CR>
 nnoremap <leader>do :lua require'dap'.step_over()<CR>
 nnoremap <leader>ds :lua require'dap'.close()<CR>
 nnoremap <leader>dn :lua require'dap'.continue()<CR>
@@ -10,4 +10,4 @@ nnoremap <leader>di :lua require'dap.ui.widgets'.hover()<CR>
 vnoremap <leader>di :lua require'dap.ui.widgets'.visual_hover()<CR>
 nnoremap <leader>da :lua require'debugHelper'.attach()<CR>
 nnoremap <leader>dA :lua require'debugHelper'.attachToRemote()<CR>
-nnoremap <leader>dr :lua require('dap').repl.open()<CR>
+nnoremap <leader>dr :lua require('dap').repl.toggle()<CR>
