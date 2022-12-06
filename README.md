@@ -15,6 +15,12 @@ npm i -g pyright
 ### Formatting
 Remember to install relevant formatters:
 - Go (gofmt): Just install Go. `$ brew update && brew install golang`.
+- Stylua (https://github.com/JohnnyMorganz/StyLua):
+```
+$ brew install rustup
+$ rustup-init
+$ cargo install stylua
+```
 - JSON (fixjson): `$ npm install -g fixjson`
 - Python (autopep8): `$ pip install autopep8`
 - Prettier (): 
