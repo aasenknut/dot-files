@@ -14,7 +14,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 " --- LSP ---
 Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/nvim-lsp-installer'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'hrsh7th/cmp-buffer'
@@ -132,8 +133,7 @@ set noshowmode " This is to remove the mode from below the statusbar, e.g., -- I
 " COLOURS
 "------------------------------------------------------------------------------
 "set background=dark
-let g:catppuccin_flavour = "macchiato" " Flavour options: latte, frappe, macchiato, mocha
-colorscheme catppuccin
+colorscheme catppuccin-macchiato
 
 "------------------------------------------------------------------------------
 " Key-bindings follow.

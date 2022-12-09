@@ -1,5 +1,5 @@
 require('lsp')
-require('lsp_installer')
+require('mason_')
 require('treesitter')
 require('dev_icons')
 require('dap_')

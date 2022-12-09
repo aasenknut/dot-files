@@ -7,3 +7,5 @@ nmap <leader>got :GoAddTags<CR>
 nmap <leader>k :GoDoc<CR>
 nmap <leader>gom :GoImplements<CR>
 nmap <leader>gos :GoFillStruct<CR>
+nmap <leader>goe :GoTest<CR>
+nmap <leader>gof :GoTestFunc<CR>
