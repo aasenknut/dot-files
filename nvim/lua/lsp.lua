@@ -11,6 +11,13 @@ local feedkey = function(key, mode)
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+	opts = opts or {}
+	opts.max_width = opts.max_width or 80
+	return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
 -- For styling of cmp. E.g. add icons.
 local lspkind = require("lspkind")
 
@@ -18,8 +25,8 @@ local cmp = require("cmp")
 cmp.setup({
 	formatting = {
 		format = lspkind.cmp_format({
-			mode = "symbol_text", -- show only symbol annotations
 			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+			mode = "symbol_text", -- show only symbol annotations
 		}),
 	},
 	mapping = {
@@ -40,11 +47,15 @@ cmp.setup({
 		["<C-f>"] = cmp.mapping(function(fallback) -- f for "forward"
 			if vim.fn["vsnip#available"](1) == 1 then
 				feedkey("<Plug>(vsnip-expand-or-jump)", "")
+			else
+				fallback()
 			end
 		end, { "i", "s" }),
 		["<C-b>"] = cmp.mapping(function(fallback) -- b for "backward"
 			if vim.fn["vsnip#jumpable"](-1) == 1 then
 				feedkey("<Plug>(vsnip-jump-prev)", "")
+			else
+				fallback()
 			end
 		end, { "i", "s" }),
 		["<Tab>"] = cmp.mapping(function(fallback)
@@ -115,28 +126,28 @@ require("lspconfig").gopls.setup({
 		},
 	},
 })
-require'lspconfig'.sumneko_lua.setup {
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}
+require("lspconfig").sumneko_lua.setup({
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = "LuaJIT",
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = { "vim" },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			-- Do not send telemetry data containing a randomized but unique identifier
+			telemetry = {
+				enable = false,
+			},
+		},
+	},
+})
 require("lspconfig").rust_analyzer.setup({
 	capabilities = capabilities,
 	cmd = { "rust-analyzer" },
@@ -144,4 +155,12 @@ require("lspconfig").rust_analyzer.setup({
 	settings = {
 		["rust-analyzer"] = {},
 	},
+})
+
+require("lsp_signature").setup({
+	bind = true, -- This is mandatory, otherwise border config won't get registered.
+	hint_enable = false,
+    handler_opts = {
+        border = "rounded"
+    },
 })

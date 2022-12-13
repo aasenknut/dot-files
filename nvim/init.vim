@@ -25,6 +25,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'onsails/lspkind-nvim'
 Plug 'simrat39/symbols-outline.nvim'
 Plug 'gfanto/fzf-lsp.nvim'
+Plug 'ray-x/lsp_signature.nvim'
 " --- FORMATTER ---
 Plug 'mhartington/formatter.nvim'
 " --- JAVA ---
