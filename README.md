@@ -34,6 +34,9 @@ Terminal of choice is iTerm2 (https://iterm2.com/) (https://formulae.brew.sh/cas
 
 # CLI Tools
 - **Colima** (https://github.com/abiosoft/colima/). For docker.
+    - Remember: 
+        - `brew install docker && brew install docker-compose`
+        - In `~/.docker/config.json` change `credsStore` to `credStore`
 - **Visidata** (https://www.visidata.org/install/) (https://github.com/saulpw/visidata). Terminal interface for exploring tabular data.
 - **fzf** (https://github.com/junegunn/fzf). Command line fuzzy finder.
 - **ripgrep** (https://github.com/BurntSushi/ripgrep). Line oriented search tool for recursively searching for regex patterns.
