@@ -1,4 +1,7 @@
-# Neovim
+# 💾 Dot-files
+
+
+## Neovim
 
 *Note*. Vim-Plug will put stuff in, `~/.local/share/nvim/`, this is also where the treesitter stuff will end up.
 
@@ -29,10 +32,10 @@ $ npm install --save-dev --save-exact prettier
 $ echo {}> .prettierrc.json
 ```
 
-# Terminal
+## Terminal
 Terminal of choice is iTerm2 (https://iterm2.com/) (https://formulae.brew.sh/cask/iterm2).
 
-# CLI Tools
+## CLI Tools
 - **Colima** (https://github.com/abiosoft/colima/). For docker.
 - **Visidata** (https://www.visidata.org/install/) (https://github.com/saulpw/visidata). Terminal interface for exploring tabular data.
 - **fzf** (https://github.com/junegunn/fzf). Command line fuzzy finder.
@@ -44,7 +47,7 @@ Terminal of choice is iTerm2 (https://iterm2.com/) (https://formulae.brew.sh/cas
 - **git-delta** (https://dandavison.github.io/delta/installation.html) Language syntax highlighting with the same syntax-highlighting themes as bat+++.
 - **abd** (https://httpd.apache.org/docs/2.4/programs/ab.html)
 
-# Other stuff
+## Other stuff
 **Nerd Fonts**. To get icons and stuff.
 ```
 brew tap homebrew/cask-fonts
