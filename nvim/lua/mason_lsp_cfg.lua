@@ -3,7 +3,7 @@ require("mason-lspconfig").setup({
 		"sumneko_lua",
 		"rust_analyzer",
         "gopls",
-        "typescript-language-server",
         "pyright",
+        "tsserver",
 	},
 })
