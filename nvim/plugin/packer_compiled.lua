@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["ack.vim"] = {
+    loaded = true,
+    path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/ack.vim",
+    url = "https://github.com/mileszs/ack.vim"
+  },
   catppuccin = {
     loaded = true,
     path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/catppuccin",

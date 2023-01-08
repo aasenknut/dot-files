@@ -34,7 +34,6 @@ return require("packer").startup(function(use)
 	use({ "hrsh7th/nvim-cmp" })
 	use({ "onsails/lspkind-nvim" })
 	use({ "simrat39/symbols-outline.nvim" })
-	use({ "gfanto/fzf-lsp.nvim" })
 	use({ "ray-x/lsp_signature.nvim" })
 	use("jose-elias-alvarez/null-ls.nvim")
 
@@ -51,6 +50,9 @@ return require("packer").startup(function(use)
 	use({ "junegunn/fzf", run = ":call fzf#install()" })
 	use({ "junegunn/fzf.vim" })
 	use("gfanto/fzf-lsp.nvim")
+
+    -- Ack
+    use('mileszs/ack.vim')
 
 	-- Go
 	use({ "fatih/vim-go" })
