@@ -199,6 +199,11 @@ _G.packer_plugins = {
     path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
     url = "https://github.com/simrat39/symbols-outline.nvim"
   },
+  ["ts-node-action"] = {
+    loaded = true,
+    path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/ts-node-action",
+    url = "https://github.com/ckolkey/ts-node-action"
+  },
   undotree = {
     loaded = true,
     path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/undotree",

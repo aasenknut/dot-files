@@ -62,10 +62,12 @@ return require("packer").startup(function(use)
 			"nvim-tree/nvim-web-devicons", -- optional, for file icons
 		},
 	})
-
+    use({
+        'ckolkey/ts-node-action',
+         requires = { 'nvim-treesitter' },
+    })
 	-- Other
 	use("szw/vim-maximizer")
-	use({ "szw/vim-maximizer" }) -- Maximize current window
 	use({ "mbbill/undotree" }) -- Overview of changes.
 	use({ "nvim-lua/plenary.nvim" }) -- Requirement for some plugins. (might not be a requirement for any of the current plugins I use.)
 end)
