@@ -1,5 +1,3 @@
--- Will use  nvim-lsp-installer for installing language servers.
--- To make sure that language servers aren't installed twice, we need the following:
 require("lspconfig").clangd.setup({})
 
 local has_words_before = function()
@@ -10,17 +8,29 @@ end
 local feedkey = function(key, mode)
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+	-- Enable completion triggered by <c-x><c-o>
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-	opts = opts or {}
-	opts.max_width = opts.max_width or 80
-	return orig_util_open_floating_preview(contents, syntax, opts, ...)
+	-- Mappings.
+	-- See `:help vim.lsp.*` for documentation on any of the below functions
+	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+	vim.keymap.set("n", "<C-s>", vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
+	vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
+	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
+	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+	vim.keymap.set("n", "<space>ft", function()
+		vim.lsp.buf.format({ async = true })
+	end, bufopts)
 end
 
--- For styling of cmp. E.g. add icons.
 local lspkind = require("lspkind")
-
 local cmp = require("cmp")
 cmp.setup({
 	formatting = {
@@ -104,7 +114,8 @@ cmp.setup.cmdline(":", {
 })
 
 -- Set up lspconfig.
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 require("lspconfig").pyright.setup({
 	capabilities = capabilities,
 })
@@ -113,8 +124,10 @@ require("lspconfig").omnisharp.setup({
 })
 require("lspconfig").tsserver.setup({
 	capabilities = capabilities,
+	on_attach = on_attach,
 })
 require("lspconfig").gopls.setup({
+	on_attach = on_attach,
 	capabilities = capabilities,
 	cmd = { "gopls", "serve" },
 	settings = {
@@ -127,6 +140,8 @@ require("lspconfig").gopls.setup({
 	},
 })
 require("lspconfig").sumneko_lua.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
 	settings = {
 		Lua = {
 			runtime = {
@@ -150,6 +165,7 @@ require("lspconfig").sumneko_lua.setup({
 })
 require("lspconfig").rust_analyzer.setup({
 	capabilities = capabilities,
+	on_attach = on_attach,
 	cmd = { "rust-analyzer" },
 	filetypes = { "rust" },
 	settings = {
@@ -160,7 +176,7 @@ require("lspconfig").rust_analyzer.setup({
 require("lsp_signature").setup({
 	bind = true, -- This is mandatory, otherwise border config won't get registered.
 	hint_enable = false,
-    handler_opts = {
-        border = "rounded"
-    },
+	handler_opts = {
+		border = "rounded",
+	},
 })
