@@ -1,5 +1,3 @@
--- Will use  nvim-lsp-installer for installing language servers.
--- To make sure that language servers aren't installed twice, we need the following:
 require("lspconfig").clangd.setup({})
 
 local has_words_before = function()
@@ -10,16 +8,35 @@ end
 local feedkey = function(key, mode)
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+	-- Enable completion triggered by <c-x><c-o>
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
--- For styling of cmp. E.g. add icons.
+	-- Mappings.
+	-- See `:help vim.lsp.*` for documentation on any of the below functions
+	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+	vim.keymap.set("n", "<C-s>", vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
+	vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
+	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
+	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+	vim.keymap.set("n", "<space>ft", function()
+		vim.lsp.buf.format({ async = true })
+	end, bufopts)
+end
+
 local lspkind = require("lspkind")
-
 local cmp = require("cmp")
 cmp.setup({
 	formatting = {
 		format = lspkind.cmp_format({
-			mode = "symbol_text", -- show only symbol annotations
 			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+			mode = "symbol_text", -- show only symbol annotations
 		}),
 	},
 	mapping = {
@@ -40,11 +57,15 @@ cmp.setup({
 		["<C-f>"] = cmp.mapping(function(fallback) -- f for "forward"
 			if vim.fn["vsnip#available"](1) == 1 then
 				feedkey("<Plug>(vsnip-expand-or-jump)", "")
+			else
+				fallback()
 			end
 		end, { "i", "s" }),
 		["<C-b>"] = cmp.mapping(function(fallback) -- b for "backward"
 			if vim.fn["vsnip#jumpable"](-1) == 1 then
 				feedkey("<Plug>(vsnip-jump-prev)", "")
+			else
+				fallback()
 			end
 		end, { "i", "s" }),
 		["<Tab>"] = cmp.mapping(function(fallback)
@@ -93,7 +114,8 @@ cmp.setup.cmdline(":", {
 })
 
 -- Set up lspconfig.
-local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 require("lspconfig").pyright.setup({
 	capabilities = capabilities,
 })
@@ -102,8 +124,10 @@ require("lspconfig").omnisharp.setup({
 })
 require("lspconfig").tsserver.setup({
 	capabilities = capabilities,
+	on_attach = on_attach,
 })
 require("lspconfig").gopls.setup({
+	on_attach = on_attach,
 	capabilities = capabilities,
 	cmd = { "gopls", "serve" },
 	settings = {
@@ -115,33 +139,44 @@ require("lspconfig").gopls.setup({
 		},
 	},
 })
-require'lspconfig'.sumneko_lua.setup {
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}
+require("lspconfig").sumneko_lua.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = "LuaJIT",
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = { "vim" },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			-- Do not send telemetry data containing a randomized but unique identifier
+			telemetry = {
+				enable = false,
+			},
+		},
+	},
+})
 require("lspconfig").rust_analyzer.setup({
 	capabilities = capabilities,
+	on_attach = on_attach,
 	cmd = { "rust-analyzer" },
 	filetypes = { "rust" },
 	settings = {
 		["rust-analyzer"] = {},
+	},
+})
+
+require("lsp_signature").setup({
+	bind = true, -- This is mandatory, otherwise border config won't get registered.
+	hint_enable = false,
+	handler_opts = {
+		border = "rounded",
 	},
 })

@@ -1,8 +1,0 @@
-require('lsp')
-require('mason_')
-require('treesitter')
-require('dev_icons')
-require('dap_')
-require('formatter_nvim')
-require('dap_virtual_text')
-require('symbols_outline')
