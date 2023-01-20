@@ -87,6 +87,9 @@ export PATH="$PATH:/opt/homebrew/bin/"
 #bin (scripts and such)
 export PATH="$PATH:$HOME/bin"
 
+#git from homebrew
+export PATH="/opt/homebrew/bin:${PATH}"
+
 #java path
 export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home/"
