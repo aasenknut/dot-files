@@ -1,0 +1,6 @@
+vim.keymap.set("n", "<leader>gj", ":diffget //3<CR>")
+vim.keymap.set("n", "<leader>gf", ":diffget //2<CR>")
+vim.keymap.set("n", "<leader>gs", ":Git<CR>")
+vim.keymap.set("n", "<leader>gd", ":Gvdiff<CR>")
+vim.keymap.set("n", "<leader>gl", ":Git log<CR>")
+vim.keymap.set("n", "<leader>gb", ":Git blame<CR>")
