@@ -46,6 +46,13 @@ vim.keymap.set("n", "<S-Tab>", "<<")
 vim.keymap.set("v", "<S-Tab>", "<<")
 vim.keymap.set("i", "<S-Tab>", "<C-d>")
 
+-- Keep cursor in middle when jumping half a page
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- Keep cursor in place
+vim.keymap.set("n", "J", "mzJ`z")
+
 -- Height:
 vim.keymap.set("n", "<Leader>+", ':exe "resize " . (winheight(0) * 3/2)<CR>', { silent = true })
 vim.keymap.set("n", "<Leader>-", ':exe "resize " . (winheight(0) * 2/3)<CR>', { silent = true })
