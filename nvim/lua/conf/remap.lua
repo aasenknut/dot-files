@@ -16,7 +16,7 @@ vim.keymap.set("n", "<c-l>", "<c-w>l")
 vim.keymap.set("n", "<c-h>", "<c-w>h")
 
 -- Register mapping
-vim.keymap.set("v", "<leader>pp", "_dP")
+vim.keymap.set("v", "<leader>P", '"_dP')
 
 -- non-US keyboard makes it hard to type [ and ].
 vim.keymap.set("n", "<", "[")
@@ -46,9 +46,12 @@ vim.keymap.set("n", "<S-Tab>", "<<")
 vim.keymap.set("v", "<S-Tab>", "<<")
 vim.keymap.set("i", "<S-Tab>", "<C-d>")
 
--- Keep cursor in middle when jumping half a page
+-- Keep cursor in middle when jumping and searching
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
 
 -- Keep cursor in place
 vim.keymap.set("n", "J", "mzJ`z")
