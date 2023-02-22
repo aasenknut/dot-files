@@ -1,4 +1,4 @@
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.hidden = true
 vim.opt.rnu = true
 vim.opt.nu  = true
