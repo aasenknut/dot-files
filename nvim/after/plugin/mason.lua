@@ -8,13 +8,15 @@ require("mason").setup({
     }
 })
 require("mason-lspconfig").setup({
-	ensure_installed = {
+    ensure_installed = {
         "elixirls",
-		"sumneko_lua",
-		"rust_analyzer",
+        "lua_ls",
+        "rust_analyzer",
         "gopls",
         "pyright",
         "tsserver",
-	},
+        "yamlls",
+        "jsonls",
+        "lemminx"
+    },
 })
-

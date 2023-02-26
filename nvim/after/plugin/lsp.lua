@@ -8,6 +8,14 @@ end
 local feedkey = function(key, mode)
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
+
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+	opts = opts or {}
+	opts.max_width = opts.max_width or 80
+	return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -42,7 +50,7 @@ cmp.setup({
 	mapping = {
 		["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 		["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-		["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+        ["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
 		["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
 		["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
 		["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
@@ -119,8 +127,24 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 require("lspconfig").pyright.setup({
 	capabilities = capabilities,
 })
+
+
+require("lspconfig").jsonls.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+require("lspconfig").yamlls.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+require("lspconfig").lemminx.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
 require("lspconfig").omnisharp.setup({
 	capabilities = capabilities,
+	on_attach = on_attach,
 })
 require("lspconfig").tsserver.setup({
 	capabilities = capabilities,
@@ -139,7 +163,7 @@ require("lspconfig").gopls.setup({
 		},
 	},
 })
-require("lspconfig").sumneko_lua.setup({
+require("lspconfig").lua_ls.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	settings = {

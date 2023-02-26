@@ -209,6 +209,11 @@ _G.packer_plugins = {
     path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["rest.nvim"] = {
+    loaded = true,
+    path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/rest.nvim",
+    url = "https://github.com/rest-nvim/rest.nvim"
+  },
   ["symbols-outline.nvim"] = {
     loaded = true,
     path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",

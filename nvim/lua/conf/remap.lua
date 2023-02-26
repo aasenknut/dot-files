@@ -19,16 +19,16 @@ vim.keymap.set("n", "<c-h>", "<c-w>h")
 vim.keymap.set("v", "<leader>P", '"_dP')
 
 -- non-US keyboard makes it hard to type [ and ].
-vim.keymap.set("n", "<", "[")
-vim.keymap.set("n", ">", "]")
-vim.keymap.set("o", "<", "[")
-vim.keymap.set("o", ">", "]")
-vim.keymap.set("x", "<", "[")
-vim.keymap.set("x", ">", "]")
+vim.keymap.set("n", "<", "[", {remap = true})
+vim.keymap.set("n", ">", "]", {remap = true})
+vim.keymap.set("o", "<", "[", {remap = true})
+vim.keymap.set("o", ">", "]", {remap = true})
+vim.keymap.set("x", "<", "[", {remap = true})
+vim.keymap.set("x", ">", "]", {remap = true})
 
 -- Navigate quickfix list with ease
-vim.keymap.set("n", "[p", ":cprevious<CR>")
-vim.keymap.set("n", "[n", ":cnext<CR>")
+vim.keymap.set("n", "[p", ":cprevious<CR>zz", {silent = true})
+vim.keymap.set("n", "[n", ":cnext<CR>zz", {silent = true})
 
 vim.keymap.set("n", "<leader>ce", ":cexpr []<cr>")
 
