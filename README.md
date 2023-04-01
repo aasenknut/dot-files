@@ -29,9 +29,6 @@ $ npm install --save-dev --save-exact prettier
 $ echo {}> .prettierrc.json
 ```
 
-# Terminal
-Terminal of choice is iTerm2 (https://iterm2.com/) (https://formulae.brew.sh/cask/iterm2).
-
 # CLI Tools
 - **Colima** (https://github.com/abiosoft/colima/). For docker.
     - Remember: 
