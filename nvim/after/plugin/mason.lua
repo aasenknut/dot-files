@@ -17,6 +17,7 @@ require("mason-lspconfig").setup({
         "tsserver",
         "yamlls",
         "jsonls",
-        "lemminx"
+        "lemminx",
+        "zls"
     },
 })

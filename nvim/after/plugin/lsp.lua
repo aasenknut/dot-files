@@ -194,6 +194,12 @@ require("lspconfig").elixirls.setup({
 	on_attach = on_attach,
 })
 
+require("lspconfig").zls.setup({
+    cmd = { "zls" },
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
 
 require("lspconfig").rust_analyzer.setup({
 	capabilities = capabilities,
@@ -212,3 +218,10 @@ require("lsp_signature").setup({
 		border = "rounded",
 	},
 })
+
+-- this was just anoying to use
+-- require("lspconfig").ccls.setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+--     cmd = {"ccls"},
+-- })
