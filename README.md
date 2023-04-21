@@ -2,6 +2,10 @@
 
 *Note*. Vim-Plug will put stuff in, `~/.local/share/nvim/`, this is also where the treesitter stuff will end up.
 
+### Dotnet
+
+Debugger: https://github.com/Samsung/netcoredbg
+
 ### LSP
 Remember to install typescript-language-server before running `:LspInstall tsserver`,
 ```
