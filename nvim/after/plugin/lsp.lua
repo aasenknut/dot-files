@@ -142,10 +142,6 @@ require("lspconfig").lemminx.setup({
 	on_attach = on_attach,
 })
 
-require("lspconfig").omnisharp.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
 require("lspconfig").tsserver.setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
@@ -217,6 +213,11 @@ require("lsp_signature").setup({
 	handler_opts = {
 		border = "rounded",
 	},
+})
+
+require("lspconfig").csharp_ls.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
 })
 
 -- this was just anoying to use

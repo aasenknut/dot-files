@@ -40,6 +40,9 @@ require("catppuccin").setup({
     },
 })
 
+require("zenburn").setup(
+)
+
 -- Default options
 require('nightfox').setup({
   options = {
@@ -80,3 +83,4 @@ require('nightfox').setup({
 
 -- setup must be called before loading
 vim.cmd.colorscheme "nightfox"
+--vim.cmd.colorscheme "zenburn"

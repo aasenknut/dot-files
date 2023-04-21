@@ -14,6 +14,7 @@ return require("packer").startup(function(use)
     -- Colours
     use({ "catppuccin/nvim", as = "catppuccin" })
     use("EdenEast/nightfox.nvim")
+    use {"phha/zenburn.nvim"}
 
     -- Treesitter
     use({

@@ -14,10 +14,11 @@ vim.keymap.set("n", "<c-j>", "<c-w>j")
 vim.keymap.set("n", "<c-k>", "<c-w>k")
 vim.keymap.set("n", "<c-l>", "<c-w>l")
 vim.keymap.set("n", "<c-h>", "<c-w>h")
-vim.keymap.set("t", "<c-j>", [[<C-\><C-n><C-w>h]])
-vim.keymap.set("t", "<c-k>", [[<C-\><C-n><C-w>j]])
-vim.keymap.set("t", "<c-l>", [[<C-\><C-n><C-w>k]])
-vim.keymap.set("t", "<c-h>", [[<C-\><C-n><C-w>l]])
+-- this is problematic since pop ups use the term mode :(
+-- vim.keymap.set("t", "<c-j>", [[<C-\><C-n><C-w>h]])
+-- vim.keymap.set("t", "<c-k>", [[<C-\><C-n><C-w>j]])
+-- vim.keymap.set("t", "<c-l>", [[<C-\><C-n><C-w>k]])
+-- vim.keymap.set("t", "<c-h>", [[<C-\><C-n><C-w>l]])
 
 
 -- Register mapping
