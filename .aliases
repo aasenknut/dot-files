@@ -1,0 +1,26 @@
+# Source ~/.zshrc
+alias sc="source $HOME/.zshrc"
+
+# Lua
+alias lua='lua-5.1'
+
+# Open file in nvim after search with fzf
+alias fn='nvim $(fzf)'
+
+# Interactive Ripgrep
+alias rfn='bash $HOME/.scripts/rfn'
+
+# Ranger
+alias ra='ranger'
+
+# Golang: Gofmt files recursively and save.
+alias gf='gofmt -l -s -w .'
+
+# Golang: Prune any unused dependencies from the go.mod and go.sum files, and add any missing dependencies
+alias gt='go mod tidy'
+
+# Golang: build for debugging and run
+alias gd='goDebug(){ go build -gcflags="all=-N -l" -o="$1" "$2"; "$1"; }; goDebug'
+
+# Get to directory by fzf
+alias cdf='cd $(find * -type d | fzf)'
