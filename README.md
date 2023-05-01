@@ -1,6 +1,6 @@
 # Neovim
 
-*Note*. Vim-Plug will put stuff in, `~/.local/share/nvim/`, this is also where the treesitter stuff will end up.
+*Note*. Nvim stuff will be placed in `~/.local/share/nvim/`, this is also where the treesitter stuff will end up.
 
 ### Dotnet
 
