@@ -12,9 +12,11 @@ return require("packer").startup(function(use)
     --- GIT (in addition to tpope/vim-fugitive)
     use({ "airblade/vim-gitgutter" })
     -- Colours
-    use({ "catppuccin/nvim", as = "catppuccin" })
     use("EdenEast/nightfox.nvim")
-    use {"phha/zenburn.nvim"}
+    use "savq/melange-nvim"
+
+    -- Too see, e.g., hex colours:
+    use 'norcalli/nvim-colorizer.lua'
 
     -- Treesitter
     use({
