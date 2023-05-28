@@ -60,3 +60,5 @@ local opts = {
   }
 }
 require("symbols-outline").setup(opts)
+
+vim.keymap.set("n", "<leader>o", ":SymbolsOutline<CR>")
