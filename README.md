@@ -2,11 +2,17 @@
 
 *Note*. Nvim stuff will be placed in `~/.local/share/nvim/`, this is also where the treesitter stuff will end up.
 
-### Dotnet
+# Languages
 
-Debugger: https://github.com/Samsung/netcoredbg
+## Dotnet
+- Debugger: https://github.com/Samsung/netcoredbg
 
-### LSP
+## Go
+- Install Go. `$ brew update && brew install golang`
+- Install linter. `$ brew install golangci-lint`
+- LSP. `$ go install golang.org/x/tools/gopls@latest`
+
+## LSP
 Remember to install typescript-language-server before running `:LspInstall tsserver`,
 ```
 npm install -g typescript-language-server typescript
@@ -16,9 +22,8 @@ Same for pyright:
 npm i -g pyright
 ```
 
-### Formatting
+## Formatting
 Remember to install relevant formatters:
-- Go (gofmt): Just install Go. `$ brew update && brew install golang`.
 - Stylua (https://github.com/JohnnyMorganz/StyLua):
 ```
 $ brew install rustup
@@ -27,7 +32,7 @@ $ cargo install stylua
 ```
 - JSON (fixjson): `$ npm install -g fixjson`
 - Python (autopep8): `$ pip install autopep8`
-- Prettier (): 
+- Prettier: 
 ```
 $ npm install --save-dev --save-exact prettier
 $ echo {}> .prettierrc.json
@@ -42,7 +47,6 @@ $ echo {}> .prettierrc.json
 - **fzf** (https://github.com/junegunn/fzf). Command line fuzzy finder.
 - **ripgrep** (https://github.com/BurntSushi/ripgrep). Line oriented search tool for recursively searching for regex patterns.
 - **tree** (https://formulae.brew.sh/formula/tree). Display directories as trees (with optional color/HTML output).
-- **ranger** (https://formulae.brew.sh/formula/ranger) (https://github.com/ranger/ranger). Console file manager with VI key bindings.
 - **bat** (https://github.com/sharkdp/bat). Supports syntax highlighting for a large number of programming and markup languages.
 - **jq** (https://formulae.brew.sh/formula/jq) Lightweight and flexible command-line JSON processor
 - **git-delta** (https://dandavison.github.io/delta/installation.html) Language syntax highlighting with the same syntax-highlighting themes as bat+++.
@@ -65,13 +69,6 @@ brew install node
 With package manager and formatter.
 ```
 $ brew update && brew install lua@5.1
-```
-
-**Golang.**
-With language server.
-```
-$ brew update && brew install go
-$ go install golang.org/x/tools/gopls@latest
 ```
 
 **Python.**
