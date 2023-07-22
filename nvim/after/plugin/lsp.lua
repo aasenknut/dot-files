@@ -220,6 +220,17 @@ require("lspconfig").csharp_ls.setup({
 	on_attach = on_attach,
 })
 
+require("lspconfig").fsautocomplete.setup({
+    capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+
+require("lspconfig").hls.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
 -- this was just anoying to use
 -- require("lspconfig").ccls.setup({
 -- 	capabilities = capabilities,

@@ -14,12 +14,6 @@ vim.keymap.set("n", "<c-j>", "<c-w>j")
 vim.keymap.set("n", "<c-k>", "<c-w>k")
 vim.keymap.set("n", "<c-l>", "<c-w>l")
 vim.keymap.set("n", "<c-h>", "<c-w>h")
--- this is problematic since pop ups use the term mode :(
--- vim.keymap.set("t", "<c-j>", [[<C-\><C-n><C-w>h]])
--- vim.keymap.set("t", "<c-k>", [[<C-\><C-n><C-w>j]])
--- vim.keymap.set("t", "<c-l>", [[<C-\><C-n><C-w>k]])
--- vim.keymap.set("t", "<c-h>", [[<C-\><C-n><C-w>l]])
-
 
 -- Register mapping
 vim.keymap.set("v", "<leader>P", '"_dP')
@@ -57,6 +51,10 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+
+-- Move a bit more than just one line at a time
+vim.keymap.set("n", "<C-e>", "3<C-e>")
+vim.keymap.set("n", "<C-y>", "3<C-y>")
 
 
 -- Keep cursor in place
