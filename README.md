@@ -50,6 +50,7 @@ $ echo {}> .prettierrc.json
 - **bat** (https://github.com/sharkdp/bat). Supports syntax highlighting for a large number of programming and markup languages.
 - **jq** (https://formulae.brew.sh/formula/jq) Lightweight and flexible command-line JSON processor
 - **git-delta** (https://dandavison.github.io/delta/installation.html) Language syntax highlighting with the same syntax-highlighting themes as bat+++.
+- **cassowary** (https://github.com/rogerwelin/cassowary) Load test.
 - **abd** (https://httpd.apache.org/docs/2.4/programs/ab.html)
 
 # Other stuff
