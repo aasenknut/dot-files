@@ -2,81 +2,81 @@
 vim.cmd.packadd("packer.nvim")
 
 return require("packer").startup(function(use)
-    -- Packer can manage itself
-    use("wbthomason/packer.nvim")
+	-- Packer can manage itself
+	use("wbthomason/packer.nvim")
 
-    -- TPOPE
-    use({ "tpope/vim-sensible" })
-    use({ "tpope/vim-surround" })
-    use({ "tpope/vim-fugitive" })
-    --- GIT (in addition to tpope/vim-fugitive)
-    use({ "airblade/vim-gitgutter" })
-    -- Colours
-    use("EdenEast/nightfox.nvim")
-    use {"phha/zenburn.nvim"}
-    use("NLKNguyen/papercolor-theme")
-    use "savq/melange-nvim"
+	-- TPOPE
+	use({ "tpope/vim-sensible" })
+	use({ "tpope/vim-surround" })
+	use({ "tpope/vim-fugitive" })
+	--- GIT (in addition to tpope/vim-fugitive)
+	use({ "airblade/vim-gitgutter" })
+	-- Colours
+	use("EdenEast/nightfox.nvim")
+	use("savq/melange-nvim")
 
-    -- Treesitter
-    use({
-        "nvim-treesitter/nvim-treesitter",
-        run = function()
-            local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-            ts_update()
-        end,
-    })
+	-- Too see, e.g., hex colours:
+	use("norcalli/nvim-colorizer.lua")
 
-    --- LSP ---
-    use({ "neovim/nvim-lspconfig" })
-    use({ "williamboman/mason.nvim" })
-    use({ "williamboman/mason-lspconfig.nvim" })
-    use({ "hrsh7th/cmp-nvim-lsp" })
-    use({ "hrsh7th/cmp-buffer" })
-    use({ "hrsh7th/cmp-path" })
-    use({ "hrsh7th/cmp-cmdline" })
-    use({ "hrsh7th/nvim-cmp" })
-    use({ "onsails/lspkind-nvim" })
-    use({ "simrat39/symbols-outline.nvim" })
-    use({ "ray-x/lsp_signature.nvim" })
-    use("jose-elias-alvarez/null-ls.nvim")
+	-- Treesitter
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = function()
+			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
+			ts_update()
+		end,
+	})
 
-    --- SNIPPETS ---
-    use("hrsh7th/cmp-vsnip")
-    use("hrsh7th/vim-vsnip")
-    use("rafamadriz/friendly-snippets")
+	--- LSP ---
+	use({ "neovim/nvim-lspconfig" })
+	use({ "williamboman/mason.nvim" })
+	use({ "williamboman/mason-lspconfig.nvim" })
+	use({ "mhartington/formatter.nvim" })
+	use({ "hrsh7th/cmp-nvim-lsp" })
+	use({ "hrsh7th/cmp-buffer" })
+	use({ "hrsh7th/cmp-path" })
+	use({ "hrsh7th/cmp-cmdline" })
+	use({ "hrsh7th/nvim-cmp" })
+	use({ "onsails/lspkind-nvim" })
+	use({ "simrat39/symbols-outline.nvim" })
+	use({ "ray-x/lsp_signature.nvim" })
+	use("jose-elias-alvarez/null-ls.nvim")
 
-    --- DAP ---
-    use("mfussenegger/nvim-dap")
-    use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
-    -- language specific
-    use("leoluz/nvim-dap-go")
-    use 'mfussenegger/nvim-dap-python'
+	--- SNIPPETS ---
+	use("hrsh7th/cmp-vsnip")
+	use("hrsh7th/vim-vsnip")
+	use("rafamadriz/friendly-snippets")
 
-    -- FZF -- fuzzy finding
-    use({ "junegunn/fzf", run = ":call fzf#install()" })
-    use({ "junegunn/fzf.vim" })
-    use("gfanto/fzf-lsp.nvim")
+	--- DAP ---
+	use("mfussenegger/nvim-dap")
+	use("leoluz/nvim-dap-go")
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 
-    -- Ack
-    use("mileszs/ack.vim")
+	-- FZF -- fuzzy finding
+	use({ "junegunn/fzf", run = ":call fzf#install()" })
+	use({ "junegunn/fzf.vim" })
+	use("gfanto/fzf-lsp.nvim")
 
-    -- Go
-    use({ "fatih/vim-go" })
+	-- Ack
+	use("mileszs/ack.vim")
 
-    --- File explorer (tree view) ---
-    use({
-        "nvim-tree/nvim-tree.lua",
-        requires = {
-            "nvim-tree/nvim-web-devicons", -- optional, for file icons
-        },
-    })
-    use({
-        "ckolkey/ts-node-action",
-        requires = { "nvim-treesitter" },
-    })
-    -- Other
-    use("rest-nvim/rest.nvim")
-    use("szw/vim-maximizer")
-    use("mbbill/undotree") -- Overview of changes.
-    use("nvim-lua/plenary.nvim") -- Requirement for some plugins. (might not be a requirement for any of the current plugins I use.)
+	-- Go
+	use({ "fatih/vim-go" })
+
+	--- File explorer (tree view) ---
+	use({
+		"nvim-tree/nvim-tree.lua",
+		requires = {
+			"nvim-tree/nvim-web-devicons", -- optional, for file icons
+		},
+	})
+	use({
+		"ckolkey/ts-node-action",
+		requires = { "nvim-treesitter" },
+	})
+	-- Other
+	use("rest-nvim/rest.nvim")
+	use("szw/vim-maximizer")
+	use("mbbill/undotree") -- Overview of changes.
+	use("nvim-lua/plenary.nvim") -- Requirement for some plugins. (might not be a requirement for any of the current plugins I use.)
 end)

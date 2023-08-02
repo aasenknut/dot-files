@@ -22,5 +22,5 @@ vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "80"
 vim.opt.nrformats:append({"alpha"})
 vim.opt.list = true
---vim.opt.clipboard="unnamedplus"
+vim.opt.clipboard="unnamedplus"
 vim.o.completeopt="menu,menuone,noselect,noinsert"
