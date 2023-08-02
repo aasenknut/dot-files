@@ -10,16 +10,13 @@ require("mason").setup({
 require("mason-lspconfig").setup({
     ensure_installed = {
         "elixirls",
-        "fsautocomplete",
         "lua_ls",
-        "hls",
         "rust_analyzer",
         "gopls",
         "pyright",
         "tsserver",
         "yamlls",
         "jsonls",
-        "lemminx",
-        "zls"
+        "lemminx"
     },
 })

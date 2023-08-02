@@ -34,8 +34,9 @@ require('nightfox').setup({
   groups = {},
 })
 
-
+require('zenburn').setup({})
 
 -- setup must be called before loading
 --vim.cmd.colorscheme "nightfox"
-vim.cmd.colorscheme "melange"
+--vim.cmd.colorscheme "zenburn"
+vim.cmd.colorscheme 'melange'

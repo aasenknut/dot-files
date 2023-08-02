@@ -13,10 +13,9 @@ return require("packer").startup(function(use)
     use({ "airblade/vim-gitgutter" })
     -- Colours
     use("EdenEast/nightfox.nvim")
+    use {"phha/zenburn.nvim"}
+    use("NLKNguyen/papercolor-theme")
     use "savq/melange-nvim"
-
-    -- Too see, e.g., hex colours:
-    use 'norcalli/nvim-colorizer.lua'
 
     -- Treesitter
     use({
@@ -48,8 +47,10 @@ return require("packer").startup(function(use)
 
     --- DAP ---
     use("mfussenegger/nvim-dap")
-    use("leoluz/nvim-dap-go")
     use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+    -- language specific
+    use("leoluz/nvim-dap-go")
+    use 'mfussenegger/nvim-dap-python'
 
     -- FZF -- fuzzy finding
     use({ "junegunn/fzf", run = ":call fzf#install()" })

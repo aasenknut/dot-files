@@ -19,16 +19,18 @@ vim.keymap.set("n", "<c-h>", "<c-w>h")
 vim.keymap.set("v", "<leader>P", '"_dP')
 
 -- non-US keyboard makes it hard to type [ and ].
-vim.keymap.set("n", "<", "[", {remap = true})
-vim.keymap.set("n", ">", "]", {remap = true})
-vim.keymap.set("o", "<", "[", {remap = true})
-vim.keymap.set("o", ">", "]", {remap = true})
-vim.keymap.set("x", "<", "[", {remap = true})
-vim.keymap.set("x", ">", "]", {remap = true})
+-- vim.keymap.set("n", "<", "[", {remap = true})
+-- vim.keymap.set("n", ">", "]", {remap = true})
+-- vim.keymap.set("o", "<", "[", {remap = true})
+-- vim.keymap.set("o", ">", "]", {remap = true})
+-- vim.keymap.set("x", "<", "[", {remap = true})
+-- vim.keymap.set("x", ">", "]", {remap = true})
 
 -- Navigate quickfix list with ease
-vim.keymap.set("n", "[p", ":cprevious<CR>zz", {silent = true})
-vim.keymap.set("n", "[n", ":cnext<CR>zz", {silent = true})
+vim.keymap.set("n", "<c-[>", ":cprevious<CR>zz", {silent = true})
+vim.keymap.set("n", "<c-]>", ":cnext<CR>zz", {silent = true})
+vim.keymap.set("n", "<c-,>", ":cprevious<CR>zz", {silent = true})
+vim.keymap.set("n", "<c-.>", ":cnext<CR>zz", {silent = true})
 
 vim.keymap.set("n", "<leader>ce", ":cexpr []<cr>")
 
@@ -51,11 +53,6 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
-
--- Move a bit more than just one line at a time
-vim.keymap.set("n", "<C-e>", "3<C-e>")
-vim.keymap.set("n", "<C-y>", "3<C-y>")
-
 
 -- Keep cursor in place
 vim.keymap.set("n", "J", "mzJ`z")
