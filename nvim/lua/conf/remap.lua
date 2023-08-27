@@ -21,6 +21,8 @@ vim.keymap.set("v", "<leader>P", '"_dP')
 -- Navigate quickfix list with ease
 vim.keymap.set("n", "<c-[>", ":cprevious<CR>zz", {silent = true})
 vim.keymap.set("n", "<c-]>", ":cnext<CR>zz", {silent = true})
+vim.keymap.set("n", "<c-,>", ":lprevious<CR>zz", {silent = true})
+vim.keymap.set("n", "<c-.>", ":lnext<CR>zz", {silent = true})
 
 -- Navigate quickfix list with ease
 vim.keymap.set("n", "[p", ":cprevious<CR>zz", {silent = true})
