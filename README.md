@@ -9,6 +9,7 @@
 
 ## Go
 - Install Go. `$ brew update && brew install golang`
+- Tools. `go install golang.org/x/tools/cmd/goimports@latest`
 - Install linter. `$ brew install golangci-lint`
 - LSP. `$ go install golang.org/x/tools/gopls@latest`
 
