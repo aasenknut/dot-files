@@ -10,17 +10,25 @@ alias fn='nvim $(fzf)'
 # Interactive Ripgrep
 alias rfn='bash $HOME/.scripts/rfn'
 
-# Ranger
-alias ra='ranger'
-
 # Golang: Gofmt files recursively and save.
-alias gof='gofmt -l -s -w .'
+alias gf='gofmt -l -s -w .'
 
 # Golang: build for debugging and run
-alias god='goDebug(){ go build -gcflags="all=-N -l" -o="$1" "$2"; "$1"; }; goDebug'
+alias gd='goDebug(){ go build -gcflags="all=-N -l" -o="$1" "$2"; "$1"; }; goDebug'
 
 # Get to directory by fzf
 alias cdf='cd $(find * -type d | fzf)'
 
-# Go linter
+#----#
+# GO #
+#----#
+
+# linter
 alias goli='golangci-lint run'
+
+# profiling
+alias gprofp='goProfile(){ go tool pprof -http=:8123 http:127.0.0.1:"$1"/debug/pprof/profile }; goProfile'
+alias gprofh='goProfileHeap(){ go tool pprof -http=:8123 http:127.0.0.1:"$1"/debug/pprof/heap }; goProfileHeap'
+
+# test coverage
+alias gcover='cover(){ t="/tmp/go-cover.tmp" ; go test -coverprofile=$t ./... ; go tool cover -html=$t ; unlink $t}; cover'
