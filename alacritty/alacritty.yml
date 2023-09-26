@@ -7,6 +7,11 @@ shell:
     - -s
     - main
 
+key_bindings:
+- { key: Left,     mods: Shift,   action: ResetFontSize                }
+- { key: Up,       mods: Shift,   action: IncreaseFontSize             }
+- { key: Down,     mods: Shift,   action: DecreaseFontSize             }
+
 env:
   TERM: xterm-256color
 # Font configuration
