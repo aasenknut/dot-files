@@ -79,11 +79,6 @@ _G.packer_plugins = {
     path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/ack.vim",
     url = "https://github.com/mileszs/ack.vim"
   },
-  catppuccin = {
-    loaded = true,
-    path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/catppuccin",
-    url = "https://github.com/catppuccin/nvim"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -108,6 +103,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
     url = "https://github.com/hrsh7th/cmp-vsnip"
+  },
+  ["formatter.nvim"] = {
+    loaded = true,
+    path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/formatter.nvim",
+    url = "https://github.com/mhartington/formatter.nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,
@@ -159,11 +159,6 @@ _G.packer_plugins = {
     path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
     url = "https://github.com/EdenEast/nightfox.nvim"
   },
-  ["null-ls.nvim"] = {
-    loaded = true,
-    path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
-    url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
-  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -208,6 +203,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
+  },
+  ["omnisharp-extended-lsp.nvim"] = {
+    loaded = true,
+    path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/omnisharp-extended-lsp.nvim",
+    url = "https://github.com/Hoffs/omnisharp-extended-lsp.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -273,11 +273,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/vim-vsnip",
     url = "https://github.com/hrsh7th/vim-vsnip"
-  },
-  ["zenburn.nvim"] = {
-    loaded = true,
-    path = "/Users/knutaasen/.local/share/nvim/site/pack/packer/start/zenburn.nvim",
-    url = "https://github.com/phha/zenburn.nvim"
   }
 }
 
