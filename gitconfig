@@ -15,3 +15,7 @@
 
 [diff]
     colorMoved = default
+
+[alias]
+    pushfeat = "!f() { local_branch=$(git symbolic-ref --short HEAD); remote_branch=\"feat/$1\"; git push --set-upstream origin \"$local_branch:$remote_branch\"; }; f"
+    pushfix = "!f() { local_branch=$(git symbolic-ref --short HEAD); remote_branch=\"fix/$1\"; git push --set-upstream origin \"$local_branch:$remote_branch\"; }; f"
