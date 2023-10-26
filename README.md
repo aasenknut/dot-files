@@ -45,13 +45,7 @@ $ echo {}> .prettierrc.json
         - `brew install docker && brew install docker-compose`
         - In `~/.docker/config.json` change `credsStore` to `credStore`
 - **Visidata** (https://www.visidata.org/install/) (https://github.com/saulpw/visidata). Terminal interface for exploring tabular data.
-- **fzf** (https://github.com/junegunn/fzf). Command line fuzzy finder.
-- **ripgrep** (https://github.com/BurntSushi/ripgrep). Line oriented search tool for recursively searching for regex patterns.
-- **tree** (https://formulae.brew.sh/formula/tree). Display directories as trees (with optional color/HTML output).
-- **bat** (https://github.com/sharkdp/bat). Supports syntax highlighting for a large number of programming and markup languages.
-- **jq** (https://formulae.brew.sh/formula/jq) Lightweight and flexible command-line JSON processor
 - **git-delta** (https://dandavison.github.io/delta/installation.html) Language syntax highlighting with the same syntax-highlighting themes as bat+++.
-- **cassowary** (https://github.com/rogerwelin/cassowary) Load test.
 - **abd** (https://httpd.apache.org/docs/2.4/programs/ab.html)
 - **PMD** (https://formulae.brew.sh/formula/pmd) An extensible cross-language static code analyzer.
 
@@ -62,22 +56,8 @@ brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
 ```
 
-**Node / npm**
-Install Node (npm will be installed with Node):
-```
-brew install node
-```
-
 **Lua.** 
 With package manager and formatter.
 ```
 $ brew update && brew install lua@5.1
-```
-
-**Python.**
-Version management with virtual environments.
-```
-$ brew update
-$ brew install pyenv
-$ brew install pyenv-virtualenv
 ```
