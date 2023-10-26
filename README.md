@@ -8,10 +8,10 @@
 - Debugger: https://github.com/Samsung/netcoredbg
 
 ## Go
-- Install Go. `$ brew update && brew install golang`
-- Tools. `go install golang.org/x/tools/cmd/goimports@latest`
-- Install linter. `$ brew install golangci-lint`
-- LSP. `$ go install golang.org/x/tools/gopls@latest`
+- Tools. 
+    - `$ go install golang.org/x/tools/cmd/goimports@latest`
+    - `$ go install golang.org/x/tools/gopls@latest`
+    - `$ brew install golangci-lint`
 
 ## LSP
 Remember to install typescript-language-server before running `:LspInstall tsserver`,
