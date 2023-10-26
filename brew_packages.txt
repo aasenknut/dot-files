@@ -5,3 +5,4 @@ ripgrep
 ranger
 bat
 tree
+cloc
