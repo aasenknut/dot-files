@@ -7,9 +7,6 @@ alias lua='lua-5.1'
 # Open file in nvim after search with fzf
 alias fn='nvim $(fzf)'
 
-# Interactive Ripgrep
-alias rfn='bash $HOME/.scripts/rfn'
-
 # Golang: Gofmt files recursively and save.
 alias gf='gofmt -l -s -w .'
 
@@ -32,3 +29,13 @@ alias gprofh='goProfileHeap(){ go tool pprof -http=:8123 http:127.0.0.1:"$1"/deb
 
 # test coverage
 alias gcover='cover(){ t="/tmp/go-cover.tmp" ; go test -coverprofile=$t ./... ; go tool cover -html=$t ; unlink $t}; cover'
+
+#------------------------------------------------------------------------------
+# Scripts
+#------------------------------------------------------------------------------
+
+# Interactive Ripgrep
+alias rfn='bash $HOME/.scripts/rfn'
+
+# Tmux: standard session
+alias ses='bash $HOME/.scripts/newsess'
