@@ -1,7 +1,5 @@
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Luke's config for the Zoomer Shell
-
 # Enable colors
 autoload -U colors && colors
 
