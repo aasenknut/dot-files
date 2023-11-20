@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
 # Start a new Tmux session named "programming"
-tmux new-session -s programming -d
+tmux new-session -s programming -c ~ -d 
 
 # Create the first window and split it vertically
 tmux splitw -h -t programming:1
 tmux splitw -v -t programming:1.2
 tmux send-keys -t programming:1.1 "cd ~/projects" C-m
+tmux send-keys -t programming:1.2 "cd ~" C-m
+tmux send-keys -t programming:1.3 "cd ~" C-m
 
 # Create the second window
 tmux new-window -t programming:2
