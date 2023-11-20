@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- quit file
-vim.keymap.set("n", "<leader>q", ":q!<CR>")
+vim.keymap.set("n", "<C-q>", ":q!<CR>")
 vim.keymap.set("n", "<leader>w", ":w!<CR>")
 
 -- Use CTRL-L instead of <Esc> for relevant modes
