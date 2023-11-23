@@ -46,7 +46,7 @@ $ echo {}> .prettierrc.json
         - In `~/.docker/config.json` change `credsStore` to `credStore`
 - **Visidata** (https://www.visidata.org/install/) (https://github.com/saulpw/visidata). Terminal interface for exploring tabular data.
 - **git-delta** (https://dandavison.github.io/delta/installation.html) Language syntax highlighting with the same syntax-highlighting themes as bat+++.
-- **abd** (https://httpd.apache.org/docs/2.4/programs/ab.html)
+- **ab** (https://httpd.apache.org/docs/2.4/programs/ab.html)
 - **PMD** (https://formulae.brew.sh/formula/pmd) An extensible cross-language static code analyzer.
 
 # Other stuff
