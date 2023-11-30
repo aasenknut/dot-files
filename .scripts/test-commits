@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <number_of_commits>"
+    exit 1
+fi
+
+num_commits="$1"
+end_commit=$(git rev-parse HEAD)
+start_commit=$(git log | head -n 1 | cut -d ' ' -f2)
+
+while [ "$start_commit" != "$end_commit" ]; do
+    if ! git show "$start_commit" | go test ./...; then
+        echo "Test failed for commit: $start_commit"
+    fi
+
+    start_commit=$(git log | head -n 1 | cut -d ' ' -f2)
+done

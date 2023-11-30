@@ -1,0 +1,11 @@
+#!/bin/bash
+
+json_content='{
+    "executionEnvironments": [
+        {"root": "."}
+    ]
+}'
+
+out_file="pyrightconfig.json"
+
+echo "$json_content" > "$out_file"

@@ -39,3 +39,9 @@ alias rfn='bash $HOME/.scripts/rfn'
 
 # Tmux: standard session
 alias ses='bash $HOME/.scripts/newsess'
+
+# Run tests on all commits in range
+alias tcs='bash $HOME/.scripts/test-commits'
+
+# Create pyrightconfig.json file
+alias pyr='bash $HOME/.scripts/pyrightconf'
