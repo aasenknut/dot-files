@@ -44,4 +44,4 @@ alias ses='bash $HOME/.scripts/newsess'
 alias tcs='bash $HOME/.scripts/test-commits'
 
 # Create pyrightconfig.json file
-alias pyr='bash $HOME/.scripts/pyrightconf'
+alias pright='bash $HOME/.scripts/pyrightconf'
