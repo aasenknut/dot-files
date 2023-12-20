@@ -23,4 +23,5 @@ vim.opt.colorcolumn = "80"
 vim.opt.nrformats:append({"alpha"})
 vim.opt.list = true
 vim.opt.clipboard="unnamedplus"
-vim.o.completeopt="menu,menuone,noselect,noinsert"
+vim.opt.completeopt="menu,menuone,noselect,noinsert"
+vim.opt.bg = 'dark'

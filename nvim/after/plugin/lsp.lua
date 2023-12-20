@@ -184,14 +184,22 @@ require("lspconfig").lua_ls.setup({
     },
 })
 
+-- elixir
 require("lspconfig").elixirls.setup({
     cmd = { "elixir-ls" },
     capabilities = capabilities,
     on_attach = on_attach,
 })
 
+-- zig
 require("lspconfig").zls.setup({
     cmd = { "zls" },
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
+
+-- templ -- for templating.
+require("lspconfig").templ.setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })
@@ -205,6 +213,11 @@ require("lspconfig").rust_analyzer.setup({
     settings = {
         ["rust-analyzer"] = {},
     },
+})
+
+require("lspconfig").racket_langserver.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
 })
 
 require("lsp_signature").setup({

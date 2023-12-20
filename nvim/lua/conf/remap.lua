@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- quit file
-vim.keymap.set("n", "<C-q>", ":q!<CR>")
+vim.keymap.set("n", "<c-q>", ":q!<CR>")
 vim.keymap.set("n", "<leader>w", ":w!<CR>")
 
 -- Use CTRL-L instead of <Esc> for relevant modes
@@ -80,3 +80,6 @@ vim.keymap.set("n", "<leader>tc", ":tabclose<CR>")
 -- Move lines up and down
 vim.keymap.set("v", "<c-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<c-k>", ":m '<-2<CR>gv=gv")
+
+-- Man
+vim.keymap.set("n", "<c-m>", ":Man expand(<\"cword\">)<CR>", { silent = true })
