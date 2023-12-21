@@ -128,15 +128,16 @@ require("lspconfig").pyright.setup({
     capabilities = capabilities,
 })
 
-
 require("lspconfig").jsonls.setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })
+
 require("lspconfig").yamlls.setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })
+
 require("lspconfig").lemminx.setup({
     capabilities = capabilities,
     on_attach = on_attach,
@@ -146,6 +147,7 @@ require("lspconfig").tsserver.setup({
     capabilities = capabilities,
     on_attach = on_attach,
 })
+
 require("lspconfig").gopls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
@@ -159,6 +161,7 @@ require("lspconfig").gopls.setup({
         },
     },
 })
+
 require("lspconfig").lua_ls.setup({
     capabilities = capabilities,
     on_attach = on_attach,
@@ -218,6 +221,12 @@ require("lspconfig").rust_analyzer.setup({
 require("lspconfig").racket_langserver.setup({
     capabilities = capabilities,
     on_attach = on_attach,
+})
+
+require("lspconfig").clangd.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
 })
 
 require("lsp_signature").setup({
