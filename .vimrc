@@ -1,83 +1,6 @@
-" Plugins with Vim Plug
-call plug#begin(stdpath('data') . '/plugged')
-
-" --- TPOPE ---
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary'
-" --- GIT --- (in addition to tpope/vim-fugitive)
-Plug 'airblade/vim-gitgutter'
-" --- JUNEGUNN ---
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-easy-align'
-" --- LSP ---
-Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/vim-vsnip-integ'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'onsails/lspkind-nvim'
-Plug 'simrat39/symbols-outline.nvim'
-Plug 'gfanto/fzf-lsp.nvim'
-Plug 'ray-x/lsp_signature.nvim'
-" --- FORMATTER ---
-Plug 'mhartington/formatter.nvim'
-" --- JAVA ---
-Plug 'mfussenegger/nvim-jdtls'
-" --- RUST ---
-Plug 'simrat39/rust-tools.nvim'
-" --- SNIPPETS ---
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'rafamadriz/friendly-snippets'
-" --- TREESITTER ---
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" --- FERN (file viewer) ---
-Plug 'lambdalisue/fern.vim'
-Plug 'yuki-yano/fern-preview.vim'
-Plug 'lambdalisue/nerdfont.vim'
-Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-Plug 'lambdalisue/glyph-palette.vim'
-Plug 'lambdalisue/fern-git-status.vim'
-" --- COLOURS ---
-Plug 'catppuccin/nvim', {'as': 'catppuccin'}
-" --- DEBUGGER (DAP) ---
-Plug 'mfussenegger/nvim-dap'
-Plug 'rcarriga/nvim-dap-ui'
-Plug 'theHamsta/nvim-dap-virtual-text'
-Plug 'mfussenegger/nvim-dap-python'
-Plug 'leoluz/nvim-dap-go'
-" --- TESTING ---
-Plug 'vim-test/vim-test'
-" --- GO ---
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" --- OTHER ---
-Plug 'AndrewRadev/splitjoin.vim' " Switching between a single-line statement and a multi-line one.
-Plug 'nvim-lua/plenary.nvim' " Required for some plugins. NOTE: Might not be need for any of the currently used plugins.
-Plug 'kassio/neoterm' " Easy to use for REPL
-Plug 'szw/vim-maximizer' "Maximize current window
-Plug 'mbbill/undotree' " Overview of changes.
-Plug 'mileszs/ack.vim' " Search. Used for populating quickfix list.
-Plug 'sheerun/vim-polyglot' " Needed for other plugins.
-Plug 'kyazdani42/nvim-web-devicons' " Icons
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-
-
-call plug#end()
-
-" lua config with, e.g., LSP stuff
-lua require('init')
-
 "------------------------------------------------------------------------------
 " General stuff -- mostly 'set' stuff.
 "------------------------------------------------------------------------------
-set shell=/opt/homebrew/bin/zsh " If this is not set correctly stuff will fail, e.g., fzf and ripgrep.
 set mouse=a " Enable mouse
 set hlsearch
 set hidden
@@ -96,6 +19,7 @@ set autoindent
 set nowrap
 set noswapfile
 set nobackup
+set guicursor=n-v-c:block-Cursor
 set undodir=~/.vim/undodir
 set undofile
 set nowritebackup
@@ -133,13 +57,11 @@ set noshowmode " This is to remove the mode from below the statusbar, e.g., -- I
 "------------------------------------------------------------------------------
 " COLOURS
 "------------------------------------------------------------------------------
-"set background=dark
-colorscheme catppuccin-macchiato
+set background=dark
 
 "------------------------------------------------------------------------------
 " Key-bindings follow.
 "------------------------------------------------------------------------------
-
 " set leader
 let mapleader = "\<Space>"
 
@@ -183,10 +105,11 @@ vnoremap <c-j> :m '>+1<CR>gv=gv
 vnoremap <c-k> :m '<-2<CR>gv=gv
 
 " write file
-nnoremap <leader>w :w<cr>
+nnoremap <leader>w :w!<cr>
 
 " quit file
-nnoremap <leader>q :q!<cr>
+nnoremap <c-q> :q!<cr>
+
 
 " Use CTRL-L instead of <Esc> for relevant modes
 inoremap <c-l> <esc>
@@ -206,26 +129,103 @@ inoremap <S-Tab> <C-d>
 " Register mapping
 vnoremap <leader>pp "_dP
 
-" non-US keyboard makes it hard to type [ and ].
-nmap < [
-nmap > ]
-omap < [
-omap > ]
-xmap < [
-xmap > ]
-
 " Navigate quickfix list with ease
 nnoremap <silent> [p :cprevious<CR>
 nnoremap <silent> [n :cnext<CR>
+nnoremap <silent> <c-[> :cprevious<CR>zz
+nnoremap <silent> <c-]> :cnext<CR>zz
+nnoremap <silent> <c-,> :lprevious<CR>zz
+nnoremap <silent> <c-.> :lnext<CR>zz
 
-"Remove all trailing whitespace and removeing highlight
-map <silent> <leader><cr> <cr>:let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><cr>
+" Keep cursor in middle when jumping and searching
+nmap <C-d> <C-d>zz
+nmap <C-u> <C-u>zz
+nmap n nzzzv
+nmap N Nzzzv
+
+" Move a bit more than just one line at a time
+vim.keymap.set("n", "<C-e>", "3<C-e>")
+vim.keymap.set("n", "<C-y>", "3<C-y>")
 
 " -------------
 " QUICKFIX LIST
 " -------------
 " Clear quickfix list:
 nmap <leader>cl :cexpr []<cr>
+
 " Populate quickfix list with buffers:
 command! Qbuffers call setqflist(map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), '{"bufnr":v:val}'))
 nmap <leader>cb :Qbuffers<cr>
+
+" ---------
+" MAN PAGES
+" ---------
+fun! ReadMan()
+  " Assign current word under cursor to a script variable:
+  let s:man_word = expand('<cword>')
+  " Read in the manpage for man_word (col -b is for formatting):
+  :exe ":Man " . s:man_word . ""
+  " Goto first line...
+  :exe ":goto"
+endfun
+nmap <c-m> :call ReadMan()<CR>
+
+
+
+" --------------
+" SPECIAL SEARCH
+" --------------
+
+" Escape special characters in a string for exact matching.
+" This is useful to copying strings from the file to the search tool
+" Based on this - http://peterodding.com/code/vim/profile/autoload/xolox/escape.vim
+function! EscapeString (string)
+  let string=a:string
+  " Escape regex characters
+  let string = escape(string, '^$.*\/~[]')
+  " Escape the line endings
+  let string = substitute(string, '\n', '\\n', 'g')
+  return string
+endfunction
+
+" Get the current visual block for search and replaces
+" This function passed the visual block through a string escape function
+" Based on this - http://stackoverflow.com/questions/676600/vim-replace-selected-text/677918#677918
+function! GetVisual() range
+  " Save the current register and clipboard
+  let reg_save = getreg('"')
+  let regtype_save = getregtype('"')
+  let cb_save = &clipboard
+  set clipboard&
+
+  " Put the current visual selection in the " register
+  normal! ""gvy
+  let selection = getreg('"')
+
+  " Put the saved registers and clipboards back
+  call setreg('"', reg_save, regtype_save)
+  let &clipboard = cb_save
+
+  "Escape any special characters in the selection
+  let escaped_selection = EscapeString(selection)
+
+  return escaped_selection
+endfunction
+
+" Search and replace across project:
+" Give strings:
+nnoremap <leader>pr :cfdo %s///gc \| update<left><left><left><left><left><left><left><left><left><left><left><left><left>
+" With visual selected:
+xmap <leader>pr <Esc>:cfdo %s/<c-r>=GetVisual()<cr>//gc \| update<left><left><left><left><left><left><left><left><left><left><left><left>
+
+" Search and replace in file:
+nnoremap <leader>fr :%s///gc<left><left><left><left>
+" With visual selected:
+xmap <leader>fr <Esc>:%s/<c-r>=GetVisual()<cr>//gc<left><left><left>
+" Search inside file:
+xmap <leader>fs <Esc>/<c-r>=GetVisual()<cr>
+" Ripgrep search
+xmap <leader>rg <Esc>:Rg <c-r>=GetVisual()<cr>
+" Populate quickfix list with vim grep
+xmap <leader>cg <Esc>:grep! <c-r>=GetVisual()<cr>
+
