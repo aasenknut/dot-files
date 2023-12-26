@@ -1,0 +1,127 @@
+Plug 'tpope/vim-surround'
+
+"------------------------------------------------------------------------------
+" General stuff -- mostly 'set' stuff.
+"------------------------------------------------------------------------------
+set hlsearch
+set hidden
+set rnu " Relative line numbers
+set nu " Line numbers
+set incsearch
+set noerrorbells
+set foldmethod=manual
+set shiftwidth=4
+set expandtab
+set smartindent
+set smartcase
+set ignorecase
+set autoindent
+set nowrap
+set noswapfile
+set nobackup
+set guicursor=n-v-c:block-Cursor
+set undodir=~/.vim/undodir
+set undofile
+set nowritebackup
+set formatoptions-=cro " Stop newline continution of comments
+set list
+set listchars=tab:»\ ,trail:·,eol:¬
+set nrformats+=alpha " To increment letters in addition to numbers
+set completeopt=menu,menuone,noinsert,noselect " For autocomplete. See :help completeopt
+set clipboard+=unnamedl
+set surround " tpope surround
+language en_US
+syntax on
+
+"------------------------------------------------------------------------------
+" Key-bindings follow.
+"------------------------------------------------------------------------------
+" set leader
+let mapleader = "\<Space>"
+
+" -------
+" WINDOWS
+" -------
+" bind Ctrl+<movement> keys to move around the windows
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <c-h> <c-w>h
+" Window resize
+" Height:
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+" ----
+" TABS
+" ----
+" move around between tabs:
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 5gt
+nnoremap <leader>7 5gt
+nnoremap <leader>8 5gt
+nnoremap <leader>9 5gt
+" open and close:
+nnoremap <leader>to :tabnew%<CR>
+nnoremap <leader>tc :tabclose<CR>
+
+" Move lines up and down
+vnoremap <c-j> :m '>+1<CR>gv=gv
+vnoremap <c-k> :m '<-2<CR>gv=gv
+
+" write file
+nnoremap <leader>w :w!<cr>
+
+" quit file
+nnoremap <c-q> :q!<cr>
+
+
+" Use CTRL-L instead of <Esc> for relevant modes
+inoremap <c-l> <esc>
+xnoremap <c-l> <esc>
+tnoremap <c-l> <C-\><C-n>
+
+" Jumplist fix. Since <Tab> is going to be used for indentation, we need to remap <C-i>
+nnoremap <C-n> <C-i>
+
+" Fix indentaion mapping
+nnoremap <Tab> >>_
+vnoremap <Tab> >
+nnoremap <S-Tab> <<
+vnoremap <S-Tab> <<
+inoremap <S-Tab> <C-d>
+
+" Register mapping
+vnoremap <leader>pp "_dP
+
+" Navigate quickfix list with ease
+nnoremap <silent> [p :cprevious<CR>
+nnoremap <silent> [n :cnext<CR>
+nnoremap <silent> <c-[> :cprevious<CR>zz
+nnoremap <silent> <c-]> :cnext<CR>zz
+nnoremap <silent> <c-,> :lprevious<CR>zz
+nnoremap <silent> <c-.> :lnext<CR>zz
+
+" Keep cursor in middle when jumping and searching
+nmap <C-d> <C-d>zz
+nmap <C-u> <C-u>zz
+nmap n nzzzv
+nmap N Nzzzv
+
+" Move a bit more than just one line at a time
+vim.keymap.set("n", "<C-e>", "3<C-e>")
+vim.keymap.set("n", "<C-y>", "3<C-y>")
+
+" Go to code
+nmap gd <Action>(GotoDeclaration)
+nmap gm <Action>(GotoImplementation)
+
+" Refactoring
+nmap <leader>rn <Action>(RenameElement)
+
+" Popup navigation
+inoremap <C-j> <Action>(PopupMenu-selectNext)
+inoremap <C-k> <Action>(PopupMenu-selectPrev)
