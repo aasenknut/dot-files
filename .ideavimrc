@@ -1,35 +1,18 @@
 Plug 'tpope/vim-surround'
+Plug 'preservim/nerdtree'
 
 "------------------------------------------------------------------------------
 " General stuff -- mostly 'set' stuff.
 "------------------------------------------------------------------------------
 set hlsearch
-set hidden
 set rnu " Relative line numbers
 set nu " Line numbers
 set incsearch
-set noerrorbells
-set foldmethod=manual
-set shiftwidth=4
-set expandtab
-set smartindent
 set smartcase
 set ignorecase
 set autoindent
-set nowrap
-set noswapfile
-set nobackup
-set guicursor=n-v-c:block-Cursor
-set undodir=~/.vim/undodir
-set undofile
-set nowritebackup
-set formatoptions-=cro " Stop newline continution of comments
-set list
-set listchars=tab:»\ ,trail:·,eol:¬
 set nrformats+=alpha " To increment letters in addition to numbers
-set completeopt=menu,menuone,noinsert,noselect " For autocomplete. See :help completeopt
 set clipboard+=unnamedl
-set surround " tpope surround
 language en_US
 syntax on
 
@@ -119,9 +102,15 @@ vim.keymap.set("n", "<C-y>", "3<C-y>")
 nmap gd <Action>(GotoDeclaration)
 nmap gm <Action>(GotoImplementation)
 
+" File
+map <c-p> <action>(GotoFile)
+
 " Refactoring
 nmap <leader>rn <Action>(RenameElement)
 
 " Popup navigation
 inoremap <C-j> <Action>(PopupMenu-selectNext)
 inoremap <C-k> <Action>(PopupMenu-selectPrev)
+
+" NerdTree
+nmap <leader>n :NERDTreeToggle<CR>
