@@ -103,14 +103,23 @@ nmap gd <Action>(GotoDeclaration)
 nmap gm <Action>(GotoImplementation)
 
 " File
-map <c-p> <action>(GotoFile)
+nmap <c-p> <action>(GotoFile)
 
 " Refactoring
 nmap <leader>rn <Action>(RenameElement)
 
-" Popup navigation
-inoremap <C-j> <Action>(PopupMenu-selectNext)
-inoremap <C-k> <Action>(PopupMenu-selectPrev)
+" Errors
+nmap <leader>e <action>(ShowErrorDescription)
+
+" Debug
+nmap <leader>dn <Action>(Debug)
+nmap <leader>db <Action>(ToggleLineBreakpoint)
+nmap <leader>de <Action>(EvaluateExpression)
+nmap <leader>dc <Action>(Debugger.RemoveAllBreakpoints)
+
+" Moving in menus
+imap <c-j> <c-n>
+imap <c-k> <c-p>
 
 " NerdTree
 nmap <leader>n :NERDTreeToggle<CR>
