@@ -51,9 +51,6 @@ nnoremap <leader>9 5gt
 nnoremap <leader>to :tabnew%<CR>
 nnoremap <leader>tc :tabclose<CR>
 
-" Move lines up and down
-vnoremap <c-j> :m '>+1<CR>gv=gv
-vnoremap <c-k> :m '<-2<CR>gv=gv
 
 " write file
 nnoremap <leader>w :w!<cr>
@@ -112,14 +109,14 @@ nmap <leader>rn <Action>(RenameElement)
 nmap <leader>e <action>(ShowErrorDescription)
 
 " Debug
-nmap <leader>dn <Action>(Debug)
+nmap <leader>da <Action>(Debug)
+nmap <leader>dn <Action>(Resume)
 nmap <leader>db <Action>(ToggleLineBreakpoint)
-nmap <leader>de <Action>(EvaluateExpression)
+nmap <leader>do <Action>(StepOver)
+nmap <leader>di <Action>(StepInto)
+nmap <leader>du <Action>(StepOut)
+nmap <leader>de <Action>(QuickEvaluateExpression)
 nmap <leader>dc <Action>(Debugger.RemoveAllBreakpoints)
-
-" Moving in menus
-imap <c-j> <c-n>
-imap <c-k> <c-p>
 
 " NerdTree
 nmap <leader>n :NERDTreeToggle<CR>
