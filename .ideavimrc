@@ -26,10 +26,10 @@ let mapleader = "\<Space>"
 " WINDOWS
 " -------
 " bind Ctrl+<movement> keys to move around the windows
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
-nnoremap <c-h> <c-w>h
+nnoremap <silent> <c-j> <c-w>j
+nnoremap <silent> <c-k> <c-w>k
+nnoremap <silent> <c-l> <c-w>l
+nnoremap <silent> <c-h> <c-w>h
 " Window resize
 " Height:
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
@@ -92,15 +92,17 @@ nmap n nzzzv
 nmap N Nzzzv
 
 " Move a bit more than just one line at a time
-vim.keymap.set("n", "<C-e>", "3<C-e>")
-vim.keymap.set("n", "<C-y>", "3<C-y>")
+nmap <silent> <C-e> 3<C-e>
+nmap <silent> <C-y> 3<C-y>
 
 " Go to code
 nmap gd <Action>(GotoDeclaration)
 nmap gm <Action>(GotoImplementation)
 
 " File
-nmap <c-p> <action>(GotoFile)
+nmap <c-p> <Action>(GotoFile)
+
+
 
 " Refactoring
 nmap <leader>rn <Action>(RenameElement)
@@ -120,3 +122,7 @@ nmap <leader>dc <Action>(Debugger.RemoveAllBreakpoints)
 
 " NerdTree
 nmap <leader>n :NERDTreeToggle<CR>
+
+
+
+imap <c-k> <c-p>
