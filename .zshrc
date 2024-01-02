@@ -22,7 +22,7 @@ precmd_functions+=( precmd_vcs_info )
 zstyle ':vcs_info:*' formats '(%F{blue}%b%f)'
 
 # Left prompt:
-PROMPT='%F{green}%(5~|%-1~/…/%3~|%4~)%f$vcs_info_msg_0_ %% '
+PROMPT='%F{green}%(5~|%-1~/…/%3~|%4~)%f$vcs_info_msg_0_ :: '
 # vi mode (clashes with tmux keys)
 bindkey -v
 bindkey '^l' vi-cmd-mode
@@ -83,6 +83,9 @@ export PATH="$PATH:$HOME/bin"
 
 #git from homebrew
 export PATH="/opt/homebrew/bin:${PATH}"
+
+#dotnet
+export PATH="$HOME/.dotnet:${PATH}"
 
 #java path
 export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
