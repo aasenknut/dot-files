@@ -81,6 +81,9 @@ vim.keymap.set("n", "<leader>dn", function() require'dap'.continue() end, { sile
 vim.keymap.set("n", "<leader>dr", function() require'dap'.repl.toggle() end, { silent = true })
 vim.keymap.set("n", "<leader>td", function() require'dap-go'.debug_test() end, {silent = true})
 
+vim.keymap.set("n", "<leader>do", function() require'dap'.step_over() end, { silent = true })
+vim.keymap.set("n", "<leader>di", function() require'dap'.step_into() end, { silent = true })
+
 -- Stop debugging:
 vim.keymap.set('n', '<leader>ds', function() require"dap".terminate() end)
 
