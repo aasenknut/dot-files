@@ -43,10 +43,10 @@ nnoremap <leader>2 2gt
 nnoremap <leader>3 3gt
 nnoremap <leader>4 4gt
 nnoremap <leader>5 5gt
-nnoremap <leader>6 5gt
-nnoremap <leader>7 5gt
-nnoremap <leader>8 5gt
-nnoremap <leader>9 5gt
+nnoremap <leader>6 6gt
+nnoremap <leader>7 7gt
+nnoremap <leader>8 8gt
+nnoremap <leader>9 9gt
 " open and close:
 nnoremap <leader>to :tabnew%<CR>
 nnoremap <leader>tc :tabclose<CR>
@@ -99,10 +99,14 @@ nmap <silent> <C-y> 3<C-y>
 nmap gd <Action>(GotoDeclaration)
 nmap gm <Action>(GotoImplementation)
 
+"sr = show references:
+nmap <leader>sr <Action>(ShowUsages) 
+
 " File
 nmap <c-p> <Action>(GotoFile)
 
-
+" Text (rg since I'm used to ripgrep)
+nmap <leader>rg <Action>(FindInPath)
 
 " Refactoring
 nmap <leader>rn <Action>(RenameElement)
@@ -112,6 +116,7 @@ nmap <leader>e <action>(ShowErrorDescription)
 
 " Debug
 nmap <leader>da <Action>(Debug)
+nmap <leader>ds <Action>(Stop)
 nmap <leader>dn <Action>(Resume)
 nmap <leader>db <Action>(ToggleLineBreakpoint)
 nmap <leader>do <Action>(StepOver)
@@ -120,9 +125,12 @@ nmap <leader>du <Action>(StepOut)
 nmap <leader>de <Action>(QuickEvaluateExpression)
 nmap <leader>dc <Action>(Debugger.RemoveAllBreakpoints)
 
+" Tests
+nmap <leader>tr <Action>(RiderUnitTestRunContextAction)
+nmap <leader>td <Action>(RiderUnitTestDebugContextAction)
+
 " NerdTree
 nmap <leader>n :NERDTreeToggle<CR>
 
-
-
+" Trying to use <c-k> for '<UP-ARROW>'
 imap <c-k> <c-p>
