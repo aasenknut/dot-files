@@ -12,7 +12,7 @@ set smartcase
 set ignorecase
 set autoindent
 set nrformats+=alpha " To increment letters in addition to numbers
-set clipboard+=unnamedl
+set clipboard+=unnamed
 language en_US
 syntax on
 
