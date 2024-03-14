@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- quit file
-vim.keymap.set("n", "<c-q>", ":q!<CR>")
+vim.keymap.set("n", "<C-q>", ":q!<CR>")
 vim.keymap.set("n", "<leader>w", ":w!<CR>")
 
 -- Use CTRL-L instead of <Esc> for relevant modes
@@ -18,18 +18,21 @@ vim.keymap.set("n", "<c-h>", "<c-w>h")
 -- Register mapping
 vim.keymap.set("v", "<leader>P", '"_dP')
 
+-- non-US keyboard makes it hard to type [ and ].
+-- vim.keymap.set("n", "<", "[", {remap = true})
+-- vim.keymap.set("n", ">", "]", {remap = true})
+-- vim.keymap.set("o", "<", "[", {remap = true})
+-- vim.keymap.set("o", ">", "]", {remap = true})
+-- vim.keymap.set("x", "<", "[", {remap = true})
+-- vim.keymap.set("x", ">", "]", {remap = true})
+
 -- Navigate quickfix list with ease
 vim.keymap.set("n", "<c-[>", ":cprevious<CR>zz", {silent = true})
 vim.keymap.set("n", "<c-]>", ":cnext<CR>zz", {silent = true})
-vim.keymap.set("n", "<c-,>", ":lprevious<CR>zz", {silent = true})
+vim.keymap.set("n", "<c-,>", ":lprev<CR>zz", {silent = true})
 vim.keymap.set("n", "<c-.>", ":lnext<CR>zz", {silent = true})
 
--- Navigate quickfix list with ease
-vim.keymap.set("n", "[p", ":cprevious<CR>zz", {silent = true})
-vim.keymap.set("n", "[n", ":cnext<CR>zz", {silent = true})
-
 vim.keymap.set("n", "<leader>ce", ":cexpr []<cr>")
-vim.keymap.set("n", "<leader>co", ":cexpr []<cr>")
 
 -- Diagnostics
 vim.keymap.set("n", "<leader>e", ":lua vim.diagnostic.open_float()<CR>")
@@ -50,11 +53,6 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
-
--- Move a bit more than just one line at a time
-vim.keymap.set("n", "<C-e>", "3<C-e>")
-vim.keymap.set("n", "<C-y>", "3<C-y>")
-
 
 -- Keep cursor in place
 vim.keymap.set("n", "J", "mzJ`z")
@@ -80,3 +78,4 @@ vim.keymap.set("n", "<leader>tc", ":tabclose<CR>")
 -- Move lines up and down
 vim.keymap.set("v", "<c-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<c-k>", ":m '<-2<CR>gv=gv")
+

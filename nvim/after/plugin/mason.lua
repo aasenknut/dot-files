@@ -12,7 +12,7 @@ require("mason-lspconfig").setup({
         "elixirls",
         "clangd",
         "omnisharp",
-        "fsautocomplete",
+        --"fsautocomplete",
         "lua_ls",
         "rust_analyzer",
         "gopls",

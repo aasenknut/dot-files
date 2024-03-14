@@ -6,3 +6,4 @@ vim.keymap.set('n', '<leader>b', ':Buffer<CR>')
 vim.keymap.set('n', '<leader>rg', ':Rg<CR>')
 -- FZF lsp
 vim.keymap.set('n', '<leader>sr', ':References<CR>')
+

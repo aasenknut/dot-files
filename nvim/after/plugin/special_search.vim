@@ -50,4 +50,3 @@ xmap <leader>fs <Esc>/<c-r>=GetVisual()<cr>
 xmap <leader>rg <Esc>:Rg <c-r>=GetVisual()<cr>
 " Populate quickfix list with vim grep
 xmap <leader>cg <Esc>:grep! <c-r>=GetVisual()<cr>
-
