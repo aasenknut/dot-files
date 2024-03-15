@@ -48,12 +48,16 @@ cmp.setup({
     mapping = {
         ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-e>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert , count = 5}),
-        ["<C-y>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert , count = 5}),
         ["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
         ["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
         ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
         ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+        --  ['<C->'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+        ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+        ["<C-e>"] = cmp.mapping({
+            i = cmp.mapping.abort(),
+            c = cmp.mapping.close(),
+        }),
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
         -- Super-Tab like mapping
         ["<C-f>"] = cmp.mapping(function(fallback) -- f for "forward"

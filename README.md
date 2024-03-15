@@ -1,43 +1,18 @@
-# Neovim
+# Dot files
 
-*Note*. Nvim stuff will be placed in `~/.local/share/nvim/`, this is also where the treesitter stuff will end up.
+Just a set of random notes on local setup.
 
 # Languages
 
-## Dotnet
-- Debugger: https://github.com/Samsung/netcoredbg
-
-## Go
-- Tools. 
-    - `$ go install golang.org/x/tools/cmd/goimports@latest`
-    - `$ go install golang.org/x/tools/gopls@latest`
-    - `$ brew install golangci-lint`
-
-## LSP
-Remember to install typescript-language-server before running `:LspInstall tsserver`,
-```
-npm install -g typescript-language-server typescript
-```
-Same for pyright:
-```
-npm i -g pyright
-```
-
-## Formatting
-Remember to install relevant formatters:
-- Stylua (https://github.com/JohnnyMorganz/StyLua):
-```
-$ brew install rustup
-$ rustup-init
-$ cargo install stylua
-```
-- JSON (fixjson): `$ npm install -g fixjson`
-- Python (autopep8): `$ pip install autopep8`
-- Prettier: 
-```
-$ npm install --save-dev --save-exact prettier
-$ echo {}> .prettierrc.json
-```
+- *Dotnet*
+    - Debugger: https://github.com/Samsung/netcoredbg
+- *Go*
+    - Tools. 
+        - `$ go install golang.org/x/tools/cmd/goimports@latest`
+        - `$ go install golang.org/x/tools/gopls@latest`
+        - `$ brew install golangci-lint`
+- *Lua*
+    - `$ brew install luajit`
 
 # CLI Tools
 - **Colima** (https://github.com/abiosoft/colima/). For docker.
@@ -52,12 +27,6 @@ $ echo {}> .prettierrc.json
 # Other stuff
 **Nerd Fonts**. To get icons and stuff.
 ```
-brew tap homebrew/cask-fonts
-brew install --cask font-hack-nerd-font
-```
-
-**Lua.** 
-With package manager and formatter.
-```
-$ brew update && brew install lua@5.1
+$ brew tap homebrew/cask-fonts
+$ brew install --cask font-hack-nerd-font
 ```
