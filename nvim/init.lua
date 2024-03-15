@@ -52,11 +52,11 @@ require("lazy").setup(
         "onsails/lspkind-nvim",
         "simrat39/symbols-outline.nvim",
         "ray-x/lsp_signature.nvim",
-        ---snippets
+        --snippets
         "hrsh7th/cmp-vsnip",
         "hrsh7th/vim-vsnip",
         "rafamadriz/friendly-snippets",
-        ---fzf
+        --fzf
         { "junegunn/fzf",         build = ":call fzf#install()" },
         "junegunn/fzf.vim",
         "gfanto/fzf-lsp.nvim",
