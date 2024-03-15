@@ -3,7 +3,6 @@ go
 node
 fzf
 ripgrep
-ranger
 bat
 tree
 jq
