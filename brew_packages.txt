@@ -20,3 +20,4 @@ tmux
 wget
 zsh-syntax-highlighting
 zsh
+hurl
