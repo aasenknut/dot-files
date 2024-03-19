@@ -50,13 +50,14 @@ require("lazy").setup(
         "hrsh7th/cmp-cmdline",
         "hrsh7th/nvim-cmp",
         "onsails/lspkind-nvim",
-        "simrat39/symbols-outline.nvim",
         "ray-x/lsp_signature.nvim",
-        --snippets
+        --symbols outline
+        "hedyhli/outline.nvim",
+        ---snippets
         "hrsh7th/cmp-vsnip",
         "hrsh7th/vim-vsnip",
         "rafamadriz/friendly-snippets",
-        --fzf
+        ---fzf
         { "junegunn/fzf",         build = ":call fzf#install()" },
         "junegunn/fzf.vim",
         "gfanto/fzf-lsp.nvim",
@@ -82,7 +83,7 @@ require("lazy").setup(
                 "nvim-lua/plenary.nvim",
                 "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
                 "MunifTanjim/nui.nvim",
-                "3rd/image.nvim", -- image support in preview window
+                "3rd/image.nvim",              -- image support in preview window
             }
         },
         --go

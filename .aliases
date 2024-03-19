@@ -1,9 +1,6 @@
 # Source ~/.zshrc
 alias sc="source $HOME/.zshrc"
 
-# Lua
-alias lua='lua-5.1'
-
 # Open file in nvim after search with fzf
 alias fn='nvim $(fzf)'
 
