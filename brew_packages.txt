@@ -2,6 +2,7 @@ neovim
 go
 golangci-lint
 gnu-typist
+guile
 node
 fzf
 ripgrep
