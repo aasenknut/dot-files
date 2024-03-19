@@ -1,21 +1,18 @@
-# Source ~/.zshrc
-alias sc="source $HOME/.zshrc"
-
 # Open file in nvim after search with fzf
 alias fn='nvim $(fzf)'
+
+# Get to directory by fzf
+alias cdf='cd $(find * -type d | fzf)'
+
+#------------------------------------------------------------------------------
+# GO
+#------------------------------------------------------------------------------
 
 # Golang: Gofmt files recursively and save.
 alias gf='gofmt -l -s -w .'
 
 # Golang: build for debugging and run
 alias gd='goDebug(){ go build -gcflags="all=-N -l" -o="$1" "$2"; "$1"; }; goDebug'
-
-# Get to directory by fzf
-alias cdf='cd $(find * -type d | fzf)'
-
-#----#
-# GO #
-#----#
 
 # linter
 alias goli='golangci-lint run'
