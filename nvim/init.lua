@@ -71,8 +71,6 @@ require("lazy").setup(
         "mfussenegger/nvim-dap-python",
         --undo
         "mbbill/undotree",
-        --rest
-        "rest-nvim/rest.nvim",
         --maximizer
         "szw/vim-maximizer",
         --tree view
